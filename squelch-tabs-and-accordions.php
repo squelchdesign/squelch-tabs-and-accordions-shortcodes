@@ -3,7 +3,7 @@
 Plugin Name: Squelch Tabs and Accordions Shortcodes
 Plugin URI: http://squelchdesign.com/wordpress-plugin-squelch-tabs-accordions-shortcodes/
 Description: Provides shortcodes for adding tabs and accordions to your website
-Version: 0.4.2
+Version: 0.4.3
 Author: Matt Lowe
 Author URI: http://squelchdesign.com/matt-lowe
 License: GPL2
@@ -27,7 +27,7 @@ License: GPL2
 */
 
 
-$taas_plugin_ver    = '0.4.2';
+$taas_plugin_ver    = '0.4.3';
 
 
 
