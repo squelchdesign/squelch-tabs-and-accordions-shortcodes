@@ -1,7 +1,7 @@
 
 /*  Copyright (c) 2013 Nicola Hibbert  (http://nicolahibbert.com/liteaccordion-v2/)
     Extensions (c) 2013 Matt Lowe; Added support for jQuery UI theming
-    
+
     Permission is hereby granted, free of charge, to any person obtaining
     a copy of this software and associated documentation files (the
     "Software"), to deal in the Software without restriction, including
@@ -9,10 +9,10 @@
     distribute, sublicense, and/or sell copies of the Software, and to
     permit persons to whom the Software is furnished to do so, subject to
     the following conditions:
-    
+
     The above copyright notice and this permission notice shall be
     included in all copies or substantial portions of the Software.
-    
+
     THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
     EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
     MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
@@ -453,7 +453,7 @@
 /*  Copyright 2013  Matt Lowe / Squelch Design  (http://squelch.it/  ... email: hi@squelchdesign.com)
 
     This program is free software; you can redistribute it and/or modify
-    it under the terms of the GNU General Public License, version 2, as 
+    it under the terms of the GNU General Public License, version 2, as
     published by the Free Software Foundation, except where stated.
 
     This program is distributed in the hope that it will be useful,
@@ -490,7 +490,7 @@
 
 
     $.fn.squelchToggles = function(options) {
-        
+
         var defaults = {
             speed:      800,
             active:     false,
@@ -506,9 +506,9 @@
 
         // Add the jQuery UI accordion classes when needed
         if (settings.theme == 'blank') {
-			$headers.each(function(){
-				$(this).prepend('<span class="ui-icon ui-icon-triangle-1-e"></span>');				
-			});
+            $headers.each(function(){
+                $(this).prepend('<span class="ui-icon ui-icon-triangle-1-e"></span>');
+            });
         } else if (settings.theme == 'jqueryui') {
             $toggle.addClass('ui-widget ui-accordion ui-widget ui-helper-reset');
             $toggles.addClass('ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom');
@@ -575,7 +575,7 @@
 
 
 ;(function($) {
-    
+
     /**
      * Given any target, smoothly scrolls the page to make that item visible.
      *
@@ -758,11 +758,15 @@
             if ($(panel).hasClass('ui-tabs-panel')) {
                 var parentDiv = $(panel).parents('div').eq(0);
                 var tabGroup  = $(panel).parents('.squelch-taas-tab-group');
-                
+
                 $(parentDiv).find('div.ui-tabs-panel').each(function(i, elem) {
                     if ($(this).attr('id') == panel.attr('id')) {
-                        // Found the panel at index "i": Now tell jQuery UI to open that tab
-                        tabGroup.tabs( "option", "active", i );
+                        setTimeout(function() {
+                            scrollToTarget( $(tabGroup), function() {
+                                // Found the panel at index "i": Now tell jQuery UI to open that tab
+                                tabGroup.tabs( "option", "active", i );
+                            } );
+                        }, 250);
                     }
                 });
             }
@@ -771,14 +775,14 @@
             // Toggle --------------------------------------------------------------------------------------------------
             if ($(panel).hasClass('squelch-taas-toggle-shortcode-content')) {
                 var parentDiv = $(panel).parents('div.squelch-taas-toggle').eq(0);
-                
+
                 $(parentDiv).find('div.ui-accordion-content').each(function(i, elem) {
                     if ($(this).attr('id') == panel.attr('id')) {
                         // Found the panel at index "i": Now tell Squelch Toggles to open that toggle panel
                         parentDiv.openSquelchToggle( i );
                     }
                 });
-                
+
             }
 
 
@@ -820,7 +824,7 @@
 
                     // Verify each of those targets is a tab/toggle/accordion/haccordion
                     $targets.each(function(i, target) {
-                        
+
                         if ($(target).hasClass('ui-tabs-anchor')) {
                             // Tabs
                             scrollToTarget( target, function() {
