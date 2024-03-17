@@ -109,6 +109,16 @@ Yes! As of version 0.3.7 it is possible to link to a tab. The easiest way to ach
 
 == Changelog ==
 
+= 0.4.4 =
+* Fixes for CVE-2022-4781 (disclosed by WPScan without any consideration for responsible disclosure) and CVE-2024-2499 (responsibly disclosed by Wordfence) - all attributes shoud now be escaped before being sent to the page to prevent stored XSS attacks
+* Update readme file to include changelog details for v0.4.3
+
+= 0.4.3 =
+* Tested up to WP6.1.1
+* Minified CSS and JS for better CWVs scores
+* Add gitignore file, and Yarn config files
+* Improve scroll-to-tab when loading a tab from another page
+
 = 0.4.2 =
 * Tested up to WP5.5
 
@@ -195,6 +205,14 @@ Yes! As of version 0.3.7 it is possible to link to a tab. The easiest way to ach
 * Initial version
 
 == Upgrade Notice ==
+
+= 0.4.4 =
+
+0.4.4 fixes two identical minor vulnerabilities: CVE-2022-4781 and CVE-2024-2499. These fixes prevent stored XSS attacks
+
+= 0.4.3 =
+
+0.4.3 reduces the size of the JavaScript and CSS loaded by the plugin
 
 = 0.4.2 =
 
