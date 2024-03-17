@@ -1,6 +1,6 @@
 {
   "name": "squelch-tabs-and-accordions-shortcodes",
-  "version": "0.4.3",
+  "version": "0.4.4",
   "description": "Shortcodes for creating accordions, horizontal accordions and tabs.",
   "main": "index.js",
   "repository": "git@github.com:squelchdesign/squelch-tabs-and-accordions-shortcodes.git",
