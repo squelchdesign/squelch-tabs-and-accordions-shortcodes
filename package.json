@@ -13,10 +13,10 @@
     "build:js": "minify js/squelch-tabs-and-accordions.js >js/squelch-tabs-and-accordions.min.js && minify js/squelch-tabs-and-accordions-admin.js >js/squelch-tabs-and-accordions-admin.min.js"
   },
   "devDependencies": {
-    "cssnano": "^5.1.15",
-    "cssnano-preset-advanced": "^5.3.10",
-    "minify": "^9.2.0",
+    "cssnano": "^6.1.0",
+    "cssnano-preset-advanced": "^6.1.0",
+    "minify": "^11.1.1",
     "postcss": "^8.4.21",
-    "postcss-cli": "^10.1.0"
+    "postcss-cli": "^11.0.0"
   }
 }
