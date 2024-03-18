@@ -744,6 +744,48 @@ function squelch_taas_enqueue_scripts() {
                 $taas_plugin_ver,
                 false
             );
+        } elseif ('custom1121' == $jquery_ui_theme) {
+            $upload_dir = wp_upload_dir();
+            $upload_dir = $upload_dir['baseurl'];
+            $custom_css_url = trailingslashit( $upload_dir ) . 'jquery-ui-1.12.1.custom/jquery-ui.theme.min.css';
+            $structure_css_url = trailingslashit( $upload_dir ) . 'jquery-ui-1.12.1.custom/jquery-ui.structure.min.css';
+
+            wp_enqueue_style(
+                'jquery-ui-structure-css',
+                $structure_css_url,
+                false,
+                $taas_plugin_ver,
+                false
+            );
+
+            wp_enqueue_style(
+                'jquery-ui-standard-css',
+                $custom_css_url,
+                false,
+                $taas_plugin_ver,
+                false
+            );
+        } elseif ('custom1132' == $jquery_ui_theme) {
+            $upload_dir = wp_upload_dir();
+            $upload_dir = $upload_dir['baseurl'];
+            $custom_css_url = trailingslashit( $upload_dir ) . 'jquery-ui-1.13.2.custom/jquery-ui.theme.min.css';
+            $structure_css_url = trailingslashit( $upload_dir ) . 'jquery-ui-1.13.2.custom/jquery-ui.structure.min.css';
+
+            wp_enqueue_style(
+                'jquery-ui-structure-css',
+                $structure_css_url,
+                false,
+                $taas_plugin_ver,
+                false
+            );
+
+            wp_enqueue_style(
+                'jquery-ui-standard-css',
+                $custom_css_url,
+                false,
+                $taas_plugin_ver,
+                false
+            );
         } elseif ($jquery_ui_theme != 'none') {
             $url = apply_filters( 'squelch_taas_jquery_ui_theme_url',
                 plugins_url('css/jquery-ui/jquery-ui-1.13.2/'.$jquery_ui_theme.'/jquery-ui.min.css', __FILE__),

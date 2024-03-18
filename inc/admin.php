@@ -62,6 +62,14 @@ $custom_theme_dir = trailingslashit( $upload_dir ) . 'jquery-ui-1.11.4.custom';
 $custom_theme_1_11_4_detected = false;
 if (file_exists( $custom_theme_dir )) $custom_theme_1_11_4_detected = true;
 
+$custom_theme_dir = trailingslashit( $upload_dir ) . 'jquery-ui-1.12.1.custom';
+$custom_theme_1_12_1_detected = false;
+if (file_exists( $custom_theme_dir )) $custom_theme_1_12_1_detected = true;
+
+$custom_theme_dir = trailingslashit( $upload_dir ) . 'jquery-ui-1.13.2.custom';
+$custom_theme_1_13_2_detected = false;
+if (file_exists( $custom_theme_dir )) $custom_theme_1_13_2_detected = true;
+
 
 
 global $squelch_taas_admin_msg;
@@ -107,6 +115,12 @@ $custom_css = get_option('squelch_taas_custom_css_url');
                                 <?php endif; ?>
                                 <?php if ($custom_theme_1_11_4_detected) : ?>
                                     <option<?php selected($theme, 'custom1114'); ?> value="custom1114">Custom jQuery theme (jQuery 1.11.4)</option>
+                                <?php endif; ?>
+                                <?php if ($custom_theme_1_12_1_detected) : ?>
+                                    <option<?php selected($theme, 'custom1121'); ?> value="custom1121">Custom jQuery theme (jQuery 1.12.1)</option>
+                                <?php endif; ?>
+                                <?php if ($custom_theme_1_13_2_detected) : ?>
+                                    <option<?php selected($theme, 'custom1132'); ?> value="custom1132">Custom jQuery theme (jQuery 1.13.2)</option>
                                 <?php endif; ?>
                                 <option<?php selected($theme, 'black-tie'); ?> value="black-tie">Black Tie</option>
                                 <option<?php selected($theme, 'blitzer'); ?> value="blitzer">Blitzer</option>
