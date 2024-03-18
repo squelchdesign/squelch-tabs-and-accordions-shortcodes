@@ -4,6 +4,7 @@
  * Plugin URI: http://squelchdesign.com/wordpress-plugin-squelch-tabs-accordions-shortcodes/
  * Description: Provides shortcodes for adding tabs and accordions to your website
  * Version: 0.4.4
+ * Requires at least: 4.6
  * Author: Matt Lowe
  * Author URI: http://squelchdesign.com/matt-lowe
  * License: GPL2
@@ -865,17 +866,17 @@ function squelch_taas_admin() {
 function squelch_taas_admin_menu() {
     $hook_suffix = add_submenu_page(
         'themes.php',
-        'Squelch Tabs And Accordions Shortcodes',
-        'Tabs and Accordions',
+        __( 'Squelch Tabs And Accordions Shortcodes', 'squelch-tabs-and-accordions-shortcodes' ),
+        __( 'Tabs and Accordions', 'squelch-tabs-and-accordions-shortcodes' ),
         'manage_options',
-        __FILE__,
+        'squelch-tabs-and-accordions-shortcodes',
         'squelch_taas_admin');
 
     // Add action to enqueue admin scripts only on the relevant page
     add_action( 'admin_print_scripts-'.$hook_suffix, 'squelch_taas_admin_scripts' );
 
     // Add action to enqueue admin styles only on the relevant page
-    add_action( 'admin_print_styles-'.$hook_suffix, 'squelch_taas_admin_styles' );
+    // add_action( 'admin_print_styles-'.$hook_suffix, 'squelch_taas_admin_styles' );
 }
 add_action('admin_menu', 'squelch_taas_admin_menu');
 
@@ -886,12 +887,12 @@ add_action('admin_menu', 'squelch_taas_admin_menu');
 function squelch_taas_admin_scripts() {
     global $taas_plugin_ver;
 
-    wp_enqueue_script( 'media-upload' );
-    wp_enqueue_script( 'thickbox' );
+    //wp_enqueue_script( 'media-upload' );  // not sure why this is enqueued?
+    // wp_enqueue_script( 'thickbox' );     // not sure why this is enqueued?
     wp_enqueue_script(
         'squelch_taas_admin',
         plugins_url( 'js/squelch-tabs-and-accordions-admin.js', __FILE__ ),
-        array( 'jquery', 'media-upload', 'thickbox' ),
+        [ 'jquery' ],
         $taas_plugin_ver,
         true
     );
@@ -899,29 +900,31 @@ function squelch_taas_admin_scripts() {
 // action for above function is added in squelch_taas_admin_menu
 
 
-/**
- * Enqueue the styles for the admin interface.
- */
-function squelch_taas_admin_styles() {
-    wp_enqueue_style( 'thickbox' );
-}
-// action for above function is added in squelch_taas_admin_menu
+// /**
+//  * Enqueue the styles for the admin interface.
+//  */
+// function squelch_taas_admin_styles() {
+//     //wp_enqueue_style( 'thickbox' );       // not sure why this is enqueued?
+// }
+// // action for above function is added in squelch_taas_admin_menu
 
 
-/**
- * Disable jQuery / jQuery UI configuration options by default
- */
-function squelch_taas_disable_jquery_admin() {
-    echo ' style="opacity: 0.1;"';
-}
-add_action('squelch_taas_nonwp_jquery_config', 'squelch_taas_disable_jquery_admin');
-
-
-/**
- * Disable jQuery / jQuery UI configuration options by default
- */
-function squelch_taas_disable_jquery_config_admin() {
-    echo 'disabled="disabled" ';
-}
-add_action('squelch_taas_nonwp_jquery_config_disabled', 'squelch_taas_disable_jquery_config_admin');
+// Unsure why these functions exist:
+//
+// /**
+//  * Disable jQuery / jQuery UI configuration options by default
+//  */
+// function squelch_taas_disable_jquery_admin() {
+//     echo ' style="opacity: 0.1;"';
+// }
+// add_action('squelch_taas_nonwp_jquery_config', 'squelch_taas_disable_jquery_admin');
+//
+//
+// /**
+//  * Disable jQuery / jQuery UI configuration options by default
+//  */
+// function squelch_taas_disable_jquery_config_admin() {
+//     echo 'disabled="disabled" ';
+// }
+// add_action('squelch_taas_nonwp_jquery_config_disabled', 'squelch_taas_disable_jquery_config_admin');
 
