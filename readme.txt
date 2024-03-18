@@ -1,7 +1,7 @@
 === Squelch Tabs and Accordions Shortcodes ===
 Contributors: squelch
 Donate link: http://squelchdesign.com/wordpress-plugin-squelch-tabs-accordions-shortcodes/
-Tags: squelch,tabs, accordions,shortcodes,FAQs,tabbed,user interface,vaccordion,haccordion,thethe,thethe fly
+Tags: tabs,accordions,FAQs,vaccordion,haccordion
 Requires at least: 3.5
 Tested up to: 6.5
 Stable tag: 0.4.4
