@@ -1,13 +1,13 @@
 <?php
 /*
-Plugin Name: Squelch Tabs and Accordions Shortcodes
-Plugin URI: http://squelchdesign.com/wordpress-plugin-squelch-tabs-accordions-shortcodes/
-Description: Provides shortcodes for adding tabs and accordions to your website
-Version: 0.4.4
-Author: Matt Lowe
-Author URI: http://squelchdesign.com/matt-lowe
-License: GPL2
-*/
+ * Plugin Name: Squelch Tabs and Accordions Shortcodes
+ * Plugin URI: http://squelchdesign.com/wordpress-plugin-squelch-tabs-accordions-shortcodes/
+ * Description: Provides shortcodes for adding tabs and accordions to your website
+ * Version: 0.4.4
+ * Author: Matt Lowe
+ * Author URI: http://squelchdesign.com/matt-lowe
+ * License: GPL2
+ */
 
 /*  Copyright 2013-2024  Matt Lowe / Squelch Design  (http://squelch.it/  ... email: hi@squelchdesign.com)
 
