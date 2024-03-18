@@ -49,9 +49,9 @@ $taas_toggle_content_counter        = 0;
 ---------------------------------------------------------------------------- */
 
 /**
- * On activation of the plugin generate random names for the extra fields.
+ * Ensure the default option is set if it isn't already
  */
-function squelch_taas_activate() {
+function squelch_taas_maybe_set_defaults() {
     global $taas_plugin_ver;
 
     if (get_option( 'squelch_taas_v' ) != $taas_plugin_ver) {
@@ -60,72 +60,16 @@ function squelch_taas_activate() {
         update_option('squelch_taas_v', $taas_plugin_ver);
     }
 }
-//register_activation_hook( __FILE__, 'squelch_taas_activate' );
-add_action( 'plugins_loaded', 'squelch_taas_activate' );
+add_action( 'plugins_loaded', 'squelch_taas_maybe_set_defaults' );
 
 
 /**
  * Set defaults
  */
 function squelch_taas_set_defaults() {
-    // Show welcome message
-    squelch_taas_set_default_option( 'squelch_taas_showmessage', 1 );
-
     // Default options
     squelch_taas_set_default_option( 'squelch_taas_jquery_ui_theme', 'smoothness' );
 }
-
-
-/**
- * Displays the welcome message.
- */
-function squelch_taas_welcome_message() {
-    // Message hiding/showing etc
-    // if ( get_option( 'squelch_taas_showmessage' ) > 0 ) {
-    //     update_option( 'squelch_taas_showmessage', 0 );
-    //     $url = squelch_taas_get_plugin_admin_url();
-
-    //     // Output a welcome message
-    //     ? >
-    //         <div class="notice notice-success is-dismissible message">
-    //             <p>
-    //                 <strong>
-    //                     Thank you for installing
-    //                     <em>
-    //                         Squelch Tabs and Accordions Shortcodes
-    //                     </em>
-    //                     for WordPress.
-    //                     Your WordPress website is now ready to start showing awesome tabs and accordions!
-    //                 </strong>
-    //             </p>
-    //             <p>
-    //                 To get started please go to the
-    //                 <a href="< ? php echo $url; ? >">settings</a> page.
-    //             </p>
-    //         </div>
-    //     < ? php
-    // }
-
-    if (function_exists( 'thethe_fix' )) {
-        ?>
-            <div class="error">
-                <p>
-                    Squelch Tabs and Accordions Shortcodes has detected that you are using a fix for
-                    TheThe Fly's Accordions and Tabs plugin that was made available by Squelch some time ago.
-                    The fix in question is NOT intended as a long-term solution and should be removed as soon
-                    as possible. By using Squelch Tabs and Accordions you do NOT need the fix. Please see
-                    <a href="http://squelchdesign.com/web_design_newbury/you-are-using-a-fix-for-thethe-fly-accordions-tabs-plugin/">this article</a>
-                    for instructions on how to remove the fix from your
-                    website.
-                </p>
-                <p>
-                    This message will disappear automatically once you have removed the old fix.
-                </p>
-            </div>
-        <?php
-    }
-}
-add_action( 'admin_notices', 'squelch_taas_welcome_message' );
 
 
 
@@ -980,29 +924,4 @@ function squelch_taas_disable_jquery_config_admin() {
     echo 'disabled="disabled" ';
 }
 add_action('squelch_taas_nonwp_jquery_config_disabled', 'squelch_taas_disable_jquery_config_admin');
-
-
-
-/* =Deactivation
----------------------------------------------------------------------------- */
-
-/**
- * On deactivation of the plugin, delete all options.
- */
-function squelch_taas_deactivate() {
-    // On deactivation of the plugin we clean up our stored options.
-    //delete_option( 'squelch_taas_showmessage'       );
-    // MTL20170307 - Commented out the delete_option for squelch_taas_showmessage to reduce how often the message is displayed to the end user.
-}
-//register_deactivation_hook( __FILE__, 'squelch_taas_deactivate' );
-
-
-
-/* =Deprecated
----------------------------------------------------------------------------- */
-
-/* Nothing but trouble. Had enough of chasing bugs in this function.
- */
-// if (!function_exists( 'tidy_up_content' )) : function tidy_up_content( $content, $inline = 'auto' ) { return $content; } endif;
-
 
