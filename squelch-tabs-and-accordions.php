@@ -730,7 +730,7 @@ function squelch_taas_enqueue_scripts() {
             );
         } elseif ($jquery_ui_theme != 'none') {
             $url = apply_filters( 'squelch_taas_jquery_ui_theme_url',
-                plugins_url('css/jquery-ui/jquery-ui-1.11.4/'.$jquery_ui_theme.'/jquery-ui.theme.min.css', __FILE__),
+                plugins_url('css/jquery-ui/jquery-ui-1.11.4/'.$jquery_ui_theme.'/jquery-ui.min.css', __FILE__),
                 $jquery_ui_theme
             );
 
