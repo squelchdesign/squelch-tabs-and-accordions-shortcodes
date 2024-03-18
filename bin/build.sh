@@ -16,10 +16,8 @@ cp -r inc "$TARGET/trunk/"
 cp -r index.php "$TARGET/trunk/"
 cp -r js "$TARGET/trunk/"
 cp -r licence.txt "$TARGET/trunk/"
-cp -r package.json "$TARGET/trunk/"
 cp -r readme.txt "$TARGET/trunk/"
 cp -r squelch-tabs-and-accordions.php "$TARGET/trunk/"
-cp -r yarn.lock "$TARGET/trunk/"
 
 cd "$TARGET/trunk"
 
