@@ -151,11 +151,14 @@ function squelch_taas_accordions_shortcode( $atts, $content ) {
 
     $defaults = array(
         'title'         => '',
+        'title_header'  => 'h2',
         'disabled'      => false,
         'active'        => false,
         'autoheight'    => false,
         'collapsible'   => true
     );
+
+    if ( ! in_array( $atts['title_header'], [ 'h1', 'h2', 'h3', 'h4', 'h5', 'h6' ] ) ) $atts['title_header'] = 'h2';
 
     $atts = wp_parse_args( $atts, $defaults );
 
@@ -167,7 +170,7 @@ function squelch_taas_accordions_shortcode( $atts, $content ) {
         $id     = "squelch-taas-title-$taas_title_counter";
         $class  = "squelch-taas-group-title";
 
-        $rv .= '<h2 id="'.$id.'" class="'.$class.'">'.esc_html( $atts['title'] ).'</h2>';
+        $rv .= '<'.$atts['title_header'].' id="'.$id.'" class="'.$class.'">'.esc_html( $atts['title'] ).'</'.$atts['title_header'].'>';
 
         $GLOBALS['taas_title_counter']++;
     }
@@ -206,9 +209,12 @@ function squelch_taas_accordion_shortcode( $atts, $content ) {
     $vanity_url = squelch_taas_get_vanity_url();
 
     $defaults = array(
-        'title' => ' &nbsp; &nbsp; &nbsp; '
+        'title'     => ' &nbsp; &nbsp; &nbsp; ',
+        'header'    => 'h3'
     );
     $atts = wp_parse_args( $atts, $defaults );
+
+    if ( ! in_array( $atts['header'], [ 'h1', 'h2', 'h3', 'h4', 'h5', 'h6' ] ) ) $atts['header'] = 'h3';
 
     $content = do_shortcode( squelch_shortcode_unautop( shortcode_unautop( $content ) ) );
 
@@ -216,11 +222,11 @@ function squelch_taas_accordion_shortcode( $atts, $content ) {
 
     $id = "squelch-taas-header-$taas_accordion_content_counter";
 
-    $rv .= '<h3 id="'.$id.'">';
+    $rv .= '<'.$atts['header'].' id="'.esc_attr( $id ).'">';
     $rv .= '<a href="#'.$vanity_url.'accordion-shortcode-content-'.$taas_accordion_content_counter.'">';
     $rv .= esc_html( $atts['title'] );
     $rv .= '</a>';
-    $rv .= '</h3>';
+    $rv .= '</'.$atts['header'].'>';
 
     $id = $vanity_url."accordion-shortcode-content-$taas_accordion_content_counter";
 
@@ -261,6 +267,7 @@ function squelch_taas_haccordions_shortcode( $atts, $content ) {
 
     $defaults = array(
         'title'         => '',
+        'title_header'  => 'h2',
         'width'         => 960,
         'height'        => 320,
         'hwidth'        => 48,
@@ -275,6 +282,8 @@ function squelch_taas_haccordions_shortcode( $atts, $content ) {
         'enumerate'     => false,
         'disabled'      => false            // unused
     );
+
+    if ( ! in_array( $atts['title_header'], [ 'h1', 'h2', 'h3', 'h4', 'h5', 'h6' ] ) ) $atts['title_header'] = 'h2';
 
     // jQuery-UI theme needs to default to a narrower header width
     if (empty($atts['theme']) || $atts['theme'] == 'jqueryui') {
@@ -291,7 +300,7 @@ function squelch_taas_haccordions_shortcode( $atts, $content ) {
         $id     = "squelch-taas-title-$taas_title_counter";
         $class  = "squelch-taas-group-title";
 
-        $rv .= '<h2 id="'.$id.'" class="'.$class.'">'. esc_html( $atts['title'] ) .'</h2>';
+        $rv .= '<'.$atts['title_header'].' id="'.$id.'" class="'.$class.'">'. esc_html( $atts['title'] ) .'</'.$atts['title_header'].'>';
 
         $GLOBALS['taas_title_counter']++;
     }
@@ -394,6 +403,7 @@ function squelch_taas_tabs_shortcode( $atts, $content ) {
 
     $defaults = array(
         'title'         => '',
+        'title_header'  => 'h2',
         'disabled'      => false,
         'collapsible'   => false,
         'active'        => 0,
@@ -402,6 +412,8 @@ function squelch_taas_tabs_shortcode( $atts, $content ) {
 
     $atts = wp_parse_args( $atts, $defaults );
 
+    if ( ! in_array( $atts['title_header'], [ 'h1', 'h2', 'h3', 'h4', 'h5', 'h6' ] ) ) $atts['title_header'] = 'h2';
+
     $content = do_shortcode( squelch_shortcode_unautop( shortcode_unautop( tidy_up_shortcodes( $content ) ) ) );
     $rv  = '';
 
@@ -409,7 +421,7 @@ function squelch_taas_tabs_shortcode( $atts, $content ) {
         $id     = "squelch-taas-title-$taas_title_counter";
         $class  = "squelch-taas-group-title";
 
-        $rv .= '<h2 id="'.$id.'" class="'.$class.'">'.esc_html( $atts['title'] ).'</h2>';
+        $rv .= '<'.$atts['title_header'].' id="'.$id.'" class="'.$class.'">'.esc_html( $atts['title'] ).'</'.$atts['title_header'].'>';
 
         $GLOBALS['taas_title_counter']++;
     }
@@ -577,12 +589,16 @@ function squelch_taas_toggles_shortcode( $atts, $content ) {
 
     $defaults = array(
         'title'         => '',
+        'title_header'  => 'h2',
         'speed'         => 800,
         'active'        => false,
         'theme'         => 'jqueryui',
     );
 
     $atts = wp_parse_args( $atts, $defaults );
+
+    if ( ! in_array( $atts['title_header'], [ 'h1', 'h2', 'h3', 'h4', 'h5', 'h6' ] ) ) $atts['title_header'] = 'h2';
+
 
     // If shortcode has style set instead of theme then use that value for style
     if (array_key_exists( 'style', $atts )) $atts['theme'] = $atts['style'];
@@ -594,7 +610,7 @@ function squelch_taas_toggles_shortcode( $atts, $content ) {
         $id     = "squelch-taas-title-$taas_title_counter";
         $class  = "squelch-taas-group-title";
 
-        $rv .= '<h2 id="'.$id.'" class="'.$class.'">'.esc_html( $atts['title'] ).'</h2>';
+        $rv .= '<'.$atts['title_header'].' id="'.$id.'" class="'.$class.'">'.esc_html( $atts['title'] ).'</'.$atts['title_header'].'>';
 
         $GLOBALS['taas_title_counter']++;
     }
@@ -734,13 +750,6 @@ function squelch_taas_enqueue_scripts() {
                 $jquery_ui_theme
             );
 
-            //wp_enqueue_style(
-            //    'jquery-ui-standard-css',
-            //    plugins_url('css/jquery-ui/jquery-ui-1.11.4/'.$jquery_ui_theme.'/jquery-ui.min.css', __FILE__),
-            //    false,
-            //    $taas_plugin_ver,
-            //    false
-            //);
             wp_enqueue_style(
                 'jquery-ui-standard-css',
                 $url,
