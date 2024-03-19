@@ -5,6 +5,7 @@
  * Description: Provides shortcodes for adding tabs and accordions to your website
  * Version: 0.4.4
  * Requires at least: 4.6
+ * Requires PHP: 7.4
  * Author: Matt Lowe
  * Author URI: http://squelchdesign.com/matt-lowe
  * License: GPL2
