@@ -103,6 +103,7 @@ Yes! As of version 0.3.7 it is possible to link to a tab. The easiest way to ach
 * Removed legacy jQuery themes that weren't in use
 * Upgrade the jQuery UI theme to 1.13.2 (the latest version available at this time)
 * Update dependencies used by the developer to build the JS and CSS to silence security warnings from GitHub's dependabot
+* Fix bug that prevented magic URLs from working properly when on a page with parameters in the URL
 * Add a simple build script that ensures builds are consistently produced, and Git-related content isn't pulled into the deployable archive
 * Removed some tags from the readme as wordpress.org only allows up to 5
 * Thanks to @dan-kirshner for beta testing the plugin
