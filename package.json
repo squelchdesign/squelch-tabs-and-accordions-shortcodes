@@ -9,8 +9,10 @@
   "private": false,
   "dependencies": {},
   "scripts": {
+    "build": "./bin/build.sh",
     "build:css": "postcss css/squelch-tabs-and-accordions.css >build-1.css && node_modules/minify/bin/minify.js build-1.css >build-2.css && mv build-2.css css/squelch-tabs-and-accordions.min.css && rm build-*.css",
-    "build:js": "minify js/squelch-tabs-and-accordions.js >js/squelch-tabs-and-accordions.min.js && minify js/squelch-tabs-and-accordions-admin.js >js/squelch-tabs-and-accordions-admin.min.js"
+    "build:js": "minify js/squelch-tabs-and-accordions.js >js/squelch-tabs-and-accordions.min.js && minify js/squelch-tabs-and-accordions-admin.js >js/squelch-tabs-and-accordions-admin.min.js",
+    "install": "composer install"
   },
   "devDependencies": {
     "cssnano": "^6.1.0",
