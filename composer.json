@@ -1,0 +1,5 @@
+{
+    "require": {
+        "ergebnis/json-printer": "^3.5"
+    }
+}
