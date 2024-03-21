@@ -29,7 +29,7 @@
 */
 
 
-$taas_plugin_ver    = '0.4.4';
+$taas_plugin_ver    = '0.4.5';
 
 
 
