@@ -27,8 +27,9 @@ if ( $old_version != 'UNKNOWN' ) {
 
         $printer = new Printer\Printer();
 
-        $readme_txt                 = preg_replace( "/Stable tag:\s+{$old_version}/", "Stable tag: {$new_version}", $readme_txt );
-        $plugin_php                 = preg_replace( "/ \* Version:\s+{$old_version}/", " * Version: {$new_version}", $plugin_php );
+        $readme_txt                 = preg_replace( "/Stable tag:\s+{$old_version}/",                   "Stable tag: {$new_version}",               $readme_txt );
+        $plugin_php                 = preg_replace( "/ \* Version:\s+{$old_version}/",                  " * Version: {$new_version}",               $plugin_php );
+        $plugin_php                 = preg_replace( "/\\\$taas_plugin_ver\s*=\s*'{$old_version}';/",    "\$taas_plugin_ver    = '{$new_version}';", $plugin_php );
         $package_json_obj->version  = $new_version;
         $package_json               = json_encode( $package_json_obj, JSON_FORCE_OBJECT | JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES | JSON_THROW_ON_ERROR );
         $package_json               = $printer->print( $package_json, '  ' );
