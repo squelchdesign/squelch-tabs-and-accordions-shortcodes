@@ -721,20 +721,30 @@
         // Track changes in tabs / toggles / accordions / haccordions via the URL
         if (! squelch_taas_options.disable_magic_url) {
             $(  '.squelch-taas-tab > a,'+
-                '.squelch-taas-toggle > h3,'+
-                '.squelch-taas-toggle > h3 > a,'+
-                '.squelch-taas-accordion > h3,'+
-                '.squelch-taas-accordion > h3 > a,'+
-                '.squelch-taas-haccordion > ol > li > h3 > span')
+                '.squelch-taas-toggle > *,'+
+                '.squelch-taas-toggle > * > a,'+
+                '.squelch-taas-accordion > *,'+
+                '.squelch-taas-accordion > * > a,'+
+                '.squelch-taas-haccordion > ol > li > * > span')
                 .click(function(ev) {
 
                 // Find out which page fragment to use (haccordions are different to everything else)
                 var url = '';
 
                 if (this.tagName.toUpperCase() == 'SPAN') {
+
                     // Assume it's an haccordion
-                    url = document.location.origin + document.location.pathname + '#'+$(this).parents('h3').eq(0).attr('id');
-                    //console.log(document.location);
+                    var search = document.location.search;
+                    search = search.replace( /\/+$/, '/' );
+
+                    var pathname = document.location.pathname;
+                    pathname = pathname.replace( /\/+$/, '/' );
+
+                    var searchPathname = search + pathname;
+                    searchPathname = searchPathname.replace( /\/+$/, '/' );
+
+                    url = document.location.origin + searchPathname + '#'+$(this).parents('h3').eq(0).attr('id');
+
                 } else if (this.tagName.toUpperCase() == 'H3') {
                     url = $(this).children('a').get(0).href;
                 } else {
@@ -800,7 +810,7 @@
 
             // Horizontal accordion ------------------------------------------------------------------------------------
             if ($(panel).hasClass('squelch-taas-haccordion-shortcode')) {
-                // TODO
+                $(panel).click();
             }
         }
 

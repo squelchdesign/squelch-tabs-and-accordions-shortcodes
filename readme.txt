@@ -1,10 +1,10 @@
 === Squelch Tabs and Accordions Shortcodes ===
 Contributors: squelch
 Donate link: http://squelchdesign.com/wordpress-plugin-squelch-tabs-accordions-shortcodes/
-Tags: squelch,tabs, accordions,shortcodes,FAQs,tabbed,user interface,vaccordion,haccordion,thethe,thethe fly
-Requires at least: 3.5
+Tags: tabs,accordions,FAQs,vaccordion,haccordion
+Requires at least: 4.6
 Tested up to: 6.5
-Stable tag: 0.4.4
+Stable tag: 0.4.5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -12,8 +12,7 @@ Shortcodes for creating accordions, horizontal accordions and tabs.
 
 == Description ==
 
-[Squelch Tabs and Accordions Shortcodes](http://squelchdesign.com/wordpress-plugin-squelch-tabs-accordions-shortcodes/) provides shortcodes for adding stylish Web 2.0
-style accordions and tabs to your WordPress website: Horizontal accordions, vertical accordions and tabs. 
+[Squelch Tabs and Accordions Shortcodes](http://squelchdesign.com/wordpress-plugin-squelch-tabs-accordions-shortcodes/) provides shortcodes for adding stylish Web 2.0 style accordions and tabs to your WordPress website: Horizontal accordions, vertical accordions and tabs.
 
 After you have installed the plugin you can use simple shortcodes on any page or post to add tabs or accordions.
 
@@ -24,8 +23,9 @@ Tabs and accordions can help to improve your website in a number of ways:
 *   **Save space**: Tabs and accordions can save a lot of space on the page making your website look less cluttered.
 *   **Separating content**: Showing content only when required while the rest remains invisible dividing the content into parts.
 
-If you want to add more interactivity with *Tabs*, *Vertical* and *Horizontal Accordions* on your WordPress website,
-**Squelch Tabs and Accordions Shortcodes** is a good option.
+If you want to add more interactivity with *Tabs*, *Vertical* and *Horizontal Accordions* on your WordPress website, **Squelch Tabs and Accordions Shortcodes** is a good option.
+
+[You can demo the website on a playground website here](https://tastewp.com/new?pre-installed-plugin-slug=squelch-tabs-and-accordions-shortcodes&redirect=themes.php%3Fpage%3Dsquelch-tabs-and-accordions-shortcodes%2Fsquelch-tabs-and-accordions.php&ni=true).
 
 **A note on responsivensss:**
 
@@ -68,35 +68,15 @@ Yes. The plugin creates jQuery UI accordions and tabs, jQuery UI-compatible togg
 
 You can also style the widgets with your own custom CSS if you wish by using the .squelch-taas-override class, but that is beyond the scope of this FAQ. Instructions are available on the [Squelch Tabs and Accordions Shortcodes](http://squelchdesign.com/wordpress-plugin-squelch-tabs-accordions-shortcodes/) project home page.
 
-= I used to use TheThe Tabs and Accordions, is this plugin compatible? =
-
-Mostly compatible, yes. The initial goal of the plugin was to provide compatibility with that plugin as a way for those who've been left stranded by the demise of TheThe Tabs and Accordions plugin to continue using their accordions, horizontal accordions, tabs and toggles. I've changed some of the defaults for the widgets from what TheThe Tabs and Accordions used so if you've not been explicit when creating shortcodes you may notice some changes. I believe the defaults are better and more in line with what most people will want. Also, some minor functionality has still not been implemented so if you rely on those functions you might spot a few inconsistencies. Feel free to raise a support request on the plugin forum if functionality you require is missing.
-
-= Is this a fork of TheThe Tabs and Accordions? =
-
-No. This plugin has been written from the ground up as a new plugin that happens to be compatible with TheThe Tabs and Accordions. It provides a number of fixes to issues that were present in TheThe Tabs and Accordions, and even offers some new functionality.
-
-= After installing the plugin I get a warning about a fix for TheThe Tabs and Accordions =
-
-When TheThe Tabs and Accordions plugin stopped working I provided a temporary fix to help keep everyone's sites limping along. This fix was always intended to be temporary. If you receive the following message:
-
-> Squelch Tabs and Accordions Shortcodes has detected that you are using a fix for TheThe Fly’s Accordions and Tabs plugin that was made available by Squelch some time ago. The fix in question is NOT intended as a long-term solution and should be removed as soon as possible. By using Squelch Tabs and Accordions you do NOT need the fix. Please see this article for instructions on how to remove the fix from your website.
-
-then you still have the fix enabled on your website. You will need to find the fix (look for function thethe_fix) and remove it. More information can be found on the [Squelch Tabs and Accordions Shortcodes](http://squelchdesign.com/wordpress-plugin-squelch-tabs-accordions-shortcodes/) project home page.
-
 = Can I see a demo of the widgets? =
 
 Sure, on the [Squelch Tabs and Accordions Shortcodes](http://squelchdesign.com/wordpress-plugin-squelch-tabs-accordions-shortcodes/) project home page.
 
-= Why does this plugin no longer work on versions of WordPress below 3.5? =
-
-The plugin needs a recent version of jQuery UI, which in turn requires a reasonably recent version of jQuery. These are JavaScript libraries that are relied upon by the plugin. Versions of WordPress prior to 3.5 shipped with an older copy of these scripts that is too old for this plugin to use.
-
-If you're on an older version of WordPress and still want to use the plugin then you will need to load a newer version of jQuery and jQuery UI. jQuery is pretty straightforward to upgrade (see the [jQuery updater plugin](http://wordpress.org/plugins/jquery-updater/)) but I've not been able to find a plugin that does the same thing for jQuery UI. Maybe if I can find time I'll write a plugin that offers this functionality, if I can get it past certain members of the WordPress.org plugin review team. It's also possible to add some code to your theme to achieve this goal, I'll try and put some documentation together for this shortly.
+You can also [spin up your own WordPress playground and try the plugin out for yourself](https://tastewp.com/new?pre-installed-plugin-slug=squelch-tabs-and-accordions-shortcodes&redirect=themes.php%3Fpage%3Dsquelch-tabs-and-accordions-shortcodes%2Fsquelch-tabs-and-accordions.php&ni=true).
 
 = Are these widgets responsive? =
 
-All widgets is in this plugin are responsive excluding the horizontal accordion widget: It uses a different library to the other widgets, and that library is unfortunately not responsive. We may add a responsive horizontal slider in the future, but it is not available yet.
+All widgets is in this plugin are responsive **excluding** the horizontal accordion widget: It uses a different library to the other widgets, and that library is unfortunately not responsive. A new responsive horizontal slider is planned for the future.
 
 = Can I link to a tab? =
 
@@ -108,6 +88,27 @@ Yes! As of version 0.3.7 it is possible to link to a tab. The easiest way to ach
 2. Horizontal Accordions come with 4 built-in themes, or you can design your own. Alternatively they can use the active jQuery UI theme.
 
 == Changelog ==
+
+= 0.4.5 =
+* Update the readme to remove references to the plugin this plugin replaced some 11+ years ago, it's time to move on!
+* Add a link to tastewp.com to allow new users to demo the plugin in a playground install with a single click
+* New banner and icon to replace the very old banner and to lend a consistent brand image to the plugin
+* Set minimum PHP version to 7.4 - my apologies if you're using an older version of PHP but it really is time to upgrade!
+* Ready the plugin for translation
+* Minor refactoring, removal of some old code, removal of some deprecated code, removal of some old comments
+* Allow 1.13.2, and 1.12.1 custom themes to be uploaded from the ThemeRoller
+* Allow the titles that can be added above tab/accordion/toggles etc to be changed with title_header='' attribute
+* Allow the h3 element used to render accordions and toggle headings to be changed with header='' attribute
+* Remove extraneous padding from accordion headers which didn't play well with jQuery UI's styles, and were no longer needed anyway
+* Removed legacy jQuery themes that weren't in use
+* Upgrade the jQuery UI theme to 1.13.2 (the latest version available at this time)
+* Update dependencies used by the developer to build the JS and CSS to silence security warnings from GitHub's dependabot
+* Fix bug that prevented magic URLs from working properly when on a page with parameters in the URL
+* Add a simple build script that ensures builds are consistently produced, and Git-related content isn't pulled into the deployable archive
+* Add a simple build watch script to rebuild JS and CSS automatically on the fly when files change
+* Allow linking to an haccordion pane
+* Removed some tags from the readme as wordpress.org only allows up to 5
+* Thanks to @dan-kirshner for beta testing the plugin
 
 = 0.4.4 =
 * Fixes for CVE-2022-4781 (disclosed by WPScan without any consideration for responsible disclosure) and CVE-2024-2499 (responsibly disclosed by Wordfence) - all attributes shoud now be escaped before being sent to the page to prevent stored XSS attacks
@@ -206,9 +207,13 @@ Yes! As of version 0.3.7 it is possible to link to a tab. The easiest way to ach
 
 == Upgrade Notice ==
 
+= 0.4.5 =
+
+0.4.5 upgrades the jQuery UI theme to the latest version available, cleans up some code, and readies the plugin for translation
+
 = 0.4.4 =
 
-0.4.4 fixes two identical minor vulnerabilities: CVE-2022-4781 and CVE-2024-2499. These fixes prevent stored XSS attacks
+0.4.4 fixes a potential vulnerability: CVE-2024-2499. The fix prevents stored XSS attacks
 
 = 0.4.3 =
 

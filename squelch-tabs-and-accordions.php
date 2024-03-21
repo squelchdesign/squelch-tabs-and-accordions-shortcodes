@@ -1,13 +1,15 @@
 <?php
 /*
-Plugin Name: Squelch Tabs and Accordions Shortcodes
-Plugin URI: http://squelchdesign.com/wordpress-plugin-squelch-tabs-accordions-shortcodes/
-Description: Provides shortcodes for adding tabs and accordions to your website
-Version: 0.4.4
-Author: Matt Lowe
-Author URI: http://squelchdesign.com/matt-lowe
-License: GPL2
-*/
+ * Plugin Name: Squelch Tabs and Accordions Shortcodes
+ * Plugin URI: http://squelchdesign.com/wordpress-plugin-squelch-tabs-accordions-shortcodes/
+ * Description: Provides shortcodes for adding tabs and accordions to your website
+ * Version: 0.4.5
+ * Requires at least: 4.6
+ * Requires PHP: 7.4
+ * Author: Matt Lowe
+ * Author URI: http://squelchdesign.com/matt-lowe
+ * License: GPL2
+ */
 
 /*  Copyright 2013-2024  Matt Lowe / Squelch Design  (http://squelch.it/  ... email: hi@squelchdesign.com)
 
@@ -49,9 +51,9 @@ $taas_toggle_content_counter        = 0;
 ---------------------------------------------------------------------------- */
 
 /**
- * On activation of the plugin generate random names for the extra fields.
+ * Ensure the default option is set if it isn't already
  */
-function squelch_taas_activate() {
+function squelch_taas_maybe_set_defaults() {
     global $taas_plugin_ver;
 
     if (get_option( 'squelch_taas_v' ) != $taas_plugin_ver) {
@@ -60,72 +62,16 @@ function squelch_taas_activate() {
         update_option('squelch_taas_v', $taas_plugin_ver);
     }
 }
-//register_activation_hook( __FILE__, 'squelch_taas_activate' );
-add_action( 'plugins_loaded', 'squelch_taas_activate' );
+add_action( 'plugins_loaded', 'squelch_taas_maybe_set_defaults' );
 
 
 /**
  * Set defaults
  */
 function squelch_taas_set_defaults() {
-    // Show welcome message
-    squelch_taas_set_default_option( 'squelch_taas_showmessage', 1 );
-
     // Default options
     squelch_taas_set_default_option( 'squelch_taas_jquery_ui_theme', 'smoothness' );
 }
-
-
-/**
- * Displays the welcome message.
- */
-function squelch_taas_welcome_message() {
-    // Message hiding/showing etc
-    // if ( get_option( 'squelch_taas_showmessage' ) > 0 ) {
-    //     update_option( 'squelch_taas_showmessage', 0 );
-    //     $url = squelch_taas_get_plugin_admin_url();
-
-    //     // Output a welcome message
-    //     ? >
-    //         <div class="notice notice-success is-dismissible message">
-    //             <p>
-    //                 <strong>
-    //                     Thank you for installing
-    //                     <em>
-    //                         Squelch Tabs and Accordions Shortcodes
-    //                     </em>
-    //                     for WordPress.
-    //                     Your WordPress website is now ready to start showing awesome tabs and accordions!
-    //                 </strong>
-    //             </p>
-    //             <p>
-    //                 To get started please go to the
-    //                 <a href="< ? php echo $url; ? >">settings</a> page.
-    //             </p>
-    //         </div>
-    //     < ? php
-    // }
-
-    if (function_exists( 'thethe_fix' )) {
-        ?>
-            <div class="error">
-                <p>
-                    Squelch Tabs and Accordions Shortcodes has detected that you are using a fix for
-                    TheThe Fly's Accordions and Tabs plugin that was made available by Squelch some time ago.
-                    The fix in question is NOT intended as a long-term solution and should be removed as soon
-                    as possible. By using Squelch Tabs and Accordions you do NOT need the fix. Please see
-                    <a href="http://squelchdesign.com/web_design_newbury/you-are-using-a-fix-for-thethe-fly-accordions-tabs-plugin/">this article</a>
-                    for instructions on how to remove the fix from your
-                    website.
-                </p>
-                <p>
-                    This message will disappear automatically once you have removed the old fix.
-                </p>
-            </div>
-        <?php
-    }
-}
-add_action( 'admin_notices', 'squelch_taas_welcome_message' );
 
 
 
@@ -151,11 +97,14 @@ function squelch_taas_accordions_shortcode( $atts, $content ) {
 
     $defaults = array(
         'title'         => '',
+        'title_header'  => 'h2',
         'disabled'      => false,
         'active'        => false,
         'autoheight'    => false,
         'collapsible'   => true
     );
+
+    if ( ! in_array( $atts['title_header'], [ 'h1', 'h2', 'h3', 'h4', 'h5', 'h6' ] ) ) $atts['title_header'] = 'h2';
 
     $atts = wp_parse_args( $atts, $defaults );
 
@@ -167,7 +116,7 @@ function squelch_taas_accordions_shortcode( $atts, $content ) {
         $id     = "squelch-taas-title-$taas_title_counter";
         $class  = "squelch-taas-group-title";
 
-        $rv .= '<h2 id="'.$id.'" class="'.$class.'">'.esc_html( $atts['title'] ).'</h2>';
+        $rv .= '<'.$atts['title_header'].' id="'.$id.'" class="'.$class.'">'.esc_html( $atts['title'] ).'</'.$atts['title_header'].'>';
 
         $GLOBALS['taas_title_counter']++;
     }
@@ -206,9 +155,12 @@ function squelch_taas_accordion_shortcode( $atts, $content ) {
     $vanity_url = squelch_taas_get_vanity_url();
 
     $defaults = array(
-        'title' => ' &nbsp; &nbsp; &nbsp; '
+        'title'     => ' &nbsp; &nbsp; &nbsp; ',
+        'header'    => 'h3'
     );
     $atts = wp_parse_args( $atts, $defaults );
+
+    if ( ! in_array( $atts['header'], [ 'h1', 'h2', 'h3', 'h4', 'h5', 'h6' ] ) ) $atts['header'] = 'h3';
 
     $content = do_shortcode( squelch_shortcode_unautop( shortcode_unautop( $content ) ) );
 
@@ -216,11 +168,11 @@ function squelch_taas_accordion_shortcode( $atts, $content ) {
 
     $id = "squelch-taas-header-$taas_accordion_content_counter";
 
-    $rv .= '<h3 id="'.$id.'">';
+    $rv .= '<'.$atts['header'].' id="'.esc_attr( $id ).'">';
     $rv .= '<a href="#'.$vanity_url.'accordion-shortcode-content-'.$taas_accordion_content_counter.'">';
     $rv .= esc_html( $atts['title'] );
     $rv .= '</a>';
-    $rv .= '</h3>';
+    $rv .= '</'.$atts['header'].'>';
 
     $id = $vanity_url."accordion-shortcode-content-$taas_accordion_content_counter";
 
@@ -261,6 +213,7 @@ function squelch_taas_haccordions_shortcode( $atts, $content ) {
 
     $defaults = array(
         'title'         => '',
+        'title_header'  => 'h2',
         'width'         => 960,
         'height'        => 320,
         'hwidth'        => 48,
@@ -275,6 +228,8 @@ function squelch_taas_haccordions_shortcode( $atts, $content ) {
         'enumerate'     => false,
         'disabled'      => false            // unused
     );
+
+    if ( ! in_array( $atts['title_header'], [ 'h1', 'h2', 'h3', 'h4', 'h5', 'h6' ] ) ) $atts['title_header'] = 'h2';
 
     // jQuery-UI theme needs to default to a narrower header width
     if (empty($atts['theme']) || $atts['theme'] == 'jqueryui') {
@@ -291,7 +246,7 @@ function squelch_taas_haccordions_shortcode( $atts, $content ) {
         $id     = "squelch-taas-title-$taas_title_counter";
         $class  = "squelch-taas-group-title";
 
-        $rv .= '<h2 id="'.$id.'" class="'.$class.'">'. esc_html( $atts['title'] ) .'</h2>';
+        $rv .= '<'.$atts['title_header'].' id="'.$id.'" class="'.$class.'">'. esc_html( $atts['title'] ) .'</'.$atts['title_header'].'>';
 
         $GLOBALS['taas_title_counter']++;
     }
@@ -394,6 +349,7 @@ function squelch_taas_tabs_shortcode( $atts, $content ) {
 
     $defaults = array(
         'title'         => '',
+        'title_header'  => 'h2',
         'disabled'      => false,
         'collapsible'   => false,
         'active'        => 0,
@@ -402,6 +358,8 @@ function squelch_taas_tabs_shortcode( $atts, $content ) {
 
     $atts = wp_parse_args( $atts, $defaults );
 
+    if ( ! in_array( $atts['title_header'], [ 'h1', 'h2', 'h3', 'h4', 'h5', 'h6' ] ) ) $atts['title_header'] = 'h2';
+
     $content = do_shortcode( squelch_shortcode_unautop( shortcode_unautop( tidy_up_shortcodes( $content ) ) ) );
     $rv  = '';
 
@@ -409,7 +367,7 @@ function squelch_taas_tabs_shortcode( $atts, $content ) {
         $id     = "squelch-taas-title-$taas_title_counter";
         $class  = "squelch-taas-group-title";
 
-        $rv .= '<h2 id="'.$id.'" class="'.$class.'">'.esc_html( $atts['title'] ).'</h2>';
+        $rv .= '<'.$atts['title_header'].' id="'.$id.'" class="'.$class.'">'.esc_html( $atts['title'] ).'</'.$atts['title_header'].'>';
 
         $GLOBALS['taas_title_counter']++;
     }
@@ -577,12 +535,16 @@ function squelch_taas_toggles_shortcode( $atts, $content ) {
 
     $defaults = array(
         'title'         => '',
+        'title_header'  => 'h2',
         'speed'         => 800,
         'active'        => false,
         'theme'         => 'jqueryui',
     );
 
     $atts = wp_parse_args( $atts, $defaults );
+
+    if ( ! in_array( $atts['title_header'], [ 'h1', 'h2', 'h3', 'h4', 'h5', 'h6' ] ) ) $atts['title_header'] = 'h2';
+
 
     // If shortcode has style set instead of theme then use that value for style
     if (array_key_exists( 'style', $atts )) $atts['theme'] = $atts['style'];
@@ -594,7 +556,7 @@ function squelch_taas_toggles_shortcode( $atts, $content ) {
         $id     = "squelch-taas-title-$taas_title_counter";
         $class  = "squelch-taas-group-title";
 
-        $rv .= '<h2 id="'.$id.'" class="'.$class.'">'.esc_html( $atts['title'] ).'</h2>';
+        $rv .= '<'.$atts['title_header'].' id="'.$id.'" class="'.$class.'">'.esc_html( $atts['title'] ).'</'.$atts['title_header'].'>';
 
         $GLOBALS['taas_title_counter']++;
     }
@@ -728,19 +690,54 @@ function squelch_taas_enqueue_scripts() {
                 $taas_plugin_ver,
                 false
             );
+        } elseif ('custom1121' == $jquery_ui_theme) {
+            $upload_dir = wp_upload_dir();
+            $upload_dir = $upload_dir['baseurl'];
+            $custom_css_url = trailingslashit( $upload_dir ) . 'jquery-ui-1.12.1.custom/jquery-ui.theme.min.css';
+            $structure_css_url = trailingslashit( $upload_dir ) . 'jquery-ui-1.12.1.custom/jquery-ui.structure.min.css';
+
+            wp_enqueue_style(
+                'jquery-ui-structure-css',
+                $structure_css_url,
+                false,
+                $taas_plugin_ver,
+                false
+            );
+
+            wp_enqueue_style(
+                'jquery-ui-standard-css',
+                $custom_css_url,
+                false,
+                $taas_plugin_ver,
+                false
+            );
+        } elseif ('custom1132' == $jquery_ui_theme) {
+            $upload_dir = wp_upload_dir();
+            $upload_dir = $upload_dir['baseurl'];
+            $custom_css_url = trailingslashit( $upload_dir ) . 'jquery-ui-1.13.2.custom/jquery-ui.theme.min.css';
+            $structure_css_url = trailingslashit( $upload_dir ) . 'jquery-ui-1.13.2.custom/jquery-ui.structure.min.css';
+
+            wp_enqueue_style(
+                'jquery-ui-structure-css',
+                $structure_css_url,
+                false,
+                $taas_plugin_ver,
+                false
+            );
+
+            wp_enqueue_style(
+                'jquery-ui-standard-css',
+                $custom_css_url,
+                false,
+                $taas_plugin_ver,
+                false
+            );
         } elseif ($jquery_ui_theme != 'none') {
             $url = apply_filters( 'squelch_taas_jquery_ui_theme_url',
-                plugins_url('css/jquery-ui/jquery-ui-1.11.4/'.$jquery_ui_theme.'/jquery-ui.theme.min.css', __FILE__),
+                plugins_url('css/jquery-ui/jquery-ui-1.13.2/'.$jquery_ui_theme.'/jquery-ui.min.css', __FILE__),
                 $jquery_ui_theme
             );
 
-            //wp_enqueue_style(
-            //    'jquery-ui-standard-css',
-            //    plugins_url('css/jquery-ui/jquery-ui-1.11.4/'.$jquery_ui_theme.'/jquery-ui.min.css', __FILE__),
-            //    false,
-            //    $taas_plugin_ver,
-            //    false
-            //);
             wp_enqueue_style(
                 'jquery-ui-standard-css',
                 $url,
@@ -870,17 +867,17 @@ function squelch_taas_admin() {
 function squelch_taas_admin_menu() {
     $hook_suffix = add_submenu_page(
         'themes.php',
-        'Squelch Tabs And Accordions Shortcodes',
-        'Tabs and Accordions',
+        __( 'Squelch Tabs And Accordions Shortcodes', 'squelch-tabs-and-accordions-shortcodes' ),
+        __( 'Tabs and Accordions', 'squelch-tabs-and-accordions-shortcodes' ),
         'manage_options',
-        __FILE__,
+        'squelch-tabs-and-accordions-shortcodes',
         'squelch_taas_admin');
 
     // Add action to enqueue admin scripts only on the relevant page
     add_action( 'admin_print_scripts-'.$hook_suffix, 'squelch_taas_admin_scripts' );
 
     // Add action to enqueue admin styles only on the relevant page
-    add_action( 'admin_print_styles-'.$hook_suffix, 'squelch_taas_admin_styles' );
+    // add_action( 'admin_print_styles-'.$hook_suffix, 'squelch_taas_admin_styles' );
 }
 add_action('admin_menu', 'squelch_taas_admin_menu');
 
@@ -891,12 +888,12 @@ add_action('admin_menu', 'squelch_taas_admin_menu');
 function squelch_taas_admin_scripts() {
     global $taas_plugin_ver;
 
-    wp_enqueue_script( 'media-upload' );
-    wp_enqueue_script( 'thickbox' );
+    //wp_enqueue_script( 'media-upload' );  // not sure why this is enqueued?
+    // wp_enqueue_script( 'thickbox' );     // not sure why this is enqueued?
     wp_enqueue_script(
         'squelch_taas_admin',
         plugins_url( 'js/squelch-tabs-and-accordions-admin.js', __FILE__ ),
-        array( 'jquery', 'media-upload', 'thickbox' ),
+        [ 'jquery' ],
         $taas_plugin_ver,
         true
     );
@@ -904,54 +901,50 @@ function squelch_taas_admin_scripts() {
 // action for above function is added in squelch_taas_admin_menu
 
 
-/**
- * Enqueue the styles for the admin interface.
- */
-function squelch_taas_admin_styles() {
-    wp_enqueue_style( 'thickbox' );
-}
-// action for above function is added in squelch_taas_admin_menu
+// /**
+//  * Enqueue the styles for the admin interface.
+//  */
+// function squelch_taas_admin_styles() {
+//     //wp_enqueue_style( 'thickbox' );       // not sure why this is enqueued?
+// }
+// // action for above function is added in squelch_taas_admin_menu
+
+
+// Unsure why these functions exist:
+//
+// /**
+//  * Disable jQuery / jQuery UI configuration options by default
+//  */
+// function squelch_taas_disable_jquery_admin() {
+//     echo ' style="opacity: 0.1;"';
+// }
+// add_action('squelch_taas_nonwp_jquery_config', 'squelch_taas_disable_jquery_admin');
+//
+//
+// /**
+//  * Disable jQuery / jQuery UI configuration options by default
+//  */
+// function squelch_taas_disable_jquery_config_admin() {
+//     echo 'disabled="disabled" ';
+// }
+// add_action('squelch_taas_nonwp_jquery_config_disabled', 'squelch_taas_disable_jquery_config_admin');
 
 
 /**
- * Disable jQuery / jQuery UI configuration options by default
+ * Add a link to the settings screen and the documentation for the plugin to make it easier for users to find.
  */
-function squelch_taas_disable_jquery_admin() {
-    echo ' style="opacity: 0.1;"';
+function plugin_action_links( $actions, $plugin_file ) {
+
+    if ( ! current_user_can( 'manage_options' ) ) return $actions;
+
+    if ( $plugin_file == 'squelch-tabs-and-accordions-shortcodes/squelch-tabs-and-accordions.php' ) {
+        $settings_url = menu_page_url( 'squelch-tabs-and-accordions-shortcodes', false );
+        $actions['settings'] = "<a href=\"{$settings_url}\">Settings</a>";
+        $actions['docs']        = "<a href=\"http://squelchdesign.com/web-development/free-wordpress-plugins/squelch-tabs-and-accordions-shortcodes/\" target=\"_blank\">Documentation</a>";
+    }
+
+    return $actions;
+
 }
-add_action('squelch_taas_nonwp_jquery_config', 'squelch_taas_disable_jquery_admin');
-
-
-/**
- * Disable jQuery / jQuery UI configuration options by default
- */
-function squelch_taas_disable_jquery_config_admin() {
-    echo 'disabled="disabled" ';
-}
-add_action('squelch_taas_nonwp_jquery_config_disabled', 'squelch_taas_disable_jquery_config_admin');
-
-
-
-/* =Deactivation
----------------------------------------------------------------------------- */
-
-/**
- * On deactivation of the plugin, delete all options.
- */
-function squelch_taas_deactivate() {
-    // On deactivation of the plugin we clean up our stored options.
-    //delete_option( 'squelch_taas_showmessage'       );
-    // MTL20170307 - Commented out the delete_option for squelch_taas_showmessage to reduce how often the message is displayed to the end user.
-}
-//register_deactivation_hook( __FILE__, 'squelch_taas_deactivate' );
-
-
-
-/* =Deprecated
----------------------------------------------------------------------------- */
-
-/* Nothing but trouble. Had enough of chasing bugs in this function.
- */
-// if (!function_exists( 'tidy_up_content' )) : function tidy_up_content( $content, $inline = 'auto' ) { return $content; } endif;
-
+add_filter( 'plugin_action_links', 'plugin_action_links', 10, 2 );
 
