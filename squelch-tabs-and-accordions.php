@@ -43,7 +43,7 @@ final class TabsAndAccordions {
      *
      * @var string
      */
-    public $taas_plugin_ver    = '0.4.4';
+    public $taas_plugin_ver    = '0.4.5';
 
     /**
      * Ensures IDs on titles are unique
@@ -266,6 +266,7 @@ final class TabsAndAccordions {
         return $rv;
     }
 
+
     /**
      * [accordion] shortcode
      *
@@ -306,6 +307,7 @@ final class TabsAndAccordions {
 
         return $rv;
     }
+
 
     /**
      * [haccordions] shortcode
@@ -398,6 +400,7 @@ final class TabsAndAccordions {
         return $rv;
     }
 
+
     /**
      * [haccordion] shortcode
      *
@@ -436,6 +439,7 @@ final class TabsAndAccordions {
 
         return $rv;
     }
+
 
     /**
      * [tabs] shortcode
@@ -513,6 +517,7 @@ final class TabsAndAccordions {
         return $rv;
     }
 
+
     /**
      * [tablinks] shortcode
      *
@@ -540,6 +545,7 @@ final class TabsAndAccordions {
         return $rv;
 
     }
+
 
     /**
      * [tab] shortcode
@@ -616,6 +622,7 @@ final class TabsAndAccordions {
         return '';
     }
 
+
     /**
      * [toggles] shortcode
      *
@@ -674,6 +681,7 @@ final class TabsAndAccordions {
         return $rv;
 
     }
+
 
     /**
      * [toggle] shortcode
@@ -862,6 +870,8 @@ final class TabsAndAccordions {
         return $rv;
     }
 
+
+
     /**
      * Similar to shortcode_unautop: Removes </p> and <p> from the start of the
      * content and the end of the content respectively.
@@ -880,6 +890,7 @@ final class TabsAndAccordions {
 
     }
 
+
     /* Set an option to a specific value, unless it has already been set.
      *
      * Parameters:
@@ -895,6 +906,7 @@ final class TabsAndAccordions {
 
         return $val;
     }
+
 
     /* Loads the vanity URL value and stores it globally for use.
      *
@@ -931,6 +943,7 @@ final class TabsAndAccordions {
         require_once( dirname(__FILE__) . '/inc/admin.php' );
     }
 
+
     /**
      * Enable the menu in the admin interface
      */
@@ -951,6 +964,7 @@ final class TabsAndAccordions {
         // add_action( 'admin_print_styles-'.$hook_suffix, 'taas_admin_styles' );
     }
 
+
     /**
      * Enqueue scripts for the admin interface.
      */
@@ -964,6 +978,7 @@ final class TabsAndAccordions {
             true
         );
     }
+
 
     /**
      * Add a link to the settings screen and the documentation for the plugin to make it easier for users to find.
@@ -984,5 +999,5 @@ final class TabsAndAccordions {
 
 }
 
-$staas = new TabsAndAccordions();
+new TabsAndAccordions();
 
