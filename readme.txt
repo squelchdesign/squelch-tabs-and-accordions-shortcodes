@@ -105,6 +105,8 @@ Yes! As of version 0.3.7 it is possible to link to a tab. The easiest way to ach
 * Update dependencies used by the developer to build the JS and CSS to silence security warnings from GitHub's dependabot
 * Fix bug that prevented magic URLs from working properly when on a page with parameters in the URL
 * Add a simple build script that ensures builds are consistently produced, and Git-related content isn't pulled into the deployable archive
+* Add a simple build watch script to rebuild JS and CSS automatically on the fly when files change
+* Allow linking to an haccordion pane
 * Removed some tags from the readme as wordpress.org only allows up to 5
 * Thanks to @dan-kirshner for beta testing the plugin
 
