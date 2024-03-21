@@ -810,7 +810,7 @@
 
             // Horizontal accordion ------------------------------------------------------------------------------------
             if ($(panel).hasClass('squelch-taas-haccordion-shortcode')) {
-                // TODO
+                $(panel).click();
             }
         }
 
