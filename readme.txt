@@ -25,7 +25,7 @@ Tabs and accordions can help to improve your website in a number of ways:
 
 If you want to add more interactivity with *Tabs*, *Vertical* and *Horizontal Accordions* on your WordPress website, **Squelch Tabs and Accordions Shortcodes** is a good option.
 
-[You can demo the website on a playground website here](https://tastewp.com/new?pre-installed-plugin-slug=squelch-tabs-and-accordions-shortcodes&redirect=themes.php%3Fpage%3Dsquelch-tabs-and-accordions-shortcodes%2Fsquelch-tabs-and-accordions.php&ni=true).
+[You can demo the plugin on a playground website here](https://tastewp.com/new?pre-installed-plugin-slug=squelch-tabs-and-accordions-shortcodes&redirect=themes.php%3Fpage%3Dsquelch-tabs-and-accordions-shortcodes%2Fsquelch-tabs-and-accordions.php&ni=true).
 
 **A note on responsivensss:**
 
@@ -36,7 +36,7 @@ We receive a lot of questions as to whether this plugin is responsive. All widge
 ### Recommended Installation
 
 1. From your admin interface go to Plugins > Add New
-1. Search for *Squelch tabs and accordions*
+1. Search for *Squelch Tabs and Accordions*
 1. Click "Install Now" under the plugin in the search results
 1. Click OK on the popup
 1. Click "Activate" to enable the plugin
@@ -60,17 +60,17 @@ Squelch Tabs and Accordions Shortcodes makes available 8 shortcodes: [accordions
 
 = How do I use the plugin? =
 
-Full instructions can be found on the [Squelch Tabs and Accordions Shortcodes](http://squelchdesign.com/wordpress-plugin-squelch-tabs-accordions-shortcodes/) project home page on the Squelch Web Design website.
+Full instructions can be found on the [Squelch Tabs and Accordions Shortcodes](http://squelchdesign.com/wordpress-plugin-squelch-tabs-accordions-shortcodes/) project homepage on the Squelch Design website.
 
 = Can I change the look of the widgets? =
 
 Yes. The plugin creates jQuery UI accordions and tabs, jQuery UI-compatible toggles, and the horizontal accordions have been set up to use jQuery UI themes by default. So changing the jQuery UI theme in use on the page will change the appearance of the widgets. To change the jQuery UI theme simply go to Appearance > Tabs and Accordions and choose a theme from the dropdown menu.
 
-You can also style the widgets with your own custom CSS if you wish by using the .squelch-taas-override class, but that is beyond the scope of this FAQ. Instructions are available on the [Squelch Tabs and Accordions Shortcodes](http://squelchdesign.com/wordpress-plugin-squelch-tabs-accordions-shortcodes/) project home page.
+You can also style the widgets with your own custom CSS if you wish by using the .squelch-taas-override class, but that is beyond the scope of this FAQ. Instructions are available on the [Squelch Tabs and Accordions Shortcodes](http://squelchdesign.com/wordpress-plugin-squelch-tabs-accordions-shortcodes/) project homepage.
 
 = Can I see a demo of the widgets? =
 
-Sure, on the [Squelch Tabs and Accordions Shortcodes](http://squelchdesign.com/wordpress-plugin-squelch-tabs-accordions-shortcodes/) project home page.
+Sure, on the [Squelch Tabs and Accordions Shortcodes](http://squelchdesign.com/wordpress-plugin-squelch-tabs-accordions-shortcodes/) project homepage.
 
 You can also [spin up your own WordPress playground and try the plugin out for yourself](https://tastewp.com/new?pre-installed-plugin-slug=squelch-tabs-and-accordions-shortcodes&redirect=themes.php%3Fpage%3Dsquelch-tabs-and-accordions-shortcodes%2Fsquelch-tabs-and-accordions.php&ni=true).
 
@@ -111,7 +111,7 @@ Yes! As of version 0.3.7 it is possible to link to a tab. The easiest way to ach
 * Thanks to @dan-kirshner for beta testing the plugin
 
 = 0.4.4 =
-* Fixes for CVE-2022-4781 (disclosed by WPScan without any consideration for responsible disclosure) and CVE-2024-2499 (responsibly disclosed by Wordfence) - all attributes shoud now be escaped before being sent to the page to prevent stored XSS attacks
+* Fixes for CVE-2024-2499 (responsibly disclosed by Wordfence) - all attributes should now be escaped before being sent to the page to prevent stored XSS attacks
 * Update readme file to include changelog details for v0.4.3
 
 = 0.4.3 =
@@ -124,7 +124,7 @@ Yes! As of version 0.3.7 it is possible to link to a tab. The easiest way to ach
 * Tested up to WP5.5
 
 = 0.4.1 =
-* Bug fix: The new vanity URL code was causing an issue on PHP5 websites. Thanks to @emajluap for reporting.
+* Bugfix: The new vanity URL code was causing an issue on PHP5 websites. Thanks to @emajluap for reporting.
 
 = 0.4 =
 * New feature: It is now possible to disable the Magic URL feature introduced in v0.3.7 so that changing tabs/accordions does not change your site's URL.
@@ -133,31 +133,31 @@ Yes! As of version 0.3.7 it is possible to link to a tab. The easiest way to ach
 * Version bump for WP4.8.1.
 
 = 0.3.9 =
-* Bug fix: Links with hash fragments that do NOT point to a tab/accordion were broken in 0.3.7 and 0.3.8. Thanks to @jschinnerer for reporting the bug.
+* Bugfix: Links with hash fragments that do NOT point to a tab/accordion were broken in 0.3.7 and 0.3.8. Thanks to @jschinnerer for reporting the bug.
 
 = 0.3.8 =
-* Bug fix: When linking to, say, a tab on another page, if there are tabs on the current page, the link would always open the tab on the current page. Now fixed.
+* Bugfix: When linking to, say, a tab on another page, if there are tabs on the current page, the link would always open the tab on the current page. Now fixed.
 
 = 0.3.7 =
-* Bug fix: Perhaps not quite a bug as such, but annoying nevertheless ... all themes in the admin screen are now in alphabetical order to make it easier to find themes by name.
+* Bugfix: Perhaps not quite a bug as such, but annoying nevertheless ... all themes in the admin screen are now in alphabetical order to make it easier to find themes by name.
 * New feature: It is now possible to link to a specific tab within the same page using a # fragment in the URL
 * New feature: While clicking through tabs, accordions and toggles, a # fragment is added to the URL to make it easy to link to tabs etc
 * New feature: On page load any # fragment in the URL will trigger the opening of the relevant tab, accordion or toggle
 * New feature: Roll your own jQuery UI 1.11.4 theme from the theme roller and store it in your uploads directory so that plugin upgrades do not affect your theme.
 
 = 0.3.6 =
-* Bug fix: It's now possible to use paragraphs or newlines to lay out your shortcodes once again.
-* Bug fix: Test for custom jQuery UI theme from jQuery UI Widgets (my thanks to RobWunderlich for reporting this bug)
+* Bugfix: It's now possible to use paragraphs or newlines to lay out your shortcodes once again.
+* Bugfix: Test for custom jQuery UI theme from jQuery UI Widgets (my thanks to RobWunderlich for reporting this bug)
 * New feature: [tab] shortcode now accepts a parameter of 'class' to add additional classes to your tabs.
 * New feature: Roll your own theme from the theme roller and store it in your uploads directory so that plugin upgrades do not affect your theme.
 * Version bump for WP4.5
 
 = 0.3.5 =
-* Minor bug-fix: After changing themes the admin interface would still show the OLD theme, this has now been resolved.
+* Minor bugfix: After changing themes the admin interface would still show the OLD theme, this has now been resolved.
 * Version bump for WP4.4
 
 = 0.3.4 =
-* Emergency bug-fix: Paragraphs and breaks being interfered with
+* Emergency bugfix: Paragraphs and breaks being interfered with
 
 = 0.3.3 =
 * Version bump (which should work)
@@ -176,7 +176,7 @@ Yes! As of version 0.3.7 it is possible to link to a tab. The easiest way to ach
 = 0.2.3 =
 * Code to add .squelch-taas-override was missing, added in.
 * Enabled nested accordions.
-* Selecting "no jQuery UI theme" was causing the front-end to attempt to pull in a theme named 'none' from the CDN.
+* Selecting "no jQuery UI theme" was causing the front end to attempt to pull in a theme named 'none' from the CDN.
 
 = 0.2.2 =
 * autoHeight was always on regardless of settings on the accordions shortcode. If you prefer the old behaviour then ensure you have autoHeight="true" on the accordions shortcode.
@@ -225,17 +225,17 @@ Tested up to WordPress version 5.5
 
 = 0.4.1 =
 
-0.4.1 includes an emergency bug-fix for PHP5 websites. If you are running PHP5 we strongly recommend that you upgrade to PHP7!
+0.4.1 includes an emergency bugfix for PHP5 websites. If you are running PHP5 we strongly recommend that you upgrade to PHP7!
 
 = 0.4 =
 
 0.4 adds the option to disable the magic URL modifier that was introduced in v0.3.7, or to modify it to include your own site's branding. We also have a new shortcode: tablinks.
 
 = 0.3.9 =
-0.3.9 offers an important bug-fix that could affect certain types of links in your website. We strongly recommend you upgrade immediately.
+0.3.9 offers an important bugfix that could affect certain types of links in your website. We strongly recommend you upgrade immediately.
 
 = 0.3.8 =
-In 0.3.7 it became possible to link to specific tabs, toggles and accordions! 0.3.8 offers a small bug-fix to that feature.
+In 0.3.7 it became possible to link to specific tabs, toggles and accordions! 0.3.8 offers a small bugfix to that feature.
 
 = 0.3.7 =
 In 0.3.7 it is now possible to link to specific tabs, toggles and accordions!
@@ -244,10 +244,10 @@ In 0.3.7 it is now possible to link to specific tabs, toggles and accordions!
 A couple of new features (ability to use a theme rolled theme stored outside of the plugin!), some bug fixes and version bump for WP4.5
 
 = 0.3.5 =
-Minor bug-fix and version bump for WordPress 4.4
+Minor bugfix and version bump for WordPress 4.4
 
 = 0.3.4 =
-Emergency bug-fix to prevent stripping of paragraphs / breaks
+Emergency bugfix to prevent stripping of paragraphs / breaks
 
 = 0.3.3 =
 Version bump for WP 3.9 + introduction of icons in tabs
