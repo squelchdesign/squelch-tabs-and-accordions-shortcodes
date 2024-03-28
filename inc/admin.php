@@ -87,7 +87,7 @@ $custom_css = get_option('squelch_taas_custom_css_url');
     <a href="http://squelchdesign.com/web-development/free-wordpress-plugins/squelch-tabs-and-accordions-shortcodes/" target="_blank" class="button"><?php _e( 'Theme Documentation', 'squelch-tabs-and-accordions-shortcodes' ); ?></a>
     <a href="https://wordpress.org/support/topic/please-read-this-before-you-post-5?replies=2" target="_blank" class="button"><?php _e( 'Support Forum', 'squelch-tabs-and-accordions-shortcodes' ); ?></a>
     <a href="https://wordpress.org/plugins/squelch-tabs-and-accordions-shortcodes/" target="_blank" class="button"><?php _e( 'Rate on WordPress.org', 'squelch-tabs-and-accordions-shortcodes' ); ?></a>
-    <a href="http://squelchdesign.com/uncategorized/roll-theme-squelch-tabs-accordions-shortcodes-plugin/" target="_blank" class="button"><?php _e(' How to create a custom theme', 'squelch-tabs-and-accordions-shortcodes' ); ?></a>
+    <a href="http://squelchdesign.com/uncategorized/roll-theme-squelch-tabs-accordions-shortcodes-plugin/" target="_blank" class="button"><?php _e( 'How to create a custom theme', 'squelch-tabs-and-accordions-shortcodes' ); ?></a>
     <form method="post" action="">
         <div>
             <table class="form-table">
