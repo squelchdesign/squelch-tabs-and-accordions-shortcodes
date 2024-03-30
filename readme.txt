@@ -12,16 +12,16 @@ Shortcodes for creating accordions, horizontal accordions and tabs.
 
 == Description ==
 
-[Squelch Tabs and Accordions Shortcodes](http://squelchdesign.com/wordpress-plugin-squelch-tabs-accordions-shortcodes/) provides shortcodes for adding stylish Web 2.0 style accordions and tabs to your WordPress website: Horizontal accordions, vertical accordions and tabs.
+[Squelch Tabs and Accordions Shortcodes](http://squelchdesign.com/wordpress-plugin-squelch-tabs-accordions-shortcodes/) provides shortcodes for adding stylish Web 2.0 style accordions and tabs to your WordPress website: horizontal accordions, vertical accordions and tabs.
 
 After you have installed the plugin you can use simple shortcodes on any page or post to add tabs or accordions.
 
 Tabs and accordions can help to improve your website in a number of ways:
 
-*   **Add interactivity**: With collapsible accordions and tabs, you can make better use of the available space on the page.
-*   **Add style**: Tabs and accordions can help make your site look more professional and better polished than other sites.
-*   **Save space**: Tabs and accordions can save a lot of space on the page making your website look less cluttered.
-*   **Separating content**: Showing content only when required while the rest remains invisible dividing the content into parts.
+*   **Add interactivity**: with collapsible accordions and tabs, you can make better use of the available space on the page.
+*   **Add style**: tabs and accordions can help make your site look more professional and better polished than other sites.
+*   **Save space**: tabs and accordions can save a lot of space on the page making your website look less cluttered.
+*   **Separating content**: showing content only when required while the rest remains invisible dividing the content into parts.
 
 If you want to add more interactivity with *Tabs*, *Vertical* and *Horizontal Accordions* on your WordPress website, **Squelch Tabs and Accordions Shortcodes** is a good option.
 
@@ -29,7 +29,7 @@ If you want to add more interactivity with *Tabs*, *Vertical* and *Horizontal Ac
 
 **A note on responsivensss:**
 
-We receive a lot of questions as to whether this plugin is responsive. All widgets in this plugin are responsive **excluding** the horizontal accordion widget: It uses a different library to the other widgets, and that library is unfortunately not responsive. We may add a responsive horizontal slider in the future, but it is not available yet.
+We receive a lot of questions as to whether this plugin is responsive. All widgets in this plugin are responsive **excluding** the horizontal accordion widget: it uses a different library to the other widgets, and that library is unfortunately not responsive. We may add a responsive horizontal slider in the future, but it is not available yet.
 
 == Installation ==
 
@@ -76,7 +76,7 @@ You can also [spin up your own WordPress playground and try the plugin out for y
 
 = Are these widgets responsive? =
 
-All widgets is in this plugin are responsive **excluding** the horizontal accordion widget: It uses a different library to the other widgets, and that library is unfortunately not responsive. A new responsive horizontal slider is planned for the future.
+All widgets is in this plugin are responsive **excluding** the horizontal accordion widget: it uses a different library to the other widgets, and that library is unfortunately not responsive. A new responsive horizontal slider is planned for the future.
 
 = Can I link to a tab? =
 
@@ -124,40 +124,40 @@ Yes! As of version 0.3.7 it is possible to link to a tab. The easiest way to ach
 * Tested up to WP5.5
 
 = 0.4.1 =
-* Bugfix: The new vanity URL code was causing an issue on PHP5 websites. Thanks to @emajluap for reporting.
+* Bugfix: the new vanity URL code was causing an issue on PHP5 websites. Thanks to @emajluap for reporting.
 
 = 0.4 =
-* New feature: It is now possible to disable the Magic URL feature introduced in v0.3.7 so that changing tabs/accordions does not change your site's URL.
-* New feature: The Magic URL can also be partially branded with your own vanity URL.
-* New feature: Smooth-scroll when linking to a tab. Rather than jumping the length of the page in one go, the page will now slide smoothly before the tab/accordion switch happens.
+* New feature: it is now possible to disable the Magic URL feature introduced in v0.3.7 so that changing tabs/accordions does not change your site's URL.
+* New feature: the Magic URL can also be partially branded with your own vanity URL.
+* New feature: smooth-scroll when linking to a tab. Rather than jumping the length of the page in one go, the page will now slide smoothly before the tab/accordion switch happens.
 * Version bump for WP4.8.1.
 
 = 0.3.9 =
-* Bugfix: Links with hash fragments that do NOT point to a tab/accordion were broken in 0.3.7 and 0.3.8. Thanks to @jschinnerer for reporting the bug.
+* Bugfix: links with hash fragments that do NOT point to a tab/accordion were broken in 0.3.7 and 0.3.8. Thanks to @jschinnerer for reporting the bug.
 
 = 0.3.8 =
-* Bugfix: When linking to, say, a tab on another page, if there are tabs on the current page, the link would always open the tab on the current page. Now fixed.
+* Bugfix: when linking to, say, a tab on another page, if there are tabs on the current page, the link would always open the tab on the current page. Now fixed.
 
 = 0.3.7 =
-* Bugfix: Perhaps not quite a bug as such, but annoying nevertheless ... all themes in the admin screen are now in alphabetical order to make it easier to find themes by name.
-* New feature: It is now possible to link to a specific tab within the same page using a # fragment in the URL
-* New feature: While clicking through tabs, accordions and toggles, a # fragment is added to the URL to make it easy to link to tabs etc
-* New feature: On page load any # fragment in the URL will trigger the opening of the relevant tab, accordion or toggle
-* New feature: Roll your own jQuery UI 1.11.4 theme from the theme roller and store it in your uploads directory so that plugin upgrades do not affect your theme.
+* Bugfix: perhaps not quite a bug as such, but annoying nevertheless ... all themes in the admin screen are now in alphabetical order to make it easier to find themes by name.
+* New feature: it is now possible to link to a specific tab within the same page using a # fragment in the URL
+* New feature: while clicking through tabs, accordions and toggles, a # fragment is added to the URL to make it easy to link to tabs etc
+* New feature: on page load any # fragment in the URL will trigger the opening of the relevant tab, accordion or toggle
+* New feature: roll your own jQuery UI 1.11.4 theme from the theme roller and store it in your uploads directory so that plugin upgrades do not affect your theme.
 
 = 0.3.6 =
-* Bugfix: It's now possible to use paragraphs or newlines to lay out your shortcodes once again.
-* Bugfix: Test for custom jQuery UI theme from jQuery UI Widgets (my thanks to RobWunderlich for reporting this bug)
+* Bugfix: it's now possible to use paragraphs or newlines to lay out your shortcodes once again.
+* Bugfix: test for custom jQuery UI theme from jQuery UI Widgets (my thanks to RobWunderlich for reporting this bug)
 * New feature: [tab] shortcode now accepts a parameter of 'class' to add additional classes to your tabs.
-* New feature: Roll your own theme from the theme roller and store it in your uploads directory so that plugin upgrades do not affect your theme.
+* New feature: roll your own theme from the theme roller and store it in your uploads directory so that plugin upgrades do not affect your theme.
 * Version bump for WP4.5
 
 = 0.3.5 =
-* Minor bugfix: After changing themes the admin interface would still show the OLD theme, this has now been resolved.
+* Minor bugfix: after changing themes the admin interface would still show the OLD theme, this has now been resolved.
 * Version bump for WP4.4
 
 = 0.3.4 =
-* Emergency bugfix: Paragraphs and breaks being interfered with
+* Emergency bugfix: paragraphs and breaks being interfered with
 
 = 0.3.3 =
 * Version bump (which should work)
