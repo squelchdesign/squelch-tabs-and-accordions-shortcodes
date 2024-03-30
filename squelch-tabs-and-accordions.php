@@ -735,7 +735,7 @@ final class TabsAndAccordions {
         // Enqueue the JavaScript
         wp_enqueue_script(
             'squelch_taas',
-            plugins_url( 'js/squelch-tabs-and-accordions.js', __FILE__ ),
+            plugins_url( 'js/squelch-tabs-and-accordions.min.js', __FILE__ ),
             array( 'jquery', 'jquery-ui-core', 'jquery-ui-accordion', 'jquery-ui-tabs' ),
             $this->taas_plugin_ver,
             true
@@ -972,7 +972,7 @@ final class TabsAndAccordions {
 
         wp_enqueue_script(
             'squelch_taas_admin',
-            plugins_url( 'js/squelch-tabs-and-accordions-admin.js', __FILE__ ),
+            plugins_url( 'js/squelch-tabs-and-accordions-admin.min.js', __FILE__ ),
             [ 'jquery' ],
             $this->taas_plugin_ver,
             true
