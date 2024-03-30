@@ -109,25 +109,25 @@ $custom_css = get_option('squelch_taas_custom_css_url');
                                 <?php if ($custom_theme_detected) : ?>
                                     <option<?php selected($theme, 'custom'); ?> value="custom"><?php
                                         /* translators: Version number in the string is intentional. It may be translated as long as its meaning is not changed */
-                                        _e( 'Custom jQuery theme (jQuery 1.9.2)', 'squelch-tabs-and-accordions-shortcodes' );
+                                        _e( 'Custom jQuery UI theme (1.9.2)', 'squelch-tabs-and-accordions-shortcodes' );
                                     ?></option>
                                 <?php endif; ?>
                                 <?php if ($custom_theme_1_11_4_detected) : ?>
                                     <option<?php selected($theme, 'custom1114'); ?> value="custom1114"><?php
                                         /* translators: Version number in the string is intentional. It may be translated as long as its meaning is not changed */
-                                        _e( 'Custom jQuery theme (jQuery 1.11.4)', 'squelch-tabs-and-accordions-shortcodes' );
+                                        _e( 'Custom jQuery UI theme (1.11.4)', 'squelch-tabs-and-accordions-shortcodes' );
                                     ?></option>
                                 <?php endif; ?>
                                 <?php if ($custom_theme_1_12_1_detected) : ?>
                                     <option<?php selected($theme, 'custom1121'); ?> value="custom1121"><?php
                                         /* translators: Version number in the string is intentional. It may be translated as long as its meaning is not changed */
-                                        _e( 'Custom jQuery theme (jQuery 1.12.1)', 'squelch-tabs-and-accordions-shortcodes' );
+                                        _e( 'Custom jQuery UI theme (1.12.1)', 'squelch-tabs-and-accordions-shortcodes' );
                                     ?></option>
                                 <?php endif; ?>
                                 <?php if ($custom_theme_1_13_2_detected) : ?>
                                     <option<?php selected($theme, 'custom1132'); ?> value="custom1132"><?php
                                         /* translators: Version number in the string is intentional. It may be translated as long as its meaning is not changed */
-                                        _e( 'Custom jQuery theme (jQuery 1.13.2)', 'squelch-tabs-and-accordions-shortcodes' );
+                                        _e( 'Custom jQuery UI theme (1.13.2)', 'squelch-tabs-and-accordions-shortcodes' );
                                     ?></option>
                                 <?php endif; ?>
                                 <option<?php selected($theme, 'black-tie'); ?> value="black-tie"><?php
