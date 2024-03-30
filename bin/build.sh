@@ -15,6 +15,8 @@ cp -r css "$TARGET/trunk/"
 cp -r inc "$TARGET/trunk/"
 cp -r index.php "$TARGET/trunk/"
 cp -r js "$TARGET/trunk/"
+rm -rf "$TARGET/trunk/js/squelch-tabs-and-accordions-admin.min.js.map
+rm -rf "$TARGET/trunk/js/squelch-tabs-and-accordions.min.js.map
 cp -r licence.txt "$TARGET/trunk/"
 cp -r readme.txt "$TARGET/trunk/"
 cp -r squelch-tabs-and-accordions.php "$TARGET/trunk/"

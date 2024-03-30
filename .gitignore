@@ -9,3 +9,5 @@ node_modules/
 *.swo
 build-*
 vendor
+js/squelch-tabs-and-accordions-admin.min.js.map
+js/squelch-tabs-and-accordions.min.js.map

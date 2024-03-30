@@ -640,7 +640,7 @@ function squelch_taas_enqueue_scripts() {
     // Enqueue the JavaScript
     wp_enqueue_script(
         'squelch_taas',
-        plugins_url( 'js/squelch-tabs-and-accordions.js', __FILE__ ),
+        plugins_url( 'js/squelch-tabs-and-accordions.min.js', __FILE__ ),
         array( 'jquery', 'jquery-ui-core', 'jquery-ui-accordion', 'jquery-ui-tabs' ),
         $taas_plugin_ver,
         true
@@ -892,7 +892,7 @@ function squelch_taas_admin_scripts() {
     // wp_enqueue_script( 'thickbox' );     // not sure why this is enqueued?
     wp_enqueue_script(
         'squelch_taas_admin',
-        plugins_url( 'js/squelch-tabs-and-accordions-admin.js', __FILE__ ),
+        plugins_url( 'js/squelch-tabs-and-accordions-admin.min.js', __FILE__ ),
         [ 'jquery' ],
         $taas_plugin_ver,
         true

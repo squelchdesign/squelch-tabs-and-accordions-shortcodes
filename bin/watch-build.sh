@@ -25,6 +25,9 @@ function getJsSum {
 
 csslastsum=` getCssSum `
 jslastsum=` getJsSum `
+dev=""
+
+[[ "$1" == "--dev" ]] && dev="1"
 
 while [ 1 ];
 do
@@ -44,7 +47,13 @@ do
 
     if [[ "$sum" != "$jslastsum" ]];
     then
-        yarn run build:js
+        if [[ "$dev" == "1" ]];
+        then
+            yarn run build:js:dev
+            echo "WARNING: Development version with source maps built, be sure to build for production before deploying!"
+        else
+            yarn run build:js
+        fi
         git status |grep "\.js"
         echo -ne "\a"
     fi
