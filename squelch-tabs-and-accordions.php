@@ -230,9 +230,10 @@ final class TabsAndAccordions {
             'collapsible'   => true
         );
 
+        $atts = wp_parse_args( $atts, $defaults );
+
         if ( ! in_array( $atts['title_header'], [ 'h1', 'h2', 'h3', 'h4', 'h5', 'h6' ] ) ) $atts['title_header'] = 'h2';
 
-        $atts = wp_parse_args( $atts, $defaults );
 
         $content = do_shortcode( $this->shortcode_unautop( shortcode_unautop( $this->tidy_up_shortcodes( $content ) ) ) );
 
@@ -348,8 +349,6 @@ final class TabsAndAccordions {
             'disabled'      => false            // unused
         );
 
-        if ( ! in_array( $atts['title_header'], [ 'h1', 'h2', 'h3', 'h4', 'h5', 'h6' ] ) ) $atts['title_header'] = 'h2';
-
         // jQuery-UI theme needs to default to a narrower header width
         if (empty($atts['theme']) || $atts['theme'] == 'jqueryui') {
             $defaults['hwidth'] = 28;
@@ -357,6 +356,9 @@ final class TabsAndAccordions {
 
         $atts = wp_parse_args( $atts, $defaults );
         $atts['active'] = $atts['active'] + 1;
+
+        if ( ! in_array( $atts['title_header'], [ 'h1', 'h2', 'h3', 'h4', 'h5', 'h6' ] ) ) $atts['title_header'] = 'h2';
+
 
         $content = do_shortcode( $this->shortcode_unautop( shortcode_unautop( $this->tidy_up_shortcodes( $content ) ) ) );
         $rv  = '';
