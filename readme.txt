@@ -89,6 +89,11 @@ Yes! As of version 0.3.7 it is possible to link to a tab. The easiest way to ach
 
 == Changelog ==
 
+= 0.4.6 =
+* Bug fix: accordions and horizontal accordions without the new title_header parameter were generating errors
+* Bug fix: the minified CSS and JS weren't being loaded on the front end of the site
+* Bug fix: Custom jQuery UI themes had incorrect names in the admin UI
+
 = 0.4.5 =
 * Update the readme to remove references to the plugin this plugin replaced some 11+ years ago, it's time to move on!
 * Add a link to tastewp.com to allow new users to demo the plugin in a playground install with a single click
@@ -206,6 +211,10 @@ Yes! As of version 0.3.7 it is possible to link to a tab. The easiest way to ach
 * Initial version
 
 == Upgrade Notice ==
+
+= 0.4.6 =
+
+0.4.6 fixes a bug that was breaking accordions and horizontal accordions, ensures minified JavaScript is used on the front end, and tidies up custom theme names in the admin UI
 
 = 0.4.5 =
 
