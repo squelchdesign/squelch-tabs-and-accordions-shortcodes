@@ -1,6 +1,6 @@
 {
   "name": "squelch-tabs-and-accordions-shortcodes",
-  "version": "0.4.5",
+  "version": "0.4.6",
   "description": "Shortcodes for creating accordions, horizontal accordions and tabs.",
   "main": "index.js",
   "repository": "git@github.com:squelchdesign/squelch-tabs-and-accordions-shortcodes.git",
@@ -11,14 +11,15 @@
   "scripts": {
     "build": "./bin/build.sh",
     "build:css": "postcss css/squelch-tabs-and-accordions.css >build-1.css && node_modules/minify/bin/minify.js build-1.css >build-2.css && mv build-2.css css/squelch-tabs-and-accordions.min.css && rm build-*.css",
-    "build:js": "minify js/squelch-tabs-and-accordions.js >js/squelch-tabs-and-accordions.min.js && minify js/squelch-tabs-and-accordions-admin.js >js/squelch-tabs-and-accordions-admin.min.js",
+    "build:js": "cd js ; uglifyjs --warn --verbose --compress --mangle --output squelch-tabs-and-accordions.min.js squelch-tabs-and-accordions.js ; uglifyjs --warn --verbose --compress --mangle --output squelch-tabs-and-accordions-admin.min.js squelch-tabs-and-accordions-admin.js",
+    "build:js:dev": "cd js ; uglifyjs --warn --verbose --compress --mangle --source-map \"url='squelch-tabs-and-accordions.min.js.map'\" --output squelch-tabs-and-accordions.min.js squelch-tabs-and-accordions.js ; uglifyjs --warn --verbose --compress --mangle --source-map \"url='squelch-tabs-and-accordions-admin.min.js.map'\" --output squelch-tabs-and-accordions-admin.min.js squelch-tabs-and-accordions-admin.js",
     "install": "composer install"
   },
   "devDependencies": {
     "cssnano": "^6.1.0",
     "cssnano-preset-advanced": "^6.1.0",
-    "minify": "^11.1.1",
     "postcss": "^8.4.21",
-    "postcss-cli": "^11.0.0"
+    "postcss-cli": "^11.0.0",
+    "uglify-js": "^3.17.4"
   }
 }

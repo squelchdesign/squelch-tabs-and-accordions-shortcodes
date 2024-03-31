@@ -3,7 +3,7 @@
  * Plugin Name: Squelch Tabs and Accordions Shortcodes
  * Plugin URI: http://squelchdesign.com/wordpress-plugin-squelch-tabs-accordions-shortcodes/
  * Description: Provides shortcodes for adding tabs and accordions to your website
- * Version: 0.4.5
+ * Version: 0.4.6
  * Requires at least: 4.6
  * Requires PHP: 7.4
  * Author: Matt Lowe
@@ -29,7 +29,7 @@
 */
 
 
-$taas_plugin_ver    = '0.4.5';
+$taas_plugin_ver    = '0.4.6';
 
 
 
@@ -104,9 +104,9 @@ function squelch_taas_accordions_shortcode( $atts, $content ) {
         'collapsible'   => true
     );
 
-    if ( ! in_array( $atts['title_header'], [ 'h1', 'h2', 'h3', 'h4', 'h5', 'h6' ] ) ) $atts['title_header'] = 'h2';
-
     $atts = wp_parse_args( $atts, $defaults );
+
+    if ( ! in_array( $atts['title_header'], [ 'h1', 'h2', 'h3', 'h4', 'h5', 'h6' ] ) ) $atts['title_header'] = 'h2';
 
     $content = do_shortcode( squelch_shortcode_unautop( shortcode_unautop( tidy_up_shortcodes( $content ) ) ) );
 
@@ -229,8 +229,6 @@ function squelch_taas_haccordions_shortcode( $atts, $content ) {
         'disabled'      => false            // unused
     );
 
-    if ( ! in_array( $atts['title_header'], [ 'h1', 'h2', 'h3', 'h4', 'h5', 'h6' ] ) ) $atts['title_header'] = 'h2';
-
     // jQuery-UI theme needs to default to a narrower header width
     if (empty($atts['theme']) || $atts['theme'] == 'jqueryui') {
         $defaults['hwidth'] = 28;
@@ -238,6 +236,8 @@ function squelch_taas_haccordions_shortcode( $atts, $content ) {
 
     $atts = wp_parse_args( $atts, $defaults );
     $atts['active'] = $atts['active'] + 1;
+
+    if ( ! in_array( $atts['title_header'], [ 'h1', 'h2', 'h3', 'h4', 'h5', 'h6' ] ) ) $atts['title_header'] = 'h2';
 
     $content = do_shortcode( squelch_shortcode_unautop( shortcode_unautop( tidy_up_shortcodes( $content ) ) ) );
     $rv  = '';
@@ -640,7 +640,7 @@ function squelch_taas_enqueue_scripts() {
     // Enqueue the JavaScript
     wp_enqueue_script(
         'squelch_taas',
-        plugins_url( 'js/squelch-tabs-and-accordions.js', __FILE__ ),
+        plugins_url( 'js/squelch-tabs-and-accordions.min.js', __FILE__ ),
         array( 'jquery', 'jquery-ui-core', 'jquery-ui-accordion', 'jquery-ui-tabs' ),
         $taas_plugin_ver,
         true
@@ -892,7 +892,7 @@ function squelch_taas_admin_scripts() {
     // wp_enqueue_script( 'thickbox' );     // not sure why this is enqueued?
     wp_enqueue_script(
         'squelch_taas_admin',
-        plugins_url( 'js/squelch-tabs-and-accordions-admin.js', __FILE__ ),
+        plugins_url( 'js/squelch-tabs-and-accordions-admin.min.js', __FILE__ ),
         [ 'jquery' ],
         $taas_plugin_ver,
         true
