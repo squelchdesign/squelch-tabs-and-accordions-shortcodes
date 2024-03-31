@@ -1,0 +1,71 @@
+{
+    "landingPage": "\/wp-admin\/themes.php?page=squelch-tabs-and-accordions-shortcodes",
+    "preferredVersions": {
+        "php": "8.1",
+        "wp": "latest"
+    },
+    "phpExtensionBundles": [
+        "kitchen-sink"
+    ],
+    "features": {
+        "networking": true
+    },
+    "steps": [
+        {
+            "step": "defineWpConfigConsts",
+            "consts": {
+                "WP_DEBUG_LOG": true,
+                "WP_ENVIRONMENT_TYPE": "development",
+                "WP_DISABLE_FATAL_ERROR_HANDLER": true
+            },
+            "method": "define-before-run"
+        },
+        {
+            "step": "installPlugin",
+            "pluginZipFile": {
+                "resource": "wordpress.org\/plugins",
+                "slug": "font-awesome"
+            },
+            "options": {
+                "activate": true
+            }
+        },
+        {
+            "step": "installPlugin",
+            "pluginZipFile": {
+                "resource": "wordpress.org\/plugins",
+                "slug": "better-font-awesome"
+            },
+            "options": {
+                "activate": true
+            }
+        },
+        {
+            "step": "installPlugin",
+            "pluginZipFile": {
+                "resource": "wordpress.org\/plugins",
+                "slug": "block-for-font-awesome"
+            },
+            "options": {
+                "activate": true
+            }
+        },
+        {
+            "step": "installPlugin",
+            "pluginZipFile": {
+                "resource": "wordpress.org\/plugins",
+                "slug": "wordpress-importer"
+            },
+            "options": {
+                "activate": true
+            }
+        },
+        {
+            "step": "importFile",
+            "file": {
+                "resource": "url",
+                "url": "https://github.com/squelchdesign/squelch-tabs-and-accordions-shortcodes/raw/oo-rewrite/sample-content.xml"
+            }
+        }
+    ]
+}

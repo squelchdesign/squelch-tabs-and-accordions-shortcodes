@@ -10,10 +10,12 @@
   "dependencies": {},
   "scripts": {
     "build": "./bin/build.sh",
+    "build:watch": "./bin/watch-build.sh",
     "build:css": "postcss css/squelch-tabs-and-accordions.css >build-1.css && node_modules/minify/bin/minify.js build-1.css >build-2.css && mv build-2.css css/squelch-tabs-and-accordions.min.css && rm build-*.css",
     "build:js": "cd js ; uglifyjs --warn --verbose --compress --mangle --output squelch-tabs-and-accordions.min.js squelch-tabs-and-accordions.js ; uglifyjs --warn --verbose --compress --mangle --output squelch-tabs-and-accordions-admin.min.js squelch-tabs-and-accordions-admin.js",
     "build:js:dev": "cd js ; uglifyjs --warn --verbose --compress --mangle --source-map \"url='squelch-tabs-and-accordions.min.js.map'\" --output squelch-tabs-and-accordions.min.js squelch-tabs-and-accordions.js ; uglifyjs --warn --verbose --compress --mangle --source-map \"url='squelch-tabs-and-accordions-admin.min.js.map'\" --output squelch-tabs-and-accordions-admin.min.js squelch-tabs-and-accordions-admin.js",
-    "install": "composer install"
+    "install": "composer install",
+    "wp": "wp-now start --reset --blueprint=blueprint-wp-now.json"
   },
   "devDependencies": {
     "cssnano": "^6.1.0",
