@@ -4,7 +4,7 @@ Donate link: http://squelchdesign.com/wordpress-plugin-squelch-tabs-accordions-s
 Tags: tabs,accordions,FAQs,vaccordion,haccordion
 Requires at least: 4.6
 Tested up to: 6.5
-Stable tag: 0.4.5
+Stable tag: 0.4.6
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -88,6 +88,11 @@ Yes! As of version 0.3.7 it is possible to link to a tab. The easiest way to ach
 2. Horizontal Accordions come with 4 built-in themes, or you can design your own. Alternatively they can use the active jQuery UI theme.
 
 == Changelog ==
+
+= 0.4.6 =
+* Bug fix: accordions and horizontal accordions without the new title_header parameter were generating errors
+* Bug fix: the minified CSS and JS weren't being loaded on the front end of the site
+* Bug fix: Custom jQuery UI themes had incorrect names in the admin UI
 
 = 0.4.5 =
 * Update the readme to remove references to the plugin this plugin replaced some 11+ years ago, it's time to move on!
@@ -206,6 +211,10 @@ Yes! As of version 0.3.7 it is possible to link to a tab. The easiest way to ach
 * Initial version
 
 == Upgrade Notice ==
+
+= 0.4.6 =
+
+0.4.6 fixes a bug that was breaking accordions and horizontal accordions, ensures minified JavaScript is used on the front end, and tidies up custom theme names in the admin UI
 
 = 0.4.5 =
 
