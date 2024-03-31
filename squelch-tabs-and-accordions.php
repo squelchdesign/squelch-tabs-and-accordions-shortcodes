@@ -104,9 +104,9 @@ function squelch_taas_accordions_shortcode( $atts, $content ) {
         'collapsible'   => true
     );
 
-    if ( ! in_array( $atts['title_header'], [ 'h1', 'h2', 'h3', 'h4', 'h5', 'h6' ] ) ) $atts['title_header'] = 'h2';
-
     $atts = wp_parse_args( $atts, $defaults );
+
+    if ( ! in_array( $atts['title_header'], [ 'h1', 'h2', 'h3', 'h4', 'h5', 'h6' ] ) ) $atts['title_header'] = 'h2';
 
     $content = do_shortcode( squelch_shortcode_unautop( shortcode_unautop( tidy_up_shortcodes( $content ) ) ) );
 
@@ -229,8 +229,6 @@ function squelch_taas_haccordions_shortcode( $atts, $content ) {
         'disabled'      => false            // unused
     );
 
-    if ( ! in_array( $atts['title_header'], [ 'h1', 'h2', 'h3', 'h4', 'h5', 'h6' ] ) ) $atts['title_header'] = 'h2';
-
     // jQuery-UI theme needs to default to a narrower header width
     if (empty($atts['theme']) || $atts['theme'] == 'jqueryui') {
         $defaults['hwidth'] = 28;
@@ -238,6 +236,8 @@ function squelch_taas_haccordions_shortcode( $atts, $content ) {
 
     $atts = wp_parse_args( $atts, $defaults );
     $atts['active'] = $atts['active'] + 1;
+
+    if ( ! in_array( $atts['title_header'], [ 'h1', 'h2', 'h3', 'h4', 'h5', 'h6' ] ) ) $atts['title_header'] = 'h2';
 
     $content = do_shortcode( squelch_shortcode_unautop( shortcode_unautop( tidy_up_shortcodes( $content ) ) ) );
     $rv  = '';
