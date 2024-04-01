@@ -49,23 +49,6 @@
             "options": {
                 "activate": true
             }
-        },
-        {
-            "step": "installPlugin",
-            "pluginZipFile": {
-                "resource": "wordpress.org\/plugins",
-                "slug": "wordpress-importer"
-            },
-            "options": {
-                "activate": true
-            }
-        },
-        {
-            "step": "importFile",
-            "file": {
-                "resource": "url",
-                "url": "https://github.com/squelchdesign/squelch-tabs-and-accordions-shortcodes/raw/oo-rewrite/sample-content.xml"
-            }
         }
     ]
 }

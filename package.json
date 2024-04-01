@@ -15,7 +15,7 @@
     "build:js": "cd js ; uglifyjs --warn --verbose --compress --mangle --output squelch-tabs-and-accordions.min.js squelch-tabs-and-accordions.js ; uglifyjs --warn --verbose --compress --mangle --output squelch-tabs-and-accordions-admin.min.js squelch-tabs-and-accordions-admin.js",
     "build:js:dev": "cd js ; uglifyjs --warn --verbose --compress --mangle --source-map \"url='squelch-tabs-and-accordions.min.js.map'\" --output squelch-tabs-and-accordions.min.js squelch-tabs-and-accordions.js ; uglifyjs --warn --verbose --compress --mangle --source-map \"url='squelch-tabs-and-accordions-admin.min.js.map'\" --output squelch-tabs-and-accordions-admin.min.js squelch-tabs-and-accordions-admin.js",
     "install": "composer install",
-    "wp": "wp-now start --reset --blueprint=blueprint-wp-now.json"
+    "wp": "wp-now start --reset --php=7.4 --blueprint=blueprint-wp-now.json"
   },
   "devDependencies": {
     "cssnano": "^6.1.0",
