@@ -139,7 +139,7 @@ final class TabsAndAccordions {
     public function hooks() {
 
         add_action( 'plugins_loaded',       [ $this, 'maybe_set_defaults'    ] );
-        add_action( 'admin_menu',           [ $this, 'admin_menu'            ] );
+        add_action( 'plugins_loaded',       [ $this, 'requires'              ] );
         add_action( 'wp_enqueue_scripts',   [ $this, 'enqueue_scripts'       ], 20 );
         add_filter( 'plugin_action_links',  [ $this, 'plugin_action_links'   ], 10, 2 );
 
@@ -177,6 +177,16 @@ final class TabsAndAccordions {
         add_shortcode( 'subtoggle',         [ $this, 'toggle_shortcode'      ] );
         add_shortcode( 'subsubtoggle',      [ $this, 'toggle_shortcode'      ] );
 
+    }
+
+    /**
+     * Include any required classes.
+     */
+    public function requires() {
+        if ( current_user_can( 'manage_options' ) ) {
+            require_once( 'classes/customize.php' );
+            $this->customize = new \Squelch\TabsAndAccordions\Customize();
+        }
     }
 
     /**
@@ -735,124 +745,140 @@ final class TabsAndAccordions {
         $protocol = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off' || $_SERVER['SERVER_PORT'] == 443) ? "https:" : "http:";
 
         // Enqueue the JavaScript
-        wp_enqueue_script(
-            'squelch_taas',
-            plugins_url( 'js/squelch-tabs-and-accordions.min.js', __FILE__ ),
-            array( 'jquery', 'jquery-ui-core', 'jquery-ui-accordion', 'jquery-ui-tabs' ),
-            $this->taas_plugin_ver,
-            true
-        );
-        wp_localize_script(
-            'squelch_taas',
-            'squelch_taas_options',
-            array(
-                'disable_magic_url' => get_option( 'squelch_taas_disable_magic_url', false )
-            )
-        );
+        if ( ! is_admin() ) {
+            wp_enqueue_script(
+                'squelch_taas',
+                plugins_url( 'js/squelch-tabs-and-accordions.min.js', __FILE__ ),
+                array( 'jquery', 'jquery-ui-core', 'jquery-ui-accordion', 'jquery-ui-tabs' ),
+                $this->taas_plugin_ver,
+                true
+            );
+            wp_localize_script(
+                'squelch_taas',
+                'squelch_taas_options',
+                array(
+                    'disable_magic_url' => get_option( 'squelch_taas_disable_magic_url', false )
+                )
+            );
 
-        // Enqueue the jQuery UI theme (providing something else hasn't already done so)
-        if (! (wp_style_is('jquery-ui-standard-css') || wp_style_is('jquery-ui-custom-css')) ) {
-            $jquery_ui_theme = get_option( 'squelch_taas_jquery_ui_theme' );
+            // Enqueue the jQuery UI theme (providing something else hasn't already done so)
+            if (! (wp_style_is('jquery-ui-standard-css') || wp_style_is('jquery-ui-custom-css')) ) {
+                $jquery_ui_theme = get_option( 'squelch_taas_jquery_ui_theme' );
 
-            if ('custom' == $jquery_ui_theme) {
-                $upload_dir = wp_upload_dir();
-                $upload_dir = $upload_dir['baseurl'];
-                $custom_css_url = trailingslashit( $upload_dir ) . 'jquery-ui-1.9.2.custom/css/custom-theme/jquery-ui-1.9.2.custom.min.css';
+                if ('custom' == $jquery_ui_theme) {
+                    $upload_dir = wp_upload_dir();
+                    $upload_dir = $upload_dir['baseurl'];
+                    $custom_css_url = trailingslashit( $upload_dir ) . 'jquery-ui-1.9.2.custom/css/custom-theme/jquery-ui-1.9.2.custom.min.css';
 
-                wp_enqueue_style(
-                    'jquery-ui-standard-css',
-                    $custom_css_url,
-                    false,
-                    $this->taas_plugin_ver,
-                    false
-                );
-            } elseif ('custom1114' == $jquery_ui_theme) {
-                $upload_dir = wp_upload_dir();
-                $upload_dir = $upload_dir['baseurl'];
-                $custom_css_url = trailingslashit( $upload_dir ) . 'jquery-ui-1.11.4.custom/jquery-ui.theme.min.css';
-                $structure_css_url = trailingslashit( $upload_dir ) . 'jquery-ui-1.11.4.custom/jquery-ui.structure.min.css';
+                    wp_enqueue_style(
+                        'jquery-ui-standard-css',
+                        $custom_css_url,
+                        false,
+                        $this->taas_plugin_ver,
+                        false
+                    );
+                } elseif ('custom1104' == $jquery_ui_theme) {
+                    $upload_dir = wp_upload_dir();
+                    $upload_dir = $upload_dir['baseurl'];
+                    $custom_css_url = trailingslashit( $upload_dir ) . 'jquery-ui-1.10.4.custom/css/custom-theme/jquery-ui-1.10.4.custom.min.css';
 
-                wp_enqueue_style(
-                    'jquery-ui-structure-css',
-                    $structure_css_url,
-                    false,
-                    $this->taas_plugin_ver,
-                    false
-                );
+                    wp_enqueue_style(
+                        'jquery-ui-standard-css',
+                        $custom_css_url,
+                        false,
+                        $this->taas_plugin_ver,
+                        false
+                    );
+                } elseif ('custom1114' == $jquery_ui_theme) {
+                    $upload_dir = wp_upload_dir();
+                    $upload_dir = $upload_dir['baseurl'];
+                    $custom_css_url = trailingslashit( $upload_dir ) . 'jquery-ui-1.11.4.custom/jquery-ui.theme.min.css';
+                    $structure_css_url = trailingslashit( $upload_dir ) . 'jquery-ui-1.11.4.custom/jquery-ui.structure.min.css';
 
-                wp_enqueue_style(
-                    'jquery-ui-standard-css',
-                    $custom_css_url,
-                    false,
-                    $this->taas_plugin_ver,
-                    false
-                );
-            } elseif ('custom1121' == $jquery_ui_theme) {
-                $upload_dir = wp_upload_dir();
-                $upload_dir = $upload_dir['baseurl'];
-                $custom_css_url = trailingslashit( $upload_dir ) . 'jquery-ui-1.12.1.custom/jquery-ui.theme.min.css';
-                $structure_css_url = trailingslashit( $upload_dir ) . 'jquery-ui-1.12.1.custom/jquery-ui.structure.min.css';
+                    wp_enqueue_style(
+                        'jquery-ui-structure-css',
+                        $structure_css_url,
+                        false,
+                        $this->taas_plugin_ver,
+                        false
+                    );
 
-                wp_enqueue_style(
-                    'jquery-ui-structure-css',
-                    $structure_css_url,
-                    false,
-                    $this->taas_plugin_ver,
-                    false
-                );
+                    wp_enqueue_style(
+                        'jquery-ui-standard-css',
+                        $custom_css_url,
+                        false,
+                        $this->taas_plugin_ver,
+                        false
+                    );
+                } elseif ('custom1121' == $jquery_ui_theme) {
+                    $upload_dir = wp_upload_dir();
+                    $upload_dir = $upload_dir['baseurl'];
+                    $custom_css_url = trailingslashit( $upload_dir ) . 'jquery-ui-1.12.1.custom/jquery-ui.theme.min.css';
+                    $structure_css_url = trailingslashit( $upload_dir ) . 'jquery-ui-1.12.1.custom/jquery-ui.structure.min.css';
 
-                wp_enqueue_style(
-                    'jquery-ui-standard-css',
-                    $custom_css_url,
-                    false,
-                    $this->taas_plugin_ver,
-                    false
-                );
-            } elseif ('custom1132' == $jquery_ui_theme) {
-                $upload_dir = wp_upload_dir();
-                $upload_dir = $upload_dir['baseurl'];
-                $custom_css_url = trailingslashit( $upload_dir ) . 'jquery-ui-1.13.2.custom/jquery-ui.theme.min.css';
-                $structure_css_url = trailingslashit( $upload_dir ) . 'jquery-ui-1.13.2.custom/jquery-ui.structure.min.css';
+                    wp_enqueue_style(
+                        'jquery-ui-structure-css',
+                        $structure_css_url,
+                        false,
+                        $this->taas_plugin_ver,
+                        false
+                    );
 
-                wp_enqueue_style(
-                    'jquery-ui-structure-css',
-                    $structure_css_url,
-                    false,
-                    $this->taas_plugin_ver,
-                    false
-                );
+                    wp_enqueue_style(
+                        'jquery-ui-standard-css',
+                        $custom_css_url,
+                        false,
+                        $this->taas_plugin_ver,
+                        false
+                    );
+                } elseif ('custom1132' == $jquery_ui_theme) {
+                    $upload_dir = wp_upload_dir();
+                    $upload_dir = $upload_dir['baseurl'];
+                    $custom_css_url = trailingslashit( $upload_dir ) . 'jquery-ui-1.13.2.custom/jquery-ui.theme.min.css';
+                    $structure_css_url = trailingslashit( $upload_dir ) . 'jquery-ui-1.13.2.custom/jquery-ui.structure.min.css';
 
-                wp_enqueue_style(
-                    'jquery-ui-standard-css',
-                    $custom_css_url,
-                    false,
-                    $this->taas_plugin_ver,
-                    false
-                );
-            } elseif ($jquery_ui_theme != 'none') {
-                $url = apply_filters( 'squelch_taas_jquery_ui_theme_url',
-                    plugins_url('css/jquery-ui/jquery-ui-1.13.2/'.$jquery_ui_theme.'/jquery-ui.min.css', __FILE__),
-                    $jquery_ui_theme
-                );
+                    wp_enqueue_style(
+                        'jquery-ui-structure-css',
+                        $structure_css_url,
+                        false,
+                        $this->taas_plugin_ver,
+                        false
+                    );
 
-                wp_enqueue_style(
-                    'jquery-ui-standard-css',
-                    $url,
-                    false,
-                    $this->taas_plugin_ver,
-                    false
-                );
+                    wp_enqueue_style(
+                        'jquery-ui-standard-css',
+                        $custom_css_url,
+                        false,
+                        $this->taas_plugin_ver,
+                        false
+                    );
+                } elseif ($jquery_ui_theme != 'none') {
+                    $url = apply_filters( 'squelch_taas_jquery_ui_theme_url',
+                        plugins_url('css/jquery-ui/jquery-ui-1.13.2/'.$jquery_ui_theme.'/jquery-ui.min.css', __FILE__),
+                        $jquery_ui_theme
+                    );
+
+                    wp_enqueue_style(
+                        'jquery-ui-standard-css',
+                        $url,
+                        false,
+                        $this->taas_plugin_ver,
+                        false
+                    );
+                }
             }
+
+            // Enqueue the CSS
+            wp_enqueue_style(
+                'squelch_taas',
+                plugins_url( 'css/squelch-tabs-and-accordions.css', __FILE__),
+                false,
+                $this->taas_plugin_ver,
+                'all'
+            );
+
         }
 
-        // Enqueue the CSS
-        wp_enqueue_style(
-            'squelch_taas',
-            plugins_url( 'css/squelch-tabs-and-accordions.css', __FILE__),
-            false,
-            $this->taas_plugin_ver,
-            'all'
-        );
     }
 
 
@@ -937,62 +963,29 @@ final class TabsAndAccordions {
     ---------------------------------------------------------------------------- */
 
     /**
-     * Admin interface.
-     */
-    public function draw_admin_page() {
-        // Flag for the included page, if this is not set the page does nothing to ensure it cannot be accessed directly
-        $squelch_taas_admin = true;
-        require_once( dirname(__FILE__) . '/inc/admin.php' );
-    }
-
-
-    /**
-     * Enable the menu in the admin interface
-     */
-    public function admin_menu() {
-        $hook_suffix = add_submenu_page(
-            'themes.php',
-            __( 'Squelch Tabs And Accordions Shortcodes', 'squelch-tabs-and-accordions-shortcodes' ),
-            __( 'Tabs and Accordions', 'squelch-tabs-and-accordions-shortcodes' ),
-            'manage_options',
-            'squelch-tabs-and-accordions-shortcodes',
-            [ $this, 'draw_admin_page' ]
-        );
-
-        // Add action to enqueue admin scripts only on the relevant page
-        add_action( 'admin_print_scripts-'.$hook_suffix, [ $this, 'admin_scripts' ] );
-
-        // Add action to enqueue admin styles only on the relevant page
-        // add_action( 'admin_print_styles-'.$hook_suffix, 'taas_admin_styles' );
-    }
-
-
-    /**
-     * Enqueue scripts for the admin interface.
-     */
-    public function admin_scripts() {
-
-        wp_enqueue_script(
-            'squelch_taas_admin',
-            plugins_url( 'js/squelch-tabs-and-accordions-admin.min.js', __FILE__ ),
-            [ 'jquery' ],
-            $this->taas_plugin_ver,
-            true
-        );
-    }
-
-
-    /**
      * Add a link to the settings screen and the documentation for the plugin to make it easier for users to find.
      */
     public function plugin_action_links( $actions, $plugin_file ) {
 
-        if ( ! current_user_can( 'manage_options' ) ) return $actions;
-
         if ( $plugin_file == 'squelch-tabs-and-accordions-shortcodes/squelch-tabs-and-accordions.php' ) {
-            $settings_url = menu_page_url( 'squelch-tabs-and-accordions-shortcodes', false );
-            $actions['settings'] = "<a href=\"{$settings_url}\">Settings</a>";
-            $actions['docs']        = "<a href=\"http://squelchdesign.com/web-development/free-wordpress-plugins/squelch-tabs-and-accordions-shortcodes/\" target=\"_blank\">Documentation</a>";
+
+            if ( current_user_can( 'manage_options' ) ) {
+                $settings_url = admin_url( '/customize.php?autofocus[section]=squelch-taas' );
+                $actions['settings'] = sprintf(
+                    // translators: 1: An HTML link to the settings page 2: closing tag for the link
+                    __( '%1$sSettings%2$s', 'squelch-tabs-and-accordions-shortcodes' ),
+                    '<a href="' . $settings_url . '">',
+                    '</a>'
+                );
+            }
+
+            $actions['docs']     = sprintf(
+                // translators: 1: An HTML link to the plugin documentation 2: closing tag for the link
+                __( '%1$sDocumentation%2$s', 'squelch-tabs-and-accordions-shortcodes' ),
+                '<a href="https://squelchdesign.com/web-development/free-wordpress-plugins/squelch-tabs-and-accordions-shortcodes/" target="_blank">',
+                '</a>'
+            );
+
         }
 
         return $actions;
