@@ -122,6 +122,8 @@ final class TabsAndAccordions {
      */
     public $taas_toggle_content_counter        = 0;
 
+    public $integrations;
+
 
 
     /**
@@ -129,6 +131,7 @@ final class TabsAndAccordions {
      */
     public function __construct() {
 
+        $this->integrations = $this->integrations ?? new \StdClass();
         $this->hooks();
 
     }
@@ -183,10 +186,18 @@ final class TabsAndAccordions {
      * Include any required classes.
      */
     public function requires() {
+
         if ( current_user_can( 'manage_options' ) ) {
             require_once( 'classes/customize.php' );
             $this->customize = new \Squelch\TabsAndAccordions\Customize();
         }
+
+        require_once( 'classes/int-fontawesome.php' );
+        $this->integrations->fontawesome = new \Squelch\TabsAndAccordions\IntFontAwesome();
+
+        require_once( 'classes/int-simple-icons.php' );
+        $this->integrations->simpleicons = new \Squelch\TabsAndAccordions\IntSimpleIcons();
+
     }
 
     /**
@@ -600,12 +611,29 @@ final class TabsAndAccordions {
         if (!empty($atts['icon'])) {
             if (empty($atts['iconalt'])) $atts['iconalt'] = $atts['title'];
 
-            $rv .= '<img src="'.esc_attr( $atts['icon'] ).'" alt="'. esc_attr( $atts['iconalt'] ).'" class="squelch-taas-tab-icon" ';
+            $icon = '<img src="'.esc_attr( $atts['icon'] ).'" alt="'. esc_attr( $atts['iconalt'] ).'" class="squelch-taas-tab-icon" ';
+            if (!empty($atts['iconw'])) $icon .= 'width="'.esc_attr( $atts['iconw'] ).'" ';
+            if (!empty($atts['iconh'])) $icon .= 'height="'.esc_attr( $atts['iconh'] ).'" ';
+            $icon .= '/> &nbsp;';
 
-            if (!empty($atts['iconw'])) $rv .= 'width="'.esc_attr( $atts['iconw'] ).'" ';
-            if (!empty($atts['iconh'])) $rv .= 'height="'.esc_attr( $atts['iconh'] ).'" ';
+            $icon = apply_filters( 'squelch_taas_icon',
+                $icon,
+                trim( $atts['icon'] ),
+                trim( $atts['iconalt'] ?? '' ),
+                $atts['iconw'] ?? null,
+                $atts['iconh'] ?? null,
+                $this
+            );
+            $icon = apply_filters( 'squelch_taas_icon_tab',
+                $icon,
+                trim( $atts['icon'] ),
+                trim( $atts['iconalt'] ?? '' ),
+                $atts['iconw'] ?? null,
+                $atts['iconh'] ?? null,
+                $this
+            );
 
-            $rv .= '/> &nbsp;';
+            $rv .= $icon;
         }
 
         $rv .= esc_html( $atts['title'] );

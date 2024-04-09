@@ -17,19 +17,14 @@ final class Customize {
      * Creates a new Customize object
      */
     public function __construct() {
-
         $this->hooks();
-
     }
 
     /**
      * Sets up any hooks needed by this class.
      */
     public function hooks() {
-
         add_action( 'customize_register', [ $this, 'register' ] );
-
-
     }
 
     /**

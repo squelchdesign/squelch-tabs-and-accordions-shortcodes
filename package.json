@@ -20,6 +20,7 @@
   "devDependencies": {
     "cssnano": "^6.1.0",
     "cssnano-preset-advanced": "^6.1.0",
+    "minify": "^11.1.1",
     "postcss": "^8.4.21",
     "postcss-cli": "^11.0.0",
     "uglify-js": "^3.17.4"

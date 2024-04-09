@@ -1,5 +1,28 @@
 @charset 'utf-8';
 
+/* Tabs */
+.squelch-taas-tab-group .ui-tabs-panel:after {
+    content: ".";
+    display: block;
+    height: 0;
+    line-height: 0;
+    clear: both;
+    visibility: hidden;
+    zoom: 1;
+}
+
+/* Font Awesome integration: */
+.squelch-taas-tab-group .ui-tabs-nav .ui-tabs-tab i {
+    margin-right: 0.75em;
+}
+
+/* Simple Icons integration: */
+span[class*="simple-icon-"].squelch-taas-icon {
+    width: 1.2rem;
+    height: 1.2rem;
+    margin-right: 0.5rem;
+}
+
 /* Toggles and accordions */
 .squelch-taas-toggle .ui-accordion-header,
 .squelch-taas-accordion .ui-accordion-header {
@@ -48,17 +71,6 @@
 }
 .squelch-taas-toggle.blank .squelch-taas-toggle-shortcode-content {
     padding-left: 16px;
-}
-
-/* Tabs */
-.squelch-taas-tab-group .ui-tabs-panel:after {
-    content: ".";
-    display: block;
-    height: 0;
-    line-height: 0;
-    clear: both;
-    visibility: hidden;
-    zoom: 1;
 }
 
 /* Basic theme */
