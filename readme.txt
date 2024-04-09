@@ -27,7 +27,7 @@ If you want to add more interactivity with *Tabs*, *Vertical* and *Horizontal Ac
 
 [You can demo the website on a playground website here](https://tastewp.com/new?pre-installed-plugin-slug=squelch-tabs-and-accordions-shortcodes&redirect=themes.php%3Fpage%3Dsquelch-tabs-and-accordions-shortcodes%2Fsquelch-tabs-and-accordions.php&ni=true).
 
-**A note on responsivensss:**
+**A note on responsiveness:**
 
 We receive a lot of questions as to whether this plugin is responsive. All widgets in this plugin are responsive **excluding** the horizontal accordion widget: It uses a different library to the other widgets, and that library is unfortunately not responsive. We may add a responsive horizontal slider in the future, but it is not available yet.
 
@@ -38,7 +38,7 @@ We receive a lot of questions as to whether this plugin is responsive. All widge
 1. From your admin interface go to Plugins > Add New
 1. Search for *Squelch tabs and accordions*
 1. Click "Install Now" under the plugin in the search results
-1. Click OK on the popup
+1. Click OK on the pop-up
 1. Click "Activate" to enable the plugin
 
 Updates will be provided automatically through the WordPress updater.
@@ -64,7 +64,7 @@ Full instructions can be found on the [Squelch Tabs and Accordions Shortcodes](h
 
 = Can I change the look of the widgets? =
 
-Yes. The plugin creates jQuery UI accordions and tabs, jQuery UI-compatible toggles, and the horizontal accordions have been set up to use jQuery UI themes by default. So changing the jQuery UI theme in use on the page will change the appearance of the widgets. To change the jQuery UI theme simply go to Appearance > Tabs and Accordions and choose a theme from the dropdown menu.
+Yes. The plugin creates jQuery UI accordions and tabs, jQuery UI-compatible toggles, and the horizontal accordions have been set up to use jQuery UI themes by default. So changing the jQuery UI theme in use on the page will change the appearance of the widgets. To change the jQuery UI theme simply go to Appearance > Tabs and Accordions and choose a theme from the drop-down menu.
 
 You can also style the widgets with your own custom CSS if you wish by using the .squelch-taas-override class, but that is beyond the scope of this FAQ. Instructions are available on the [Squelch Tabs and Accordions Shortcodes](http://squelchdesign.com/wordpress-plugin-squelch-tabs-accordions-shortcodes/) project home page.
 
@@ -116,7 +116,7 @@ Yes! As of version 0.3.7 it is possible to link to a tab. The easiest way to ach
 * Thanks to @dan-kirshner for beta testing the plugin
 
 = 0.4.4 =
-* Fixes for CVE-2022-4781 (disclosed by WPScan without any consideration for responsible disclosure) and CVE-2024-2499 (responsibly disclosed by Wordfence) - all attributes shoud now be escaped before being sent to the page to prevent stored XSS attacks
+* Fix for CVE-2024-2499 (responsibly disclosed by Wordfence) - all attributes should now be escaped before being sent to the page to prevent stored XSS attacks
 * Update readme file to include changelog details for v0.4.3
 
 = 0.4.3 =
@@ -222,7 +222,7 @@ Yes! As of version 0.3.7 it is possible to link to a tab. The easiest way to ach
 
 = 0.4.4 =
 
-0.4.4 fixes a potential vulnerability: CVE-2024-2499. The fix prevents stored XSS attacks
+0.4.4 fixes a vulnerability: CVE-2024-2499. The fix prevents stored XSS attacks
 
 = 0.4.3 =
 
@@ -271,7 +271,7 @@ Very minor code quality update.
 This release has been forced by WordPress.org to load jQuery and jQuery UI as packaged with your current version of WordPress and therefore CANNOT support versions of WordPress prior to 3.5. If you are not on WP3.5 or better please use an older version of the plugin.
 
 = 0.2.3 =
-Bug-fix release. In 0.2.3 it is possible to nest accorions and it's easier to write your own styles for the widgets.
+Bug-fix release. In 0.2.3 it is possible to nest accordions and it's easier to write your own styles for the widgets.
 
 = 0.2.2 =
 Fix for autoHeight being always on. If you want the old (incorrect) behaviour use autoHeight="true" on your accordions shortcode.
