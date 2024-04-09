@@ -15,7 +15,7 @@ $disable_magic_url = get_option( 'squelch_taas_disable_magic_url' );
 
 /* Save changes
  */
-if (!empty($_POST['submit']) && $_POST['submit'] == "Save Changes") {
+if ( $_POST['submitted'] ?? '' == "1" ) {
     $valid = true;
 
     $new_theme      = $_POST['jquery_ui_theme'];
@@ -24,7 +24,7 @@ if (!empty($_POST['submit']) && $_POST['submit'] == "Save Changes") {
     $new_vanity_url = trim( $new_vanity_url );
     if ( empty($new_vanity_url) ) $new_vanity_url = 'squelch-taas-';
 
-    $new_disable_magic_url = $_POST['disable_magic_url'] && true;
+    $new_disable_magic_url = $_POST['disable_magic_url'] ?? '' && true;
 
     if ($valid) {
         update_option( 'squelch_taas_jquery_ui_theme',   $new_theme             );
@@ -331,6 +331,7 @@ $custom_css = get_option('squelch_taas_custom_css_url');
                 </tbody>
             </table>
             <p class="submit">
+                <input type="hidden" name="submitted" value="1" />
                 <input type="submit" name="submit" id="submit" class="button button-primary" value="<?php _e( 'Save Changes', 'squelch-tabs-and-accordions-shortcodes' ); ?>" />
             </p>
         </div>
