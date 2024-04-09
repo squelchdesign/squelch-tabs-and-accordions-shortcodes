@@ -24,7 +24,7 @@ if ( $_POST['submitted'] ?? '' == "1" ) {
     $new_vanity_url = trim( $new_vanity_url );
     if ( empty($new_vanity_url) ) $new_vanity_url = 'squelch-taas-';
 
-    $new_disable_magic_url = $_POST['disable_magic_url'] && true;
+    $new_disable_magic_url = $_POST['disable_magic_url'] ?? '' && true;
 
     if ($valid) {
         update_option( 'squelch_taas_jquery_ui_theme',   $new_theme             );
