@@ -89,6 +89,10 @@ Yes! As of version 0.3.7 it is possible to link to a tab. The easiest way to ach
 
 == Changelog ==
 
+= 0.4.7 =
+* Bug fix: settings wouldn't save on sites that were using a translation due to some poor code in the admin screen
+* Bug fix: saving without expanding the "advanced options" resulted in a PHP warning
+
 = 0.4.6 =
 * Bug fix: accordions and horizontal accordions without the new title_header parameter were generating errors
 * Bug fix: the minified CSS and JS weren't being loaded on the front end of the site
@@ -211,6 +215,10 @@ Yes! As of version 0.3.7 it is possible to link to a tab. The easiest way to ach
 * Initial version
 
 == Upgrade Notice ==
+
+= 0.4.7 =
+
+0.4.7 fixes a bug that prevented the plugin's settings saving when using a translated version, and also a warning in the admin screen
 
 = 0.4.6 =
 
