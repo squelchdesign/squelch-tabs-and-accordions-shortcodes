@@ -4,7 +4,7 @@ Donate link: http://squelchdesign.com/wordpress-plugin-squelch-tabs-accordions-s
 Tags: tabs,accordions,FAQs,vaccordion,haccordion
 Requires at least: 4.6
 Tested up to: 6.5
-Stable tag: 0.4.6
+Stable tag: 0.4.7
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
