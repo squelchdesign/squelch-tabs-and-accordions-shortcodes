@@ -126,7 +126,7 @@ Yes! As of version 0.3.7 it is possible to link to a tab. The easiest way to ach
 = 0.4.3 =
 * Tested up to WP 6.1.1
 * Minified CSS and JS for better CWVs scores
-* Add gitignore file, and Yarn configuration files
+* Add .gitignore file, and Yarn configuration files
 * Improve scroll-to-tab when loading a tab from another page
 
 = 0.4.2 =
@@ -148,7 +148,7 @@ Yes! As of version 0.3.7 it is possible to link to a tab. The easiest way to ach
 * Bug fix: when linking to, say, a tab on another page, if there are tabs on the current page, the link would always open the tab on the current page. Now fixed.
 
 = 0.3.7 =
-* Bug fix: perhaps not quite a bug as such, but annoying nevertheless ... all themes in the admin screen are now in alphabetical order to make it easier to find themes by name.
+* Bug fix: perhaps not quite a bug as such, but annoying nevertheless: all themes in the admin screen are now in alphabetical order to make it easier to find themes by name.
 * New feature: it is now possible to link to a specific tab within the same page using a # fragment in the URL
 * New feature: while clicking through tabs, accordions and toggles, a # fragment is added to the URL to make it easy to link to tabs etc
 * New feature: on page load any # fragment in the URL will trigger the opening of the relevant tab, accordion or toggle
@@ -198,7 +198,7 @@ Yes! As of version 0.3.7 it is possible to link to a tab. The easiest way to ach
 * Added subtabs, subsubtabs, subtab and subsubtab shortcodes to allow tabs in tabs up to 3 levels deep
 * Added subhaccordions, subhaccordion, subsubhaccordions and subsubhaccordion shortcodes to allow nested horizontal accordions
 * Added toggles and toggle shortcodes and created jQuery plugin to provide toggle functionality
-* Added subtoggles, subtoggle, subsubtoggles and subsubtoggle shortocdes to allow nested toggles
+* Added subtoggles, subtoggle, subsubtoggles and subsubtoggle shortcodes to allow nested toggles
 * Created admin interface configuration page with theme switcher for jQuery UI themes
 * All generated screen widgets get a class of squelch-taas-override to make overriding styles in themes easier
 * Added option to allow jQuery and jQuery UI to not be loaded if desired
