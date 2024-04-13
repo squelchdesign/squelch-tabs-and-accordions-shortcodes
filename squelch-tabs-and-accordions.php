@@ -242,50 +242,40 @@ final class TabsAndAccordions {
      */
     public function accordions_shortcode( $atts, $content ) {
 
-        $defaults = array(
+        $atts = wp_parse_args( $atts, [
             'title'         => '',
             'title_header'  => 'h2',
             'disabled'      => false,
             'active'        => false,
             'autoheight'    => false,
             'collapsible'   => true
-        );
+        ] );
 
-        $atts = wp_parse_args( $atts, $defaults );
+        list( $content, $title, $title_header, $disabled, $active, $autoheight, $collapsible, $before ) = [
+            $this->tidy_do_shortcode( $content ),
+            $atts['title'],
+            $atts['title_header'],
+            $atts['disabled'],
+            $atts['active'],
+            $atts['autoheight'],
+            $atts['collapsible'],
+            ''
+        ];
 
-        if ( ! in_array( $atts['title_header'], [ 'h1', 'h2', 'h3', 'h4', 'h5', 'h6' ] ) ) $atts['title_header'] = 'h2';
-
-
-        $content = do_shortcode( $this->shortcode_unautop( shortcode_unautop( $this->tidy_up_shortcodes( $content ) ) ) );
-
-        $rv  = '';
-
-        if (!empty($atts['title'])) {
-            $id     = "squelch-taas-title-{$this->taas_title_counter}";
-            $class  = "squelch-taas-group-title";
-
-            $rv .= '<'.$atts['title_header'].' id="'.$id.'" class="'.$class.'">'.esc_html( $atts['title'] ).'</'.$atts['title_header'].'>';
-
-            $this->taas_title_counter ++;
-        }
-
-        $data  = '';
-        $data .= 'data-active="'.esc_attr( $atts['active'] ).'" ';
-        $data .= 'data-disabled="'.     ( $atts['disabled']    == "true"  ? 'true' : 'false' ).'" ';
-        $data .= 'data-autoheight="'.   ( $atts['autoheight']  == "true"  ? 'true' : 'false' ).'" ';
-        $data .= 'data-collapsible="'.  ( $atts['collapsible'] == "true"  ? 'true' : 'false' ).'"';
-
-        $id     = "squelch-taas-accordion-{$this->taas_accordion_counter}";
-        $class  = 'squelch-taas-accordion squelch-taas-override';
-
-        $rv .= '<div id="'.$id.'" class="'.$class.'" '.$data.'>';
-        $rv .= $content;
-        $rv .= '</div>';
-        $rv .= "\n";
+        $html_atts = $this->arr_to_atts( [
+            'data-active'       => esc_attr( $active ),
+            'data-disabled'     => ( $disabled    == "true"  ? 'true' : 'false' ),
+            'data-autoheight'   => ( $autoheight  == "true"  ? 'true' : 'false' ),
+            'data-collapsible'  => ( $collapsible == "true"  ? 'true' : 'false' ),
+            'id'                => "squelch-taas-accordion-{$this->taas_accordion_counter}",
+            'class'             => 'squelch-taas-accordion squelch-taas-override'
+        ] );
 
         $this->taas_accordion_counter ++;
 
-        return $rv;
+        if ( empty( $title ) ) return "<div{$html_atts}>{$content}</div>\n";
+        return $this->render_title( $title, $title_header ) . "<div{$html_atts}>{$content}</div>\n";
+
     }
 
 
@@ -985,6 +975,70 @@ final class TabsAndAccordions {
         return $staas_vanity_url;
     }
 
+
+    /**
+     * Takes an associative array such as [ 'id' => 'tab', 'class' => 'blue closed' ] and turns it into an HTML string
+     * of attributes such as ' id="tab" class="blue closed"'. Note that a space is prepended if the string is not
+     * empty, meaning the returned string can be used like, "<div{$atts}>" and it's guaranteed to be valid.
+     *
+     * @var array       $atts                   The array of attributes to process into a string
+     * @return          string                  The HTML attributes string
+     */
+    public function arr_to_atts( $atts ) {
+
+        $html = implode( ' ', array_map( function( $key, $val ) {
+            return "{$key}=\"{$val}\"";
+        }, array_keys( $atts ), array_values( $atts ) ) );
+
+        if ( trim( $html ) !== '' ) return " {$html}";
+
+        return'';
+
+    }
+
+
+    /**
+     * Draw a title using the given heading element (h1, h2, h3, h4, h5, or h6)
+     *
+     * @var string      $title                  The title text
+     * @var string      $elem                   Element (HTML tag) to use to render the title. Valid values: 'h1',
+     *                                          'h2', 'h3', 'h4', 'h5', 'h6'.
+     * @return          string                  Rendered title tag
+     */
+    public function render_title( $title, $elem = 'h2' ) {
+
+        if ( ! in_array( $elem, [ 'h1', 'h2', 'h3', 'h4', 'h5', 'h6' ] ) ) $elem = 'h2';
+
+        $html =
+            "<{$elem} id=\"squelch-taas-title-{$this->taas_title_counter}\" class=\"squelch-taas-group-title\">" .
+            esc_html( $title ) .
+            "</{$elem}>";
+        $this->taas_title_counter ++;
+
+        return $html;
+
+    }
+
+
+    /**
+     * Takes some content, tidies it up with $this->tidy_up_shortcodes(), unautop's it with shortcode_unautop(),
+     * passes it through $this->shortcode_unautop(), and then finally executes do_shortcode on it. The result is then
+     * returned.
+     *
+     * @var string      $content                The content to process
+     * @return          string                  The tidied and processed content
+     */
+    public function tidy_do_shortcode( $content ) {
+        return do_shortcode(
+            $this->shortcode_unautop(
+                shortcode_unautop(
+                    $this->tidy_up_shortcodes(
+                        $content
+                    )
+                )
+            )
+        );
+    }
 
 
     /* =Configuration
