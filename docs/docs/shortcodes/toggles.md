@@ -2,11 +2,11 @@
 sidebar_position: 6
 ---
 
-# `toggles` shortcode (TODO)
+# `toggles` shortcode
 
 :::info
 
-The `[toggles]` shortcode (note: plural) tells **Squelch Tabs and Accordions** that you wish to create a block of toggles. It should not be confused with the `[accordion]` shortcode (singular), which creates a single accordion section within the block.
+The `[toggles]` shortcode (note: plural) tells **Squelch Tabs and Accordions** that you wish to create a block of toggles. It should not be confused with the `[toggle]` shortcode (singular), which creates a single toggle section within the block.
 
 :::
 
@@ -14,42 +14,45 @@ The `[toggles]` shortcode (note: plural) tells **Squelch Tabs and Accordions** t
 
 
 ```
-[toggles title="" title_header="h3" disabled="false" active="0" autoheight="false" collapsible="false"]
+[toggles title="" title_header="h3" speed="800" active="0,2" theme="jqueryui"]
 ```
 
 **Required parameters:**
 
-* None.
+* None
 
 ## Required content
 
-The `[toggles]` shortcode requires at least one `[accordion]` shortcode in order to be useful.
+The `[toggles]` shortcode requires at least one `[toggle]` shortcode in order to be useful.
 
 ## Example
 
 ```
 [toggles]
-[accordion title="Is the building accessible?"]
-We have a ramp for entering the ground floor…
-[/accordion]
-[accordion title="Will lunch be provided?"]
-Lunch is not provided but there is an excellent canteen…
-[/accordion]
+[toggle title="Feline"]
+Felidae, a member of the cat family, which includes the subfamilies Pantherinae and Felinae.
+[/toggle]
+[toggle title="Canine"]
+Animals of the family Canidae, more specifically the subfamily Caninae, which includes dogs, wolves, foxes, jackals and coyotes.
+[/toggle]
+[toggle title="Bovine"]
+Bovines comprise a diverse group of 10 genera of medium to large-sized ungulates, including cattle, bison, African buffalo, water buffalos, and the four-horned and spiral-horned antelopes.
+[/toggle]
 [/toggles]
 ```
 
 ## Aliases
 
 1. `[toggles]`
-1. `[subaccordions]`
-1. `[subsubaccordions]`
+1. `[subtoggles]`
+1. `[subsubtoggles]`
 
 ## Parameters
 
 ### `title=""`
 
 ```
-(text) The title shown above the accordion group
+(text) The title shown above the toggle group
 Default: “” (empty string)
 Requirement: Optional
 ```
@@ -77,63 +80,63 @@ If you choose to use the `title=""` parameter to place a title above your toggle
 * `h5`
 * `h6`
 
-### `disabled="false"`
+### `speed="800"`
 
 ```
-(boolean) Disables or enables the accordion
-Default: false
+(integer) Length of time in ms, duration the animation should last for
+Default: 800
 Requirement: Optional
 ```
 
-Most users probably won't ever need this option, but it might have its uses. Setting `disabled="true"` will render your toggles as usual, but your visitors won't be able to switch panes.
-
-**Accepted values:**
-
-* `true`
-* `false`
-
-### `active="false"`
-
-```
-(integer|boolean) Index of the active pane. Set to false to collapse all panes on page load
-Default: false
-Requirement: Optional
-```
-
-By default all individual accordion panes are closed to begin with, but if you wish to have an accordion panel open by default you can change the value of the `active` parameter. Accordion panels are numbered from top to bottom with 0 being the top-most panel, and increasing by 1 for each panel as you move downwards.
+Speed is, perhaps, a slight misnomer for this parameter as it is, in fact, a duration of time for the animation. So increasing the value will make the animation *slower* and decreasing the value will make the animation *faster*. The duration is measured in milliseconds (1 second = 1,000 milliseconds) so the default time of 800ms is eight tenths of a second.
 
 **Accepted values:**
 
 * Any positive integer (i.e. whole number).
-* `false` to render the accordion with all panels closed.
 
-### `autoheight="false"`
+### `active="false"`
 
 ```
-(boolean) Makes all panes the same height, based on the longest pane, to make animations smoother
-Default: false
+(integer(s), comma-separated|boolean) Which pane(s) of the toggle should be active on page load, comma-separated
+Default: false (all panes collapsed)
 Requirement: Optional
 ```
 
-Each accordion panel is only as tall as its content by default. If you have very different lengths of content in each panel then this may cause confusing behaviour. Setting `autoheight="true"` each panel will be set to the same height, using the height of the tallest accordion panel.
+By default all individual toggle panes are closed to begin with, but if you wish to have one or more toggle panel open by default you can change the value of the `active` parameter. Toggle panels are numbered from top to bottom with 0 being the top-most panel, and increasing by 1 for each panel as you move downwards.
 
 **Accepted values:**
 
-* `true`
-* `false`
+* Any positive integer (i.e. whole number), or comma-separated integers to specify multiple panels.
+* `false` to render the toggle with all panels closed.
 
-### `collapsible="false"`
+### `theme="jqueryui"`
 
 ```
-(boolean) Whether all panes can be closed at once
-Default: true
+(string) The theme to apply to the toggle: blank, jqueryui, basic, dark, light, stitch.
+Default: “jqueryui”
 Requirement: Optional
 ```
 
-By default one panel is always open on an accordion. You can allow the panel to be closed by clicking its title by enabling `collapsible="true"`.
+**Squelch Tabs and Accordion's** toggles have been engineered to be able to use either a jQuery UI theme (which is what powers the tabs and accordions), or one of the themes from the **liteAccordion** library (which is what powers the horizontal accordions). You may therefore choose one of the liteAccordion themes — `blank`, `basic`, `dark`, `light`, or `stitch` — or `jqueryui` to use the currently selected jQuery UI theme that's in use for tabs and accordions.
 
 **Accepted values:**
 
-* `true`
-* `false`
+* `blank`
+* `jqueryui`
+* `basic`
+* `dark`
+* `light`
+* `stitch`
+
+### `style="jqueryui"` (deprecated)
+
+```
+(string) DEPRECATED: Alias for ‘theme’
+```
+
+:::danger[Deprecated]
+
+Please use `theme=""` instead of `style=""`. This option was only ever provided for compatibility with another plugin which has long since stopped being supported, and is deprecated. It may be removed in a later version of **Squelch Tabs and Accordions**.
+
+:::
 

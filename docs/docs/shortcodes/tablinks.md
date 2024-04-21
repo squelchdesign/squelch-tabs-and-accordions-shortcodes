@@ -21,7 +21,7 @@ Simply outputs a basic `<ul>` list with a class of `squelch-taas-tablink` which 
 
 **Required parameters:**
 
-* None.
+* None
 
 **Available since:** v0.4
 

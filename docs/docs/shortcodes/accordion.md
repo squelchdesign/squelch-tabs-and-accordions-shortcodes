@@ -6,7 +6,7 @@ sidebar_position: 5
 
 :::info
 
-The `[accordion]` shortcode (note: singular) tells **Squelch Tabs and Accordions** that you wish to create a single accordion panel with an accordion block. It should not be confused with the `[accordions]` shortcode (plural), which creates the block.
+The `[accordion]` shortcode (note: singular) tells **Squelch Tabs and Accordions** that you wish to create a single accordion panel within an accordion block. It should not be confused with the `[accordions]` shortcode (plural), which creates the block.
 
 :::
 
@@ -14,14 +14,14 @@ The `[accordion]` shortcode (note: singular) tells **Squelch Tabs and Accordions
 
 
 ```
-[accordion title="Pane 0" header="h3"]
+[accordion title="Pane 0"]
 Accordion pane 0 content
 [/accordion]
 ```
 
 **Required parameters:**
 
-* `title`.
+* `title`
 
 ## Required content
 

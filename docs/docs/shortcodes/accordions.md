@@ -19,7 +19,7 @@ The `[accordions]` shortcode (note: plural) tells **Squelch Tabs and Accordions*
 
 **Required parameters:**
 
-* None.
+* None
 
 ## Required content
 
