@@ -20,7 +20,8 @@ $old_version        = $package_json_obj->version ?? 'UNKNOWN';
 if ( $old_version != 'UNKNOWN' ) {
 
     echo "Current version: {$old_version}" . PHP_EOL;
-    echo "New version:     {$new_version}" . PHP_EOL;
+    echo "New version:     {$new_version}" . PHP_EOL . PHP_EOL;
+
     if ( ! $new_version ) exit;
 
     try {
@@ -43,6 +44,15 @@ if ( $old_version != 'UNKNOWN' ) {
     file_put_contents( "readme.txt",                        $readme_txt     );
     file_put_contents( "squelch-tabs-and-accordions.php",   $plugin_php     );
     file_put_contents( "package.json",                      $package_json   );
+
+    echo "Checklist:" . PHP_EOL;
+    echo "  * Ensure changelog and upgrade notices have been written in readme.txt" . PHP_EOL;
+    echo "  * Merge changes into main and develop" . PHP_EOL;
+    echo "  * Create a build with ./bin/build.sh" . PHP_EOL;
+    echo "  * Tag version {$new_version}" . PHP_EOL;
+    echo "  * Push to GitHub" . PHP_EOL;
+    echo "  * Create release on GitHub" . PHP_EOL;
+    echo "  * Deploy to WP svn" . PHP_EOL;
 
 } else {
     echo "Unable to determine version from package.json" . PHP_EOL;
