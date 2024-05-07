@@ -15,30 +15,37 @@ $disable_magic_url = get_option( 'squelch_taas_disable_magic_url' );
 
 /* Save changes
  */
-if ( $_POST['submitted'] ?? '' == "1" ) {
-    $valid = true;
+if ( isset( $_POST['staas-admin'] ) ) {
 
-    $new_theme      = $_POST['jquery_ui_theme'];
-    $new_vanity_url = $_POST['vanity_url'];
-    if ($new_vanity_url === false) $new_vanity_url = 'squelch-taas-';
-    $new_vanity_url = trim( $new_vanity_url );
-    if ( empty($new_vanity_url) ) $new_vanity_url = 'squelch-taas-';
+    if ( wp_verify_nonce( $_POST['staas-admin'] ?? '', 'staas-admin-save' ) ) {
+        $valid = true;
 
-    $new_disable_magic_url = $_POST['disable_magic_url'] ?? '' && true;
+        $new_theme      = $_POST['jquery_ui_theme'];
+        $new_vanity_url = $_POST['vanity_url'];
+        if ($new_vanity_url === false) $new_vanity_url = 'squelch-taas-';
+        $new_vanity_url = trim( $new_vanity_url );
+        if ( empty($new_vanity_url) ) $new_vanity_url = 'squelch-taas-';
 
-    if ($valid) {
-        update_option( 'squelch_taas_jquery_ui_theme',   $new_theme             );
-        update_option( 'squelch_taas_vanity_url',        $new_vanity_url        );
-        update_option( 'squelch_taas_disable_magic_url', $new_disable_magic_url );
+        $new_disable_magic_url = $_POST['disable_magic_url'] ?? '' && true;
 
-        $msg  = isset($GLOBALS['squelch_taas_admin_msg']) ? $GLOBALS['squelch_taas_admin_msg'] : '';
-        $msg .= '<div class="updated"><p>'.__('Changes saved.', 'squelch-tabs-and-accordions-shortcodes').'</p></div>';
-        $GLOBALS['squelch_taas_admin_msg'] = $msg;
+        if ($valid) {
+            update_option( 'squelch_taas_jquery_ui_theme',   $new_theme             );
+            update_option( 'squelch_taas_vanity_url',        $new_vanity_url        );
+            update_option( 'squelch_taas_disable_magic_url', $new_disable_magic_url );
 
-        $theme = $new_theme;
-        $vanity_url = $new_vanity_url;
-        $disable_magic_url = $new_disable_magic_url;
+            $msg  = isset($GLOBALS['squelch_taas_admin_msg']) ? $GLOBALS['squelch_taas_admin_msg'] : '';
+            $msg .= '<div class="updated"><p>'.__('Changes saved.', 'squelch-tabs-and-accordions-shortcodes').'</p></div>';
+            $GLOBALS['squelch_taas_admin_msg'] = $msg;
+
+            $theme = $new_theme;
+            $vanity_url = $new_vanity_url;
+            $disable_magic_url = $new_disable_magic_url;
+        }
+
+    } else {
+        wp_die( __( "Sorry, you are not allowed to access this page.", 'squelch-tabs-and-accordions-shortcodes' ) );
     }
+
 }
 
 
@@ -89,6 +96,7 @@ $custom_css = get_option('squelch_taas_custom_css_url');
     <a href="https://wordpress.org/plugins/squelch-tabs-and-accordions-shortcodes/" target="_blank" class="button"><?php _e( 'Rate on WordPress.org', 'squelch-tabs-and-accordions-shortcodes' ); ?></a>
     <a href="http://squelchdesign.com/uncategorized/roll-theme-squelch-tabs-accordions-shortcodes-plugin/" target="_blank" class="button"><?php _e(' How to create a custom theme', 'squelch-tabs-and-accordions-shortcodes' ); ?></a>
     <form method="post" action="">
+        <?php wp_nonce_field( 'staas-admin-save', 'staas-admin', true ); ?>
         <div>
             <table class="form-table">
                 <tbody>
