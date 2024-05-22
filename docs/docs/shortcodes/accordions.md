@@ -50,7 +50,7 @@ Lunch is not provided but there is an excellent canteen…
 
 ```
 (text) The title shown above the accordion group
-Default: “” (empty string)
+Default: "" (empty string)
 Requirement: Optional
 ```
 

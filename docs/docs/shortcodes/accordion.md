@@ -63,7 +63,7 @@ The sunlight you see out of your window took about 8 minutes to travel from the 
 
 ```
 (text) The title for this panel
-Default: ”      ” (6 spaces)
+Default: "      " (6 spaces)
 Requirement: Technically optional, but you probably don't want to omit it
 ```
 

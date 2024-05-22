@@ -53,7 +53,7 @@ Bovines comprise a diverse group of 10 genera of medium to large-sized ungulates
 
 ```
 (text) The title shown above the toggle group
-Default: “” (empty string)
+Default: "" (empty string)
 Requirement: Optional
 ```
 
@@ -113,7 +113,7 @@ By default all individual toggle panes are closed to begin with, but if you wish
 
 ```
 (string) The theme to apply to the toggle: blank, jqueryui, basic, dark, light, stitch.
-Default: “jqueryui”
+Default: "jqueryui"
 Requirement: Optional
 ```
 
