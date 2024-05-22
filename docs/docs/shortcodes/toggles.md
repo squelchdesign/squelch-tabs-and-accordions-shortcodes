@@ -97,7 +97,7 @@ Speed is, perhaps, a slight misnomer for this parameter as it is, in fact, a dur
 ### `active="false"`
 
 ```
-(integer(s), comma-separated|boolean) Which pane(s) of the toggle should be active on page load, comma-separated
+(integer(s), comma-separated|boolean) Which panel(s) of the toggle should be active on page load, comma-separated
 Default: false (all panes collapsed)
 Requirement: Optional
 ```

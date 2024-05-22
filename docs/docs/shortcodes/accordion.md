@@ -15,7 +15,7 @@ The `[accordion]` shortcode (note: singular) tells **Squelch Tabs and Accordions
 
 ```
 [accordion title="Pane 0"]
-Accordion pane 0 content
+Accordion panel 0 content
 [/accordion]
 ```
 
@@ -30,7 +30,7 @@ The `[accordion]` shortcode will only work correctly when used inside of an `[ac
 ```
 [accordions]
 [accordion title="Pane 0" header="h3"]
-Accordion pane 0 content
+Accordion panel 0 content
 [/accordion]
 [/accordions]
 ```
@@ -62,7 +62,7 @@ The sunlight you see out of your window took about 8 minutes to travel from the 
 ### `title=""`
 
 ```
-(text) The title for this pane
+(text) The title for this panel
 Default: ”      ” (6 spaces)
 Requirement: Technically optional, but you probably don't want to omit it
 ```

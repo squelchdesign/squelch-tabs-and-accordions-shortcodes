@@ -4,7 +4,7 @@ sidebar_position: 4
 
 # Magic URLs
 
-With **magic URLs** enabled (which they are by default), when a tab, accordion, toggle or horizontal accordion is clicked, the page's address will change to include a `#` and then some additional text and numbers. We call these "magic URLs". This allows for easy linking to specific content on a page: simply click the tab, accordion, toggle, or horizontal accordion pane that you want to link to, and then copy the page address. Anyone using the link with the magic URL appended will be taken to the relevant element, which will then reveal the content you wanted to link to.
+With **magic URLs** enabled (which they are by default), when a tab, accordion, toggle or horizontal accordion is clicked, the page's address will change to include a `#` and then some additional text and numbers. We call these "magic URLs". This allows for easy linking to specific content on a page: simply click the tab, accordion, toggle, or horizontal accordion panel that you want to link to, and then copy the page address. Anyone using the link with the magic URL appended will be taken to the relevant element, which will then reveal the content you wanted to link to.
 
 Magic URLs are incredibly useful if you want to link, for example, to a specific question on your Frequently Asked Questions page, or a specific tab of a tabbed page. All elements added to your site with **Squelch Tabs and Accordions** can be linked to using this method.
 

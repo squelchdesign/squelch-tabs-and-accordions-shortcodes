@@ -32,9 +32,9 @@ You don't need to specify all of the parameters shown above, they're just includ
 
 ```php
 [accordions title="" disabled="false" active="0" autoheight="false" collapsible="false"]
-[accordion title="Pane 0"]Accordion pane 0 content[/accordion]
-[accordion title="Pane 1"]Accordion pane 1 content[/accordion]
-[accordion title="Pane 2"]Accordion pane 2 content[/accordion]
+[accordion title="Pane 0"]Accordion panel 0 content[/accordion]
+[accordion title="Pane 1"]Accordion panel 1 content[/accordion]
+[accordion title="Pane 2"]Accordion panel 2 content[/accordion]
 [/accordions]
 ```
 
@@ -47,8 +47,8 @@ You don't need to specify all of the parameters shown above, they're just includ
 :::
 
 * Changing `title=""` will add a title before the accordion section. The element used to render the title can be adjusted with (e.g.) `title_header="h6"`.
-* Usually you won't want to disable your accordions, locking it to the currently open pane and preventing any interaction, but the option is available by setting `disabled="true"`.
-* Which pane is open by default can be customised by changing the `active="0"` attribute to the number of the pane that should be open. Numbering always starts at 0 and increments by 1 as you move from top to bottom. The default is for the accordion to start with all panels closed.
+* Usually you won't want to disable your accordions, locking it to the currently open panel and preventing any interaction, but the option is available by setting `disabled="true"`.
+* Which panel is open by default can be customised by changing the `active="0"` attribute to the number of the panel that should be open. Numbering always starts at 0 and increments by 1 as you move from top to bottom. The default is for the accordion to start with all panels closed.
 * Each accordion panel is only as tall as its content by default. If you have very different lengths of content in each panel then this may cause confusing behaviour. Setting `autoheight="true"` each panel will be set to the same height, using the height of the tallest accordion panel.
 * By default one panel is always open on an accordion. You can allow the panel to be closed by clicking its title by enabling `collapsible="true"`.
 
@@ -62,9 +62,9 @@ Toggles render like accordions, but multiple panels can be opened at the same ti
 
 ```
 [toggles title="" speed="800" active="0,2" theme="jqueryui"]
-[toggle title="Pane 0"]Toggle pane 0 content[/toggle]
-[toggle title="Pane 1"]Toggle pane 1 content[/toggle]
-[toggle title="Pane 2"]Toggle pane 2 content[/toggle]
+[toggle title="Pane 0"]Toggle panel 0 content[/toggle]
+[toggle title="Pane 1"]Toggle panel 1 content[/toggle]
+[toggle title="Pane 2"]Toggle panel 2 content[/toggle]
 [/toggles]
 ```
 
@@ -78,7 +78,7 @@ You don't need to specify all of the parameters shown above, they're just includ
 
 * Changing `title=""` will add a title before the accordion section. The element used to render the title can be adjusted with (e.g.) `title_header="h6"`.
 * How fast the panels animate can be adjusted with the `speed="800"` attribute. The number is the number of milliseconds (ms) the animation should take.
-* Which panes are open by default can be customised by changing the `active="0,2"` attribute to the number(s) of the pane that should be open, separated by commas. Numbering always starts at 0 and increments by 1 as you move from top to bottom.
+* Which panes are open by default can be customised by changing the `active="0,2"` attribute to the number(s) of the panel that should be open, separated by commas. Numbering always starts at 0 and increments by 1 as you move from top to bottom.
 * Toggles can use the active jQuery UI theme (which is the default behaviour) but they can also use the same themes used by the horizontal accordions: `basic`, `dark`, `light`, `stitch`. They can also be set to use the `blank` theme which allows the developer the option of specifying their own styles for the toggles in CSS.
 
 ## Example 4: a basic horizontal accordion
@@ -91,9 +91,9 @@ Please note that horizontal accordions are NOT (yet) responsive. A full rewrite 
 
 ```
 [haccordions title="" width="300" height="150" hwidth="28" activateon="click" active="0" speed="800" autoplay="false" pauseonhover="true" cyclespeed="6000" theme="jqueryui" rounded="false" enumerate="false"]
-[haccordion title="Pane 0"]Accordion pane 0 content[/haccordion]
-[haccordion title="Pane 1"]Accordion pane 1 content[/haccordion]
-[haccordion title="Pane 2"]Accordion pane 2 content[/haccordion]
+[haccordion title="Pane 0"]Accordion panel 0 content[/haccordion]
+[haccordion title="Pane 1"]Accordion panel 1 content[/haccordion]
+[haccordion title="Pane 2"]Accordion panel 2 content[/haccordion]
 [/haccordions]
 ```
 
@@ -109,9 +109,9 @@ You don't need to specify all of the parameters shown above, they're just includ
 * Likewise a height needs to be specified in pixels using the `height="150"` attribute.
 * The width of each bar is specified in pixels with the `hwidth="28"` attribute.
 * `activeon="click"` tells the horizontal accordion library which mouse event to listen for: `click` or `mouseover`. We would typically recommend using `click` unless you have a good reason to use `mouseover`.
-* Which pane is open by default can be customised by changing the `active="0"` attribute to the number of the pane that should be open. Numbering always starts at 0 and increments by 1 as you move from left to right.
+* Which panel is open by default can be customised by changing the `active="0"` attribute to the number of the panel that should be open. Numbering always starts at 0 and increments by 1 as you move from left to right.
 * How fast the panels animate can be adjusted with the `speed="800"` attribute. The number is the number of milliseconds (ms) the animation should take.
-* Setting `autoplay="true"` will cause the horizontal accordion panels to automatically open without being clicked, for example to showcase a series of pictures. `cyclespeed="6000"` specifies the time in milliseconds (ms) to wait before opening the next pane. Note: 1000 milliseconds = 1 second. It's recommended, if you set `autoplay="true"` that you also set `pauseonhover="true"` to allow the user to interact with the horizontal accordion. With this setting enabled the animation will stop if the mouse cursor is over the horizontal accordion.
+* Setting `autoplay="true"` will cause the horizontal accordion panels to automatically open without being clicked, for example to showcase a series of pictures. `cyclespeed="6000"` specifies the time in milliseconds (ms) to wait before opening the next panel. Note: 1000 milliseconds = 1 second. It's recommended, if you set `autoplay="true"` that you also set `pauseonhover="true"` to allow the user to interact with the horizontal accordion. With this setting enabled the animation will stop if the mouse cursor is over the horizontal accordion.
 * Horizontal accordions use a different library to the accordions and tabs, and it ships with its own themes. We have customised the library to allow it to use the jQuery UI theme you have chosen and this is set as the default for horizontal accordions. Other themes you can set with `theme="…"` include `basic`, `dark`, `light`, and `stitch`.
 * Set `rounded="true"` if you want a more rounded appearance. Set `enumerate="true"` if you want each panel to be numbered in the horizontal accordion.
 

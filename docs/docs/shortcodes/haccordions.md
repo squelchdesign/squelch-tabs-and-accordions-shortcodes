@@ -137,7 +137,7 @@ The horizontal accordion library can use either "click", or "mouseover" as the t
 ### `active="0"`
 
 ```
-(integer) Index of the active pane.
+(integer) Index of the active panel.
 Default: 0
 Requirement: Optional
 ```

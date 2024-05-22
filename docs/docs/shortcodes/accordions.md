@@ -95,7 +95,7 @@ Most users probably won't ever need this option, but it might have its uses. Set
 ### `active="false"`
 
 ```
-(integer|boolean) Index of the active pane. Set to false to collapse all panes on page load
+(integer|boolean) Index of the active panel. Set to false to collapse all panes on page load
 Default: false
 Requirement: Optional
 ```
@@ -110,7 +110,7 @@ By default all individual accordion panes are closed to begin with, but if you w
 ### `autoheight="false"`
 
 ```
-(boolean) Makes all panes the same height, based on the longest pane, to make animations smoother
+(boolean) Makes all panes the same height, based on the longest panel, to make animations smoother
 Default: false
 Requirement: Optional
 ```

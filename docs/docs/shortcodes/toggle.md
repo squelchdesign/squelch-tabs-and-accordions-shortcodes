@@ -15,7 +15,7 @@ The `[toggle]` shortcode (note: singular) tells **Squelch Tabs and Accordions** 
 
 ```
 [toggle title="Pane 0"]
-Toggle pane 0 content
+Toggle panel 0 content
 [/toggle]
 ```
 
@@ -31,7 +31,7 @@ The `[toggle]` shortcode will only work correctly when used inside of a `[toggle
 [toggles]
 // highlight-start
 [toggle title="Pane 0"]
-Toggle pane 0 content
+Toggle panel 0 content
 [/toggle]
 // highlight-end
 [/toggles]
@@ -67,7 +67,7 @@ The sunlight you see out of your window took about 8 minutes to travel from the 
 ### `title=""`
 
 ```
-(text) The title for this pane
+(text) The title for this panel
 Default: ”      ” (6 spaces)
 Requirement: Technically optional, but you probably don't want to omit it
 ```
