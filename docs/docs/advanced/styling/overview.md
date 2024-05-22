@@ -6,7 +6,7 @@ sidebar_position: 1
 
 ## Introduction and warnings
 
-The recommended way to change the appearance of your widgets is to use one of the provided jQuery UI themes as described in "Changing The Theme", or to [roll your own jQuery UI theme](./rolling-your-own-theme.md). But if you do wish to change the styles of your widgets manually using CSS then this section will help you get started.
+The recommended way to change the appearance of your elements is to use one of the provided jQuery UI themes as described in "Changing The Theme", or to [roll your own jQuery UI theme](./rolling-your-own-theme.md). But if you do wish to change the styles of your elements manually using CSS then this section will help you get started.
 
 :::danger
 

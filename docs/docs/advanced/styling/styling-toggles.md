@@ -4,7 +4,7 @@ sidebar_position: 5
 
 # Styling toggles
 
-As jQuery UI does not provide a toggle widget, **Squelch Tabs and Accordions** uses its own custom built jQuery plugin for this functionality. Toggles have been built from the ground up to be compatible with both jQuery UI themes *and* liteAccordion themes (the library that powers the horizontal accordions). This means that your website's toggles can be styled by your jQuery UI theme *or* by using a liteAccordion theme, giving you a choice of 6 options for the `theme=` parameter:
+As jQuery UI does not provide a toggle element, **Squelch Tabs and Accordions** uses its own custom built jQuery plugin for this functionality. Toggles have been built from the ground up to be compatible with both jQuery UI themes *and* liteAccordion themes (the library that powers the horizontal accordions). This means that your website's toggles can be styled by your jQuery UI theme *or* by using a liteAccordion theme, giving you a choice of 6 options for the `theme=` parameter:
 
 * `jqueryui`: which tells the toggle to use the active jQuery UI theme's styles.
 * `blank`: a very basic stripped-down theme for you to extend for your own purposes.

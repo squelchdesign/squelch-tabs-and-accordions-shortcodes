@@ -6,7 +6,7 @@ sidebar_position: 1
 
 ## How not to do it
 
-Nesting different types of widgets inside of each other can be done without any changes to your shortcodes, e.g. adding an accordion inside of a tab:
+Nesting different types of elements inside of each other can be done without any changes to your shortcodes, e.g. adding an accordion inside of a tab:
 
 ```
 [tabs]

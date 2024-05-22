@@ -99,7 +99,7 @@ Default: 320
 Requirement: Optional
 ```
 
-This parameter is optional but you will almost certainly want to provide it. The horizontal accordion widget uses a fixed height which you should specify here.
+This parameter is optional but you will almost certainly want to provide it. The horizontal accordion element uses a fixed height which you should specify here.
 
 **Accepted values:**
 
