@@ -1,0 +1,9 @@
+{
+  "label": "Developer documentation",
+  "position": 5,
+  "link": {
+    "type": "generated-index",
+    "description": "Documentation for developers who wish to extend the functionality of Squelch Tabs and Accordions."
+  }
+}
+

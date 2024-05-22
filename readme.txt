@@ -4,7 +4,7 @@ Donate link: http://squelchdesign.com/wordpress-plugin-squelch-tabs-accordions-s
 Tags: tabs,accordions,FAQs,vaccordion,haccordion
 Requires at least: 4.6
 Tested up to: 6.5
-Stable tag: 0.4.7
+Stable tag: 1.0.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -29,7 +29,7 @@ If you want to add more interactivity with *Tabs*, *Vertical* and *Horizontal Ac
 
 **A note on responsiveness:**
 
-We receive a lot of questions as to whether this plugin is responsive. All widgets in this plugin are responsive **excluding** the horizontal accordion widget: it uses a different library to the other widgets, and that library is unfortunately not responsive. We may add a responsive horizontal slider in the future, but it is not available yet.
+We receive a lot of questions as to whether this plugin is responsive. All elements in this plugin are responsive **excluding** the horizontal accordion element: it uses a different library to the other elements, and that library is unfortunately not responsive. We may add a responsive horizontal slider in the future, but it is not available yet.
 
 == Installation ==
 
@@ -62,21 +62,21 @@ Squelch Tabs and Accordions Shortcodes makes available 8 shortcodes: [accordions
 
 Full instructions can be found on the [Squelch Tabs and Accordions Shortcodes](http://squelchdesign.com/wordpress-plugin-squelch-tabs-accordions-shortcodes/) project homepage on the Squelch Design website.
 
-= Can I change the look of the widgets? =
+= Can I change the look of the elements? =
 
-Yes. The plugin creates jQuery UI accordions and tabs, jQuery UI-compatible toggles, and the horizontal accordions have been set up to use jQuery UI themes by default. So changing the jQuery UI theme in use on the page will change the appearance of the widgets. To change the jQuery UI theme simply go to Appearance > Tabs and Accordions and choose a theme from the drop-down menu.
+Yes. The plugin creates jQuery UI accordions and tabs, jQuery UI-compatible toggles, and the horizontal accordions have been set up to use jQuery UI themes by default. So changing the jQuery UI theme in use on the page will change the appearance of the elements. To change the jQuery UI theme simply go to Appearance > Tabs and Accordions and choose a theme from the drop-down menu.
 
-You can also style the widgets with your own custom CSS if you wish by using the .squelch-taas-override class, but that is beyond the scope of this FAQ. Instructions are available on the [Squelch Tabs and Accordions Shortcodes](http://squelchdesign.com/wordpress-plugin-squelch-tabs-accordions-shortcodes/) project homepage.
+You can also style the elements with your own custom CSS if you wish by using the .squelch-taas-override class, but that is beyond the scope of this FAQ. Instructions are available on the [Squelch Tabs and Accordions Shortcodes](http://squelchdesign.com/wordpress-plugin-squelch-tabs-accordions-shortcodes/) project homepage.
 
-= Can I see a demo of the widgets? =
+= Can I see a demo of the elements? =
 
 Sure, on the [Squelch Tabs and Accordions Shortcodes](http://squelchdesign.com/wordpress-plugin-squelch-tabs-accordions-shortcodes/) project homepage.
 
 You can also [spin up your own WordPress playground and try the plugin out for yourself](https://tastewp.com/new?pre-installed-plugin-slug=squelch-tabs-and-accordions-shortcodes&redirect=themes.php%3Fpage%3Dsquelch-tabs-and-accordions-shortcodes%2Fsquelch-tabs-and-accordions.php&ni=true).
 
-= Are these widgets responsive? =
+= Are these elements responsive? =
 
-All widgets in this plugin are responsive **excluding** the horizontal accordion widget: it uses a different library to the other widgets, and that library is unfortunately not responsive. A new responsive horizontal slider is planned for the future.
+All elements in this plugin are responsive **excluding** the horizontal accordion element: it uses a different library to the other elements, and that library is unfortunately not responsive. A new responsive horizontal slider is planned for the future.
 
 = Can I link to a tab? =
 
@@ -180,7 +180,7 @@ Yes! As of version 0.3.7 it is possible to link to a tab. The easiest way to ach
 
 = 0.3 =
 * The plugin was banned from the WordPress.org directory for providing jQuery from the Google CDN and allowing the user to choose the version of jQuery they wanted to run on their site. Apparently this contravenes the WordPress.org directory guidelines, despite the fact that the guidelines seem to make no mention of jQuery anywhere and despite the fact there are a number of plugins in the directory that do exactly the same thing. In order to get the plugin relisted it was necessary to use the WordPress-hosted version of jQuery and package the jQuery UI theme files. As a result the plugin no longer works on WP<3.5 and there's not much I can do about that.
-* When you upgrade WordPress you may find that none of your widgets work any more due to a change in version of jQuery. This is a WordPress.org enforced change.
+* When you upgrade WordPress you may find that none of your elements work any more due to a change in version of jQuery. This is a WordPress.org enforced change.
 
 = 0.2.3 =
 * Code to add .squelch-taas-override was missing, added in.
@@ -200,7 +200,7 @@ Yes! As of version 0.3.7 it is possible to link to a tab. The easiest way to ach
 * Added toggles and toggle shortcodes and created jQuery plugin to provide toggle functionality
 * Added subtoggles, subtoggle, subsubtoggles and subsubtoggle shortcodes to allow nested toggles
 * Created admin interface configuration page with theme switcher for jQuery UI themes
-* All generated screen widgets get a class of squelch-taas-override to make overriding styles in themes easier
+* All generated screen elements get a class of squelch-taas-override to make overriding styles in themes easier
 * Added option to allow jQuery and jQuery UI to not be loaded if desired
 
 = 0.1.1 =
@@ -279,16 +279,16 @@ Very minor code quality update.
 This release has been forced by WordPress.org to load jQuery and jQuery UI as packaged with your current version of WordPress and therefore CANNOT support versions of WordPress prior to 3.5. If you are not on WP 3.5 or better please use an older version of the plugin.
 
 = 0.2.3 =
-Bug-fix release. In 0.2.3 it is possible to nest accordions and it's easier to write your own styles for the widgets.
+Bug-fix release. In 0.2.3 it is possible to nest accordions and it's easier to write your own styles for the elements.
 
 = 0.2.2 =
 Fix for autoHeight being always on. If you want the old (incorrect) behaviour use autoHeight="true" on your accordions shortcode.
 
 = 0.2.1 =
-v0.2 introduces the long-awaited toggles widget, a configuration panel allowing you to choose your jQuery UI theme quickly and easily, and some elements can also now be nested! 0.2.1 offers a smoother upgrade experience.
+v0.2 introduces the long-awaited toggles element, a configuration panel allowing you to choose your jQuery UI theme quickly and easily, and some elements can also now be nested! 0.2.1 offers a smoother upgrade experience.
 
 = 0.2 =
-v0.2 introduces the long-awaited toggles widget, a configuration panel allowing you to choose your jQuery UI theme quickly and easily, and some elements can also now be nested!
+v0.2 introduces the long-awaited toggles element, a configuration panel allowing you to choose your jQuery UI theme quickly and easily, and some elements can also now be nested!
 
 = 0.1.1 =
 Fixes for various minor bugs and niggles and better support for some themes. Support for previous versions of WordPress down to 3.3.
