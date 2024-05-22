@@ -54,8 +54,8 @@ The sunlight you see out of your window took about 8 minutes to travel from the 
 ## Aliases
 
 * `[accordion]` — top-level accordion shortcode
-* `[subaccordion]` — for embedding accordions inside of accordions (see Nesting elements)
-* `[subsubaccordion]` — for embedding accordions inside of accordions (see Nesting elements)
+* `[subaccordion]` — for embedding accordions inside of accordions (see [Nesting elements](../advanced/nesting-elements.md))
+* `[subsubaccordion]` — for embedding accordions inside of accordions (see [Nesting elements](../advanced/nesting-elements.md))
 
 ## Parameters
 

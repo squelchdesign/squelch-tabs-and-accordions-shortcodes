@@ -19,7 +19,7 @@ You can choose which theme to use with the `theme=` parameter, e.g.
 [toggles theme="jqueryui"]
 ```
 
-As usual the safest and easiest way to style the toggles is to roll your own jQuery UI theme.
+As usual the safest and easiest way to style the toggles is to [roll your own jQuery UI theme](./rolling-your-own-theme.md).
 
 :::warning
 
@@ -95,5 +95,5 @@ Panel 0 content
 [/toggles]
 ```
 
-This is more effort and less user friendly than rolling your own theme, but allows multiple themes to be created and used by different toggles on the site.
+This is more effort and less user friendly than [rolling your own theme](./rolling-your-own-theme.md), but allows multiple themes to be created and used by different toggles on the site.
 

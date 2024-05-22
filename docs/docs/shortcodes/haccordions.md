@@ -250,7 +250,7 @@ Default: false
 Requirement: Optional
 ```
 
-Set to true if you want to round the corners of your horizontal accordion. This can also be controlled by rolling your own jQuery UI theme or through CSS.
+Set to true if you want to round the corners of your horizontal accordion. This can also be controlled by [rolling your own jQuery UI theme](../advanced/styling/rolling-your-own-theme.md) or through [CSS](../advanced/styling/styling-horizontal-accordions.md).
 
 **Accepted values:**
 

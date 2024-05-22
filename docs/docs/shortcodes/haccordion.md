@@ -54,8 +54,8 @@ Horizontal accordion panel 0 content
 ## Aliases
 
 * `[haccordion]` — top-level horizontal accordion panel shortcode
-* `[subhaccordion]` — for embedding horizontal accordions inside of horizontal accordions (see Nesting elements)
-* `[subsubhaccordion]` — for embedding horizontal accordions inside of horizontal accordions (see Nesting elements)
+* `[subhaccordion]` — for embedding horizontal accordions inside of horizontal accordions (see [Nesting elements](../advanced/nesting-elements.md))
+* `[subsubhaccordion]` — for embedding horizontal accordions inside of horizontal accordions (see [Nesting elements](../advanced/nesting-elements.md))
 
 ## Parameters
 

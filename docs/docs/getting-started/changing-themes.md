@@ -9,7 +9,7 @@ Out of the box Squelch Tabs and Accordions uses the Smoothness theme, which is a
 * 24 jQuery UI themes to choose from shipped with the plugin,
 * a mostly blank theme that web designers can style to match their site's theme,
 * no styles at all to prevent conflicting with any other jQuery UI theme that has been loaded elsewhere within your site or by another plugin,
-* and the option to roll your own jQuery UI theme.
+* and the option to [roll your own jQuery UI theme](../advanced/styling/rolling-your-own-theme.md).
 
 Changing themes is straightforward:
 

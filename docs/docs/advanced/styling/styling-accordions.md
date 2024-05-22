@@ -4,7 +4,7 @@ sidebar_position: 4
 
 # Styling accordions
 
-Note that the accordions are provided by jQuery UI and so it is necessary to override the jQuery UI styles to change their appearance. The safer and easier solution is to roll your own jQuery UI theme.
+Note that the accordions are provided by jQuery UI and so it is necessary to override the jQuery UI styles to change their appearance. The safer and easier solution is to [roll your own jQuery UI theme](./rolling-your-own-theme.md).
 
 :::warning
 

@@ -56,8 +56,8 @@ This is the fourth and final tab.
 ## Aliases
 
 * `[tab]` — top-level tab shortcode
-* `[subtab]` — for embedding tabs inside of tabs (see Nesting elements)
-* `[subsubtab]` — for embedding tabs inside of tabs (see Nesting elements)
+* `[subtab]` — for embedding tabs inside of tabs (see [Nesting elements](../advanced/nesting-elements.md))
+* `[subsubtab]` — for embedding tabs inside of tabs (see [Nesting elements](../advanced/nesting-elements.md))
 
 ## Parameters
 

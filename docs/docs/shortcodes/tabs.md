@@ -40,8 +40,8 @@ This is the second tab.
 ## Aliases
 
 1. `[tabs]` — top-level tabs shortcode
-1. `[subtabs]` — for embedding tabs inside of tabs (see Nesting elements)
-1. `[subsubtabs]` — for embedding tabs inside of tabs (see Nesting elements)
+1. `[subtabs]` — for embedding tabs inside of tabs (see [Nesting elements](../advanced/nesting-elements.md))
+1. `[subsubtabs]` — for embedding tabs inside of tabs (see [Nesting elements](../advanced/nesting-elements.md))
 
 ## Parameters
 

@@ -59,8 +59,8 @@ The sunlight you see out of your window took about 8 minutes to travel from the 
 ## Aliases
 
 * `[toggle]` — top-level toggle shortcode
-* `[subtoggle]` — for embedding toggles inside of toggles (see Nesting elements)
-* `[subsubtoggle]` — for embedding toggles inside of toggles (see Nesting elements)
+* `[subtoggle]` — for embedding toggles inside of toggles (see [Nesting elements](../advanced/nesting-elements.md))
+* `[subsubtoggle]` — for embedding toggles inside of toggles (see [Nesting elements](../advanced/nesting-elements.md))
 
 ## Parameters
 

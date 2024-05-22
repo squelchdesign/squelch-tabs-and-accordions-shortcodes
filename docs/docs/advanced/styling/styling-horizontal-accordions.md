@@ -12,7 +12,7 @@ sidebar_position: 6
 * `light`
 * `stitch`
 
-As usual the safest and easiest way to style the toggles is to roll your own jQuery UI theme.
+As usual the safest and easiest way to style the toggles is to [roll your own jQuery UI theme](./rolling-your-own-theme.md).
 
 To style the horizontal accordions you can either override the relevant jQuery UI styles (the horizontal accordions use the accordion styles) or create a new liteAccordion theme and use the theme="yourtheme" attribute on the shortcode to tell the widget to use your new theme. To create your own liteAccordion theme it is recommended that you look in the relevant section of the file `<plugin directory>/css/squelch-tabs-and-accordions.css` for examples. However, the following styles should get you started.
 
@@ -94,5 +94,5 @@ Panel 0 content
 [/haccordions]
 ```
 
-This is more effort and less user friendly than rolling your own theme, but allows multiple themes to be created and used by different horizontal accordions on the site.
+This is more effort and less user friendly than [rolling your own theme](./rolling-your-own-theme.md), but allows multiple themes to be created and used by different horizontal accordions on the site.
 
