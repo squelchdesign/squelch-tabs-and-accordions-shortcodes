@@ -4,7 +4,12 @@ sidebar_position: 3
 
 # Changing the theme
 
-Out of the box Squelch Tabs and Accordions uses the Smoothness theme, which is an unobtrusive grey theme. But there are other options available: Squelch Tabs and Accordions ships with 24 themes to choose from, as well as a mostly blank theme that web designers can style to match their site's theme, and there is also an option to load no styles at all to prevent conflicting with any other jQuery UI theme that has been loaded elsewhere within your site or by another plugin. There is more information on this in the developer section.
+Out of the box Squelch Tabs and Accordions uses the Smoothness theme, which is an unobtrusive grey theme. But there are other options available:
+
+* 24 jQuery UI themes to choose from shipped with the plugin,
+* a mostly blank theme that web designers can style to match their site's theme,
+* no styles at all to prevent conflicting with any other jQuery UI theme that has been loaded elsewhere within your site or by another plugin,
+* and the option to roll your own jQuery UI theme.
 
 Changing themes is straightforward:
 
