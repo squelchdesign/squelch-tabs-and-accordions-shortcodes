@@ -89,6 +89,9 @@ Yes! As of version 0.3.7 it is possible to link to a tab. The easiest way to ach
 
 == Changelog ==
 
+= 0.4.8 =
+* Fix for CVE-2024-4463 (credit to Benedictus Jovan, responsibly disclosed by Wordfence) - added a nonce to the admin screen to prevent XSRF attacks
+
 = 0.4.7 =
 * Bug fix: settings wouldn't save on sites that were using a translation due to some poor code in the admin screen
 * Bug fix: saving without expanding the "advanced options" resulted in a PHP warning
@@ -120,7 +123,7 @@ Yes! As of version 0.3.7 it is possible to link to a tab. The easiest way to ach
 * Thanks to @dan-kirshner for beta testing the plugin
 
 = 0.4.4 =
-* Fix for CVE-2024-2499 (responsibly disclosed by Wordfence) - all attributes should now be escaped before being sent to the page to prevent stored XSS attacks
+* Fix for CVE-2024-2499 (credit to Francesco Carlucci, responsibly disclosed by Wordfence) - all attributes should now be escaped before being sent to the page to prevent stored XSS attacks
 * Update readme file to include changelog details for v0.4.3
 
 = 0.4.3 =
@@ -215,6 +218,10 @@ Yes! As of version 0.3.7 it is possible to link to a tab. The easiest way to ach
 * Initial version
 
 == Upgrade Notice ==
+
+= 0.4.8 =
+
+0.4.8 fixes a vulnerability: CVE-2024-4463 which could allow an authenticated attacker to trick a site admin into changing their Squelch Tabs and Accordions settings. Credit to Benedictus Jovan and Wordfence for reporting the issue.
 
 = 0.4.7 =
 
