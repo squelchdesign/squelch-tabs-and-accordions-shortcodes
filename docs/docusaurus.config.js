@@ -123,7 +123,7 @@ const config = {
             ],
           },
         ],
-        copyright: `Copyright © 2013–${new Date().getFullYear()} { Squelch Design } Ltd / Matt Lowe.`,
+        copyright: `Copyright © 2013–${new Date().getFullYear()} { Squelch Design } / Matt Lowe.`,
       },
       prism: {
         theme: prismThemes.github,
