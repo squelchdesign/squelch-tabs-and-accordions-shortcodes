@@ -342,12 +342,12 @@ final class TabsAndAccordions {
      */
     public function haccordions_shortcode( $atts, $content ) {
 
-        $defaults = array(
+        $atts = wp_parse_args( $atts, [
             'title'         => '',
             'title_header'  => 'h2',
             'width'         => 960,
             'height'        => 320,
-            'hwidth'        => 48,
+            'hwidth'        => ( $atts['theme'] ?? '' === 'jqueryui' ? 28 : 48 ),
             'activateon'    => 'click',
             'active'        => 0,
             'speed'         => 800,
@@ -358,18 +358,7 @@ final class TabsAndAccordions {
             'rounded'       => false,
             'enumerate'     => false,
             'disabled'      => false            // unused
-        );
-
-        // jQuery-UI theme needs to default to a narrower header width
-        if (empty($atts['theme']) || $atts['theme'] == 'jqueryui') {
-            $defaults['hwidth'] = 28;
-        }
-
-        $atts = wp_parse_args( $atts, $defaults );
-        $atts['active'] = $atts['active'] + 1;
-
-        if ( ! in_array( $atts['title_header'], [ 'h1', 'h2', 'h3', 'h4', 'h5', 'h6' ] ) ) $atts['title_header'] = 'h2';
-
+        ] );
 
         $content = do_shortcode( $this->shortcode_unautop( shortcode_unautop( $this->tidy_up_shortcodes( $content ) ) ) );
         $rv  = '';
@@ -389,7 +378,7 @@ final class TabsAndAccordions {
         $data .= 'data-height="'        .esc_attr($atts['height'])        .'" ';
         $data .= 'data-h-width="'       .esc_attr($atts['hwidth'])        .'" ';
         $data .= 'data-activate-on="'   .esc_attr($atts['activateon'])    .'" ';
-        $data .= 'data-active="'        .esc_attr($atts['active'])        .'" ';
+        $data .= 'data-active="'        .esc_attr($atts['active'] + 1)        .'" ';
         $data .= 'data-speed="'         .esc_attr($atts['speed'])         .'" ';
         $data .= 'data-autoplay="'     .($atts['autoplay']      == "true" ? 'true' : 'false' ).'" ';
         $data .= 'data-pauseonhover="' .($atts['pauseonhover']  == "true" ? 'true' : 'false' ).'" ';
