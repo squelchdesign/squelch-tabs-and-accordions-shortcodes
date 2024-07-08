@@ -3,7 +3,7 @@
  * Plugin Name: Squelch Tabs and Accordions Shortcodes
  * Plugin URI: http://squelchdesign.com/wordpress-plugin-squelch-tabs-accordions-shortcodes/
  * Description: Provides shortcodes for adding tabs and accordions to your website
- * Version: 0.4.8
+ * Version: 0.4.9
  * Requires at least: 4.6
  * Requires PHP: 7.4
  * Author: Matt Lowe
@@ -29,7 +29,7 @@
 */
 
 
-$taas_plugin_ver    = '0.4.8';
+$taas_plugin_ver    = '0.4.9';
 
 
 
@@ -116,7 +116,7 @@ function squelch_taas_accordions_shortcode( $atts, $content ) {
         $id     = "squelch-taas-title-$taas_title_counter";
         $class  = "squelch-taas-group-title";
 
-        $rv .= '<'.$atts['title_header'].' id="'.$id.'" class="'.$class.'">'.esc_html( $atts['title'] ).'</'.$atts['title_header'].'>';
+        $rv .= '<'.esc_attr(esc_html( $atts['title_header'] )).' id="'.$id.'" class="'.$class.'">'.esc_html( $atts['title'] ).'</'.esc_attr(esc_html( $atts['title_header'] )).'>';
 
         $GLOBALS['taas_title_counter']++;
     }
@@ -130,7 +130,7 @@ function squelch_taas_accordions_shortcode( $atts, $content ) {
     $id     = "squelch-taas-accordion-$taas_accordion_counter";
     $class  = 'squelch-taas-accordion squelch-taas-override';
 
-    $rv .= '<div id="'.$id.'" class="'.$class.'" '.$data.'>';
+    $rv .= '<div id="'.esc_attr($id).'" class="'.esc_attr($class).'" '.$data.'>';
     $rv .= $content;
     $rv .= '</div>';
     $rv .= "\n";
@@ -168,15 +168,15 @@ function squelch_taas_accordion_shortcode( $atts, $content ) {
 
     $id = "squelch-taas-header-$taas_accordion_content_counter";
 
-    $rv .= '<'.$atts['header'].' id="'.esc_attr( $id ).'">';
-    $rv .= '<a href="#'.$vanity_url.'accordion-shortcode-content-'.$taas_accordion_content_counter.'">';
+    $rv .= '<'.esc_attr(esc_html( $atts['header'] )).' id="'.esc_attr( $id ).'">';
+    $rv .= '<a href="#'.esc_attr( $vanity_url ).'accordion-shortcode-content-'.esc_attr($taas_accordion_content_counter).'">';
     $rv .= esc_html( $atts['title'] );
     $rv .= '</a>';
-    $rv .= '</'.$atts['header'].'>';
+    $rv .= '</'.esc_attr(esc_html( $atts['header'] )).'>';
 
-    $id = $vanity_url."accordion-shortcode-content-$taas_accordion_content_counter";
+    $id = esc_attr( $vanity_url )."accordion-shortcode-content-$taas_accordion_content_counter";
 
-    $rv .= '<div id="'.$id.'" class="squelch-taas-accordion-shortcode-content squelch-taas-accordion-shortcode-content-'.$taas_accordion_content_counter.'">';
+    $rv .= '<div id="'.esc_attr($id).'" class="squelch-taas-accordion-shortcode-content squelch-taas-accordion-shortcode-content-'.esc_attr($taas_accordion_content_counter).'">';
     $rv .= $content;
     $rv .= '</div>';
 
@@ -246,7 +246,7 @@ function squelch_taas_haccordions_shortcode( $atts, $content ) {
         $id     = "squelch-taas-title-$taas_title_counter";
         $class  = "squelch-taas-group-title";
 
-        $rv .= '<'.$atts['title_header'].' id="'.$id.'" class="'.$class.'">'. esc_html( $atts['title'] ) .'</'.$atts['title_header'].'>';
+        $rv .= '<'.esc_attr(esc_html( $atts['title_header'] )).' id="'.esc_attr( $id ).'" class="'.esc_attr($class).'">'. esc_html( $atts['title'] ) .'</'.esc_attr(esc_html( $atts['title_header'] )).'>';
 
         $GLOBALS['taas_title_counter']++;
     }
@@ -259,12 +259,12 @@ function squelch_taas_haccordions_shortcode( $atts, $content ) {
     $data .= 'data-activate-on="'   .esc_attr($atts['activateon'])    .'" ';
     $data .= 'data-active="'        .esc_attr($atts['active'])        .'" ';
     $data .= 'data-speed="'         .esc_attr($atts['speed'])         .'" ';
-    $data .= 'data-autoplay="'     .($atts['autoplay']      == "true" ? 'true' : 'false' ).'" ';
-    $data .= 'data-pauseonhover="' .($atts['pauseonhover']  == "true" ? 'true' : 'false' ).'" ';
+    $data .= 'data-autoplay="'      .esc_attr(($atts['autoplay']      == "true" ? 'true' : 'false' ).'" ');
+    $data .= 'data-pauseonhover="'  .esc_attr(($atts['pauseonhover']  == "true" ? 'true' : 'false' ).'" ');
     $data .= 'data-cyclespeed="'    .esc_attr($atts['cyclespeed'])    .'" ';
     $data .= 'data-theme="'         .esc_attr($atts['theme'])         .'" ';
-    $data .= 'data-rounded="'      .($atts['rounded']       == "true" ? 'true' : 'false' ).'" ';
-    $data .= 'data-enumerate="'    .($atts['enumerate']     == "true" ? 'true' : 'false' ).'"';
+    $data .= 'data-rounded="'       .esc_attr(($atts['rounded']       == "true" ? 'true' : 'false' ).'" ');
+    $data .= 'data-enumerate="'     .esc_attr(($atts['enumerate']     == "true" ? 'true' : 'false' ).'"');
 
     $id     = "squelch-taas-haccordion-$taas_haccordion_counter";
     $class  = 'squelch-taas-haccordion squelch-taas-override';
@@ -306,7 +306,7 @@ function squelch_taas_haccordion_shortcode( $atts, $content ) {
     $id = $vanity_url."haccordion-$taas_haccordion_content_counter";
 
     $rv .= '<li>';
-    $rv .= '<h3 id="'.$id.'" class="squelch-taas-haccordion-shortcode">';
+    $rv .= '<h3 id="'.esc_attr($id).'" class="squelch-taas-haccordion-shortcode">';
     $rv .= '<span>';
     $rv .= esc_html( $atts['title'] );
     $rv .= '</span>';
@@ -367,7 +367,7 @@ function squelch_taas_tabs_shortcode( $atts, $content ) {
         $id     = "squelch-taas-title-$taas_title_counter";
         $class  = "squelch-taas-group-title";
 
-        $rv .= '<'.$atts['title_header'].' id="'.$id.'" class="'.$class.'">'.esc_html( $atts['title'] ).'</'.$atts['title_header'].'>';
+        $rv .= '<'.esc_attr(esc_html($atts['title_header'])).' id="'.esc_attr($id).'" class="'.esc_attr($class).'">'.esc_html( $atts['title'] ).'</'.esc_attr(esc_html($atts['title_header'])).'>';
 
         $GLOBALS['taas_title_counter']++;
     }
@@ -375,15 +375,15 @@ function squelch_taas_tabs_shortcode( $atts, $content ) {
     $data  = '';
 
     $data .= 'data-title="'         .esc_attr( $atts['title'] )         .'" ';
-    $data .= 'data-disabled="'     .($atts['disabled']    == "true" ? 'true' : 'false' ).'" ';
-    $data .= 'data-collapsible="'  .($atts['collapsible'] == "true" ? 'true' : 'false' ).'" ';
+    $data .= 'data-disabled="'      .esc_attr(($atts['disabled']    == "true" ? 'true' : 'false' ).'" ');
+    $data .= 'data-collapsible="'   .esc_attr(($atts['collapsible'] == "true" ? 'true' : 'false' ).'" ');
     $data .= 'data-active="'        .esc_attr( $atts['active'] )        .'" ';
     $data .= 'data-event="'         .esc_attr( $atts['event'] )         .'"';
 
     $id     = "squelch-taas-tab-group-$taas_tab_counter";
     $class  = 'squelch-taas-tab-group squelch-taas-override';
 
-    $rv .= '<div id="'.$id.'" class="'.$class.'" '.$data.'>';
+    $rv .= '<div id="'.esc_attr($id).'" class="'.esc_attr($class).'" '.$data.'>';
     $rv .= '<ul>';
 
     // We drop the content and build the tabs from the stored contents of $taas_tabs
@@ -419,14 +419,14 @@ function squelch_taas_tablinks_shortcode( $atts, $content, $tag ) {
 
     global $taas_tabs, $taas_current_tab_group;
 
-    $rv = '<ul class="squelch-taas-tablinks" id="squelch-taas-tablinks-tab-group-'.$taas_current_tab_group.'">';
+    $rv = '<ul class="squelch-taas-tablinks" id="squelch-taas-tablinks-tab-group-'.esc_attr($taas_current_tab_group).'">';
 
     $counter = 0;
     foreach ($taas_tabs[$taas_current_tab_group] as $tab) {
         $id = $tab['id'];
 
-        $rv .= '<li class="squelch-taas-tablink squelch-taas-tablink-'.$taas_current_tab_group.'-'.$counter.'">';
-        $rv .= '<a href="#'.$id.'">';
+        $rv .= '<li class="squelch-taas-tablink squelch-taas-tablink-'.esc_attr($taas_current_tab_group).'-'.esc_attr($counter).'">';
+        $rv .= '<a href="#'.esc_attr($id).'">';
         $rv .= esc_html( $tab['title'] );
         $rv .= '</a>';
         $rv .= '</li>';
@@ -476,8 +476,8 @@ function squelch_taas_tab_shortcode( $atts, $content, $tag ) {
 
     // Build the tab
     $rv  = '';
-    $rv .= '<li class="'.$tab_class.'">';
-    $rv .= '<a href="#'.$vanity_url.'tab-content-'.$taas_current_tab_group.'-'.$taas_tab_content_counter.'">';
+    $rv .= '<li class="'.esc_attr( $tab_class ).'">';
+    $rv .= '<a href="#'.esc_attr($vanity_url).'tab-content-'.esc_attr($taas_current_tab_group).'-'.esc_attr($taas_tab_content_counter).'">';
 
     if (!empty($atts['icon'])) {
         if (empty($atts['iconalt'])) $atts['iconalt'] = $atts['title'];
@@ -499,7 +499,7 @@ function squelch_taas_tab_shortcode( $atts, $content, $tag ) {
 
     // Build the tab content
     $rv  = '';
-    $rv .= '<div id="'.esc_attr( $vanity_url.'tab-content-'.$taas_current_tab_group.'-'.$taas_tab_content_counter ).'" class="'.$content_class.'">';
+    $rv .= '<div id="'.esc_attr( $vanity_url.'tab-content-'.$taas_current_tab_group.'-'.$taas_tab_content_counter ).'" class="'.esc_attr( $content_class ).'">';
     $rv .= $content;
     $rv .= '</div>';
     $tab_arr['content'] = $rv;
@@ -556,15 +556,15 @@ function squelch_taas_toggles_shortcode( $atts, $content ) {
         $id     = "squelch-taas-title-$taas_title_counter";
         $class  = "squelch-taas-group-title";
 
-        $rv .= '<'.$atts['title_header'].' id="'.$id.'" class="'.$class.'">'.esc_html( $atts['title'] ).'</'.$atts['title_header'].'>';
+        $rv .= '<'.esc_attr(esc_html($atts['title_header'])).' id="'.esc_attr($id).'" class="'.esc_attr($class).'">'.esc_html( $atts['title'] ).'</'.esc_attr(esc_html($atts['title_header'])).'>';
 
         $GLOBALS['taas_title_counter']++;
     }
 
     $data  = '';
-    $data .= 'data-speed="'.esc_attr( $atts['speed'] ).'" ';
+    $data .= 'data-speed="' .esc_attr( $atts['speed'] ) .'" ';
     $data .= 'data-active="'.esc_attr( $atts['active'] ).'" ';
-    $data .= 'data-theme="'.esc_attr( $atts['theme'] ).'" ';
+    $data .= 'data-theme="' .esc_attr( $atts['theme'] ) .'" ';
 
     $id     = "squelch-taas-toggle-$taas_toggle_counter";
     $class  = 'squelch-taas-toggle squelch-taas-override';
@@ -612,7 +612,7 @@ function squelch_taas_toggle_shortcode( $atts, $content ) {
 
     $id = $vanity_url."toggle-shortcode-content-$taas_toggle_content_counter";
 
-    $rv .= '<div id="'.esc_attr( $id ).'" class="squelch-taas-toggle-shortcode-content squelch-taas-toggle-shortcode-content-'.$taas_toggle_content_counter.'">';
+    $rv .= '<div id="'.esc_attr( $id ).'" class="squelch-taas-toggle-shortcode-content squelch-taas-toggle-shortcode-content-'.esc_attr($taas_toggle_content_counter).'">';
     $rv .= $content;
     $rv .= '</div>';
 
